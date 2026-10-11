@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novacore Systems — Custom Web, Software & System Architecture Agency</title>
+  <meta name="description" content="Novacore Systems is a premier software agency engineering custom web applications, enterprise software architectures, and automated cloud systems for high-growth businesses.">
+  
+  <!-- Modern Geometric Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Background Blueprint Technical Grid Texture -->
+  <div class="blueprint-grid-bg" aria-hidden="true"></div>
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="header-container" id="site-header">
+    <nav class="nav-pill" aria-label="Main Navigation">
+      <a href="#" class="brand-logo" id="brand-logo">
+        <span class="logo-symbol">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
+            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">Novacore<span class="logo-accent">.sys</span></span>
+      </a>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#process" class="nav-link">Our Process</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="#metrics" class="nav-link">Impact</a>
+        <a href="#about" class="nav-link">About Us</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-pill" id="nav-cta-btn">
+          Contact us
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION (IMAGE 1) ==================== -->
+    <section class="hero-section" id="hero">
+      <div class="section-container hero-container">
+        
+        <!-- Eyebrow Badge -->
+        <div class="eyebrow-badge">
+          <span class="badge-dot"></span>
+          <span>Accelerate Success &bull; Custom Engineering</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="hero-title">
+          Architecting high-performance<br>
+          <span class="text-gradient-blue">Custom webs, software & systems</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          We engineer bespoke web applications, enterprise software architectures, and automated cloud systems built to eliminate technical debt and scale seamlessly from day one.
+        </p>
+
+        <!-- Dual CTA Buttons -->
+        <div class="hero-cta-group">
+          <button class="btn btn-primary" id="hero-primary-cta" onclick="openContactModal()">
+            <span>Start Your Project</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+          <a href="#process" class="btn btn-ghost" id="hero-secondary-cta">
+            <span>Explore Our Process</span>
+          </a>
+        </div>
+
+        <!-- Central Interactive System Dashboard Mockup (Image 1 Center Card) -->
+        <div class="hero-mockup-wrapper" id="hero-mockup">
+          
+          <!-- Blueprint decorative circuit connectors around the mockup -->
+          <svg class="blueprint-circuit-overlay" viewBox="0 0 1000 600" fill="none" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 60 120 H 160 A 24 24 0 0 1 184 144 V 240" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="6 6" opacity="0.45" />
+            <circle cx="184" cy="240" r="4" fill="#3B82F6" opacity="0.6"/>
+            
+            <path d="M 940 80 H 840 A 24 24 0 0 0 816 104 V 280" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="6 6" opacity="0.45" />
+            <circle cx="816" cy="280" r="4" fill="#3B82F6" opacity="0.6"/>
+          </svg>
+
+          <div class="dashboard-card">
+            <!-- Window Topbar -->
+            <div class="dashboard-topbar">
+              <div class="dashboard-controls">
+                <span class="ctrl-dot ctrl-red"></span>
+                <span class="ctrl-dot ctrl-yellow"></span>
+                <span class="ctrl-dot ctrl-green"></span>
+              </div>
+              <div class="dashboard-searchbar">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.5">
+                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                </svg>
+                <span class="search-placeholder">Search systems, microservices, databases & APIs...</span>
+              </div>
+              <div class="dashboard-status-pill">
+                <span class="status-live-pulse"></span>
+                <span>System Health: 99.99%</span>
+              </div>
+            </div>
+
+            <!-- Dashboard Body -->
+            <div class="dashboard-body">
+              <!-- Sidebar Icons -->
+              <aside class="dashboard-sidebar">
+                <button class="sidebar-btn active" title="Active Core Architecture">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                </button>
+                <button class="sidebar-btn" title="Database Shards">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+                </button>
+                <button class="sidebar-btn" title="APIs & Endpoints">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+                </button>
+                <button class="sidebar-btn" title="Live Telemetry">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </button>
+              </aside>
+
+              <!-- Main Mockup Workspace -->
+              <div class="dashboard-content">
+                <div class="dashboard-interactive-panel">
+                  
+                  <!-- Vector Collaboration / Engineering Centerpiece -->
+                  <div class="system-illustration-container">
+                    <div class="illustration-badge">
+                      <span class="illustration-badge-icon">⚡</span>
+                      <span>Next-Gen Architecture</span>
+                    </div>
+
+                    <div class="system-flow-diagram">
+                      <div class="flow-node node-client">
+                        <span class="node-title">Custom Web Frontend</span>
+                        <span class="node-desc">React 19 &bull; Vite &bull; SSR</span>
+                      </div>
+                      <div class="flow-connector">
+                        <span class="connector-line"></span>
+                        <span class="connector-label">gRPC / REST</span>
+                      </div>
+                      <div class="flow-node node-engine">
+                        <span class="node-title">Custom Software Core</span>
+                        <span class="node-desc">Distributed Event Engine</span>
+                      </div>
+                      <div class="flow-connector">
+                        <span class="connector-line"></span>
+                        <span class="connector-label">Sub-10ms Pipeline</span>
+                      </div>
+                      <div class="flow-node node-storage">
+                        <span class="node-title">Automated Systems</span>
+                        <span class="node-desc">Zero-Downtime Cloud DB</span>
+                      </div>
+                    </div>
+
+                    <h3 class="dashboard-heading">Systems engineered to outperform, not patch</h3>
+                    <p class="dashboard-subtext">
+                      We replace brittle no-code tools and off-the-shelf templates with custom, proprietary architectures that give your enterprise full technical autonomy.
+                    </p>
+
+                    <div class="dashboard-mini-actions">
+                      <button class="btn btn-primary btn-sm" onclick="openContactModal()">Deploy Custom Solution</button>
+                      <button class="btn btn-outline btn-sm" onclick="toggleTelemetryDemo()">Simulate High Load</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Hero Bottom Organic Curve Divider -->
+      <div class="hero-bottom-curve" aria-hidden="true">
+        <svg viewBox="0 0 1440 96" fill="none" preserveAspectRatio="none">
+          <path d="M0,0 C360,96 1080,96 1440,0 L1440,96 L0,96 Z" fill="#fafbfc"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==================== PARTNER / LOGO MARQUEE (IMAGE 2) ==================== -->
+    <section class="partners-section">
+      <div class="section-container">
+        <p class="partners-title">TRUSTED BY TECH INNOVATORS & HIGH-SCALE ENTERPRISES</p>
+        <div class="partners-logo-row">
+          <div class="partner-badge"><span class="badge-icon">⚡</span> On Deck</div>
+          <div class="partner-badge"><span class="badge-icon">💠</span> OpenAI Ecosystem</div>
+          <div class="partner-badge"><span class="badge-icon">⬡</span> Pallet Core</div>
+          <div class="partner-badge"><span class="badge-icon">⚪</span> CAUSAL</div>
+          <div class="partner-badge"><span class="badge-icon">◽</span> Plain.</div>
+          <div class="partner-badge"><span class="badge-icon">🍇</span> passionfroot</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 1. SERVICES & CUSTOM SYSTEMS (IMAGE 4) ==================== -->
+    <section class="systems-section" id="services">
+      <div class="section-container">
+        
+        <div class="section-header-centered">
+          <span class="eyebrow-text">Core Capabilities</span>
+          <h2 class="section-heading">Custom Webs, Software & Systems We Engineer</h2>
+          <p class="section-subtext">
+            Traditional software agencies deliver generic cookie-cutter sites and bloated monolithic frameworks. We build custom, resilient digital architectures engineered for extreme longevity, speed, and complete IP ownership.
+          </p>
+        </div>
+
+        <!-- Alternating Pastel Story Stack Cards -->
+        <div class="story-cards-stack">
+          
+          <!-- Card 1: Ice Blue Surface -->
+          <article class="story-card card-ice-blue">
+            <div class="story-content-col">
+              <h3 class="story-card-title">Custom Web Applications & Portals</h3>
+              <p class="story-card-text">
+                Instead of paying perpetual monthly recurring seat licenses for rigid off-the-shelf software that cannot adapt to your workflows, we engineer bespoke web platforms built around your exact operations.
+              </p>
+              <p class="story-card-text">
+                Your team receives fully tailored administrative dashboards, bulletproof database models, and proprietary code that you own completely. No third-party lock-in, no surprise price increases, and total architectural freedom.
+              </p>
+            </div>
+            <div class="story-visual-col">
+              <div class="illustration-frame frame-blue">
+                <svg class="line-illustration" viewBox="0 0 200 160" fill="none">
+                  <!-- Custom Line-art: Tech Professional with System Architecture -->
+                  <rect x="40" y="30" width="120" height="90" rx="10" stroke="#2563EB" stroke-width="2"/>
+                  <path d="M40 55H160" stroke="#2563EB" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <circle cx="55" cy="42" r="3" fill="#2563EB"/>
+                  <circle cx="68" cy="42" r="3" fill="#60A5FA"/>
+                  <circle cx="81" cy="42" r="3" fill="#93C5FD"/>
+                  <!-- Flowchart inside screen -->
+                  <rect x="55" y="70" width="25" height="18" rx="4" stroke="#1D4ED8" stroke-width="1.5"/>
+                  <path d="M80 79H95" stroke="#2563EB" stroke-width="1.5"/>
+                  <rect x="95" y="70" width="25" height="18" rx="4" stroke="#1D4ED8" stroke-width="1.5"/>
+                  <path d="M120 79H135" stroke="#2563EB" stroke-width="1.5"/>
+                  <rect x="135" y="70" width="18" height="18" rx="4" fill="#EFF6FF" stroke="#1D4ED8" stroke-width="1.5"/>
+                  <path d="M80 120L70 145H130L120 120" stroke="#2563EB" stroke-width="2"/>
+                </svg>
+                <!-- Dashed circuit accents -->
+                <div class="frame-circuit-line"></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Fresh Mint Surface -->
+          <article class="story-card card-mint">
+            <div class="story-content-col">
+              <h3 class="story-card-title">Enterprise Software & SaaS Infrastructure</h3>
+              <p class="story-card-text">
+                The modern web landscape requires extreme speed, reactive states, and frictionless user experiences. Standard website builders and CMS platforms crumble under heavy transaction loads and complex data structures.
+              </p>
+              <p class="story-card-text">
+                We construct high-velocity software engines using modern React, TypeScript, and distributed backend services that deliver instant sub-100ms transitions and flawless Core Web Vitals across every device.
+              </p>
+            </div>
+            <div class="story-visual-col">
+              <div class="illustration-frame frame-mint">
+                <svg class="line-illustration" viewBox="0 0 200 160" fill="none">
+                  <!-- Line art: Analytics & Growth Pipeline -->
+                  <rect x="35" y="25" width="130" height="95" rx="8" stroke="#059669" stroke-width="2"/>
+                  <path d="M50 95L80 70L110 82L145 45" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="145" cy="45" r="4" fill="#059669"/>
+                  <path d="M50 105H150" stroke="#A7F3D0" stroke-width="1.5"/>
+                  <rect x="50" y="40" width="30" height="15" rx="3" fill="#ECFDF5" stroke="#059669" stroke-width="1"/>
+                  <!-- Tech lines -->
+                  <path d="M165 60H185V110" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4 4"/>
+                  <circle cx="185" cy="110" r="3" fill="#059669"/>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: Soft Lavender Surface -->
+          <article class="story-card card-lavender">
+            <div class="story-content-col">
+              <h3 class="story-card-title">Autonomous Cloud Systems & High-Velocity Pipelines</h3>
+              <p class="story-card-text">
+                Modern software systems must communicate reliably. We engineer unified data pipelines, background workers, event buses, and AI-enabled automations that keep your internal operations running effortlessly 24/7.
+              </p>
+              <p class="story-card-text">
+                From billing reconciliations and inventory synchronizations to custom AI models and data warehousing, our systems eradicate human error and automate repetitive workflows.
+              </p>
+            </div>
+            <div class="story-visual-col">
+              <div class="illustration-frame frame-lavender">
+                <svg class="line-illustration" viewBox="0 0 200 160" fill="none">
+                  <!-- Line art: Cloud Network & Node Cluster -->
+                  <circle cx="100" cy="70" r="28" stroke="#7C3AED" stroke-width="2" fill="#FAF5FF"/>
+                  <circle cx="50" cy="110" r="18" stroke="#9333EA" stroke-width="1.5" fill="#F3E8FF"/>
+                  <circle cx="150" cy="110" r="18" stroke="#9333EA" stroke-width="1.5" fill="#F3E8FF"/>
+                  <path d="M78 85L58 98M122 85L142 98" stroke="#7C3AED" stroke-width="1.5" stroke-dasharray="3 3"/>
+                  <circle cx="100" cy="70" r="8" fill="#7C3AED"/>
+                  <path d="M100 35V15M30 110H15M170 110H185" stroke="#C084FC" stroke-width="1.5"/>
+                </svg>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 2. OUR PROCESS STEP GRID (IMAGE 5) ==================== -->
+    <section class="process-section" id="process">
+      <div class="section-container">
+        
+        <div class="section-header-centered">
+          <span class="eyebrow-text">Engineering Methodology</span>
+          <h2 class="section-heading">Our Process</h2>
+          <p class="section-subtext">
+            From technical domain discovery to automated production deployment, our five-stage engineering process ensures deterministic delivery, zero scope creep, and complete code ownership.
+          </p>
+        </div>
+
+        <!-- Responsive Asymmetric Process Grid matching Image 5 (2 top, 3 bottom) -->
+        <div class="process-grid">
+          
+          <!-- Row 1: Top 2 Wide Cards -->
+          <div class="process-row-top">
+            
+            <!-- Step 01: Ice Blue -->
+            <div class="process-card card-ice-blue">
+              <div class="process-card-body">
+                <h3 class="process-card-title">Highly Precise Architectural Discovery</h3>
+                <p class="process-card-desc">
+                  We audit your core workflows, isolate bottleneck points, define data contracts, and design comprehensive schema specifications before a single line of production code is written.
+                </p>
+              </div>
+              <span class="watermark-number num-blue" aria-hidden="true">01</span>
+            </div>
+
+            <!-- Step 02: Fresh Teal/Cyan -->
+            <div class="process-card card-cyan">
+              <div class="process-card-body">
+                <h3 class="process-card-title">Real-Time Sprint & Telemetry Tracking</h3>
+                <p class="process-card-desc">
+                  You receive dedicated staging environments, weekly milestone demos, and direct access to production dashboards so you can track architecture progress in real time.
+                </p>
+              </div>
+              <span class="watermark-number num-cyan" aria-hidden="true">02</span>
+            </div>
+
+          </div>
+
+          <!-- Row 2: Bottom 3 Standard Cards -->
+          <div class="process-row-bottom">
+            
+            <!-- Step 03: Soft Lavender -->
+            <div class="process-card card-lavender">
+              <div class="process-card-body">
+                <h3 class="process-card-title">One-of-a-Kind Custom System Engine</h3>
+                <p class="process-card-desc">
+                  Tailor-made microservices, clean API layers, and reactive frontend components built with strict type safety, zero bloated libraries, and high test coverage.
+                </p>
+              </div>
+              <span class="watermark-number num-purple" aria-hidden="true">03</span>
+            </div>
+
+            <!-- Step 04: Fresh Mint -->
+            <div class="process-card card-mint">
+              <div class="process-card-body">
+                <h3 class="process-card-title">Security Hardening & Stress Testing</h3>
+                <p class="process-card-desc">
+                  Automated security profiling, end-to-end integration tests, and simulated high-concurrency stress tests ensure your system withstands enterprise scale without crashing.
+                </p>
+              </div>
+              <span class="watermark-number num-green" aria-hidden="true">04</span>
+            </div>
+
+            <!-- Step 05: Warm Soft Amber / Lime -->
+            <div class="process-card card-amber">
+              <div class="process-card-body">
+                <h3 class="process-card-title">Zero-Downtime Launch & Lifetime Handover</h3>
+                <p class="process-card-desc">
+                  Seamless migration, CI/CD automated deployment, complete architecture documentation, and ongoing support guarantees smooth operation from day one.
+                </p>
+              </div>
+              <span class="watermark-number num-amber" aria-hidden="true">05</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 3. GRADIENT METRICS BANNER (IMAGE 1 & 3) ==================== -->
+    <section class="metrics-section" id="metrics">
+      <div class="section-container">
+        
+        <div class="metrics-intro-block">
+          <span class="eyebrow-text">Measurable Performance</span>
+          <h2 class="section-heading">Access powerful, custom engineered software</h2>
+          <p class="section-subtext">
+            Enterprise throughput demands bespoke solutions. Off-the-shelf software locks you into rigid constraints—our custom systems give you competitive velocity.
+          </p>
+          <div class="action-wrap">
+            <button class="btn btn-primary" onclick="openContactModal()">Contact us</button>
+          </div>
+        </div>
+
+        <div class="metrics-banner-heading-wrap">
+          <span class="eyebrow-text">Proven Impact</span>
+          <h2 class="section-heading">Stop Leaving performance on the table</h2>
+          <p class="section-subtext">
+            Outdated, disjointed platforms create costly manual overhead and slow execution. We construct unified software engines that compound in business value every month.
+          </p>
+        </div>
+
+        <!-- The Iconic Signature 3-Stop Multi-Color Gradient Banner -->
+        <div class="gradient-stats-banner">
+          <div class="stats-grid">
+            
+            <div class="stat-item">
+              <span class="stat-number" id="stat-1">+20K</span>
+              <span class="stat-label">Daily active operations</span>
+            </div>
+
+            <div class="stat-item">
+              <span class="stat-number" id="stat-2">+3,200</span>
+              <span class="stat-label">Engineered endpoints</span>
+            </div>
+
+            <div class="stat-item">
+              <span class="stat-number" id="stat-3">+100K</span>
+              <span class="stat-label">Daily API requests served</span>
+            </div>
+
+            <div class="stat-item">
+              <span class="stat-number" id="stat-4">+10</span>
+              <span class="stat-label">Years continuous uptime</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. ABOUT & BLUEPRINT SCHEMATIC (IMAGE 2) ==================== -->
+    <section class="about-section" id="about">
+      <div class="section-container">
+        
+        <!-- About Us Card with Circuit Schematic Borders -->
+        <div class="schematic-card">
+          <!-- Scalable Blueprint Circuit Overlay -->
+          <svg class="schematic-svg" viewBox="0 0 1000 450" fill="none" preserveAspectRatio="none" aria-hidden="true">
+            <!-- Left circuit traces -->
+            <path d="M 40 40 H 140 A 20 20 0 0 1 160 60 V 160 A 20 20 0 0 0 180 180 H 260" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="6 6" opacity="0.4" />
+            <circle cx="260" cy="180" r="4" fill="#3B82F6" opacity="0.7"/>
+
+            <!-- Right circuit traces -->
+            <path d="M 960 40 H 860 A 20 20 0 0 0 840 60 V 220 A 20 20 0 0 1 820 240 H 760" stroke="#3B82F6" stroke-width="1.8" stroke-dasharray="6 6" opacity="0.4" />
+            <circle cx="760" cy="240" r="4" fill="#3B82F6" opacity="0.7"/>
+            
+            <path d="M 60 410 H 200 A 20 20 0 0 0 220 390 V 300" stroke="#3B82F6" stroke-width="1.8" opacity="0.3" />
+            <circle cx="220" cy="300" r="4" fill="#2563EB" opacity="0.6"/>
+          </svg>
+
+          <div class="schematic-content">
+            <span class="eyebrow-text">Studio Philosophy</span>
+            <h2 class="section-heading">About Us</h2>
+            <p class="section-subtext">
+              We are an engineering-first software and systems studio. We partner with ambitious founders, CTOs, and enterprise leaders who require bespoke software platforms engineered without compromises, technical debt, or rigid framework constraints.
+            </p>
+          </div>
+        </div>
+
+        <!-- Capability Highlight Card (Image 2 Bottom Split) -->
+        <div class="capability-highlight-card">
+          <div class="capability-text-col">
+            <span class="eyebrow-text">Permanent Value</span>
+            <h2 class="capability-title">One-Time Architecture,<br>Lifetime Scalability</h2>
+            <p class="capability-desc">
+              Make an investment in clean, custom software architecture and own your technology stack forever. No recurring SaaS per-seat licenses, no vendor lock-in, and full intellectual property ownership.
+            </p>
+            <div class="capability-bullets">
+              <div class="cap-bullet">
+                <span class="bullet-check">✓</span>
+                <span>100% Proprietary Source Code & IP Transfer</span>
+              </div>
+              <div class="cap-bullet">
+                <span class="bullet-check">✓</span>
+                <span>Custom Built Microservices & Database Schemas</span>
+              </div>
+              <div class="cap-bullet">
+                <span class="bullet-check">✓</span>
+                <span>Zero Subscription Dependencies or Per-Seat Tolls</span>
+              </div>
+            </div>
+            <button class="btn btn-primary mt-6" onclick="openContactModal()">Build Your Custom System</button>
+          </div>
+
+          <div class="capability-visual-col">
+            <div class="vault-illustration-card">
+              <div class="vault-circle-glow"></div>
+              <svg width="220" height="220" viewBox="0 0 200 200" fill="none">
+                <!-- Vault & Digital Currency System Line Art -->
+                <circle cx="100" cy="100" r="75" stroke="#3B82F6" stroke-width="2" stroke-dasharray="4 4"/>
+                <circle cx="100" cy="100" r="60" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5"/>
+                <!-- Vault Door & Core Gears -->
+                <circle cx="100" cy="100" r="30" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="2"/>
+                <path d="M100 70V80M100 120V130M70 100H80M120 100H130" stroke="#1E40AF" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="100" cy="100" r="10" fill="#2563EB"/>
+                <!-- System Sparkles / Nodes -->
+                <path d="M160 50L165 60L175 65L165 70L160 80L155 70L145 65L155 60Z" fill="#3B82F6"/>
+                <path d="M40 140L43 148L51 151L43 154L40 162L37 154L29 151L37 148Z" fill="#60A5FA"/>
+              </svg>
+              <div class="vault-floating-tag">
+                <span class="tag-status">●</span> Enterprise Asset Security
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CALL TO ACTION BANNER ==================== -->
+    <section class="cta-section">
+      <div class="section-container">
+        <div class="cta-box">
+          <span class="eyebrow-text eyebrow-white">Ready for Technical Autonomy?</span>
+          <h2 class="cta-title">Let's build your custom web, software or system.</h2>
+          <p class="cta-subtitle">
+            Speak directly with our senior software architects. No sales pressure, just deep technical evaluation of your product requirements.
+          </p>
+          <div class="cta-btn-group">
+            <button class="btn btn-white" onclick="openContactModal()">Schedule Discovery Call</button>
+            <a href="#about" class="btn btn-ghost-white">Read Our Philosophy</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="section-container footer-container">
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <span class="logo-symbol">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
+              <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="logo-text">Novacore<span class="logo-accent">.sys</span></span>
+        </div>
+        <p class="footer-tagline">
+          Custom webs, software and cloud systems engineered for enterprise scale and permanent IP ownership.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Capabilities</h4>
+        <ul class="footer-list">
+          <li><a href="#services">Custom Web Applications</a></li>
+          <li><a href="#services">Enterprise Software Systems</a></li>
+          <li><a href="#services">Cloud Automations & APIs</a></li>
+          <li><a href="#process">High-Scale Database Design</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="projects.html">Project Showcase</a></li>
+          <li><a href="#process">Engineering Process</a></li>
+          <li><a href="#metrics">Verified Metrics</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">System Status</h4>
+        <div class="footer-status-card">
+          <div class="status-indicator">
+            <span class="status-live-pulse"></span>
+            <span>All Global Systems Nominal</span>
+          </div>
+          <span class="status-meta">Latency: 14ms &bull; SLA 99.99%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container footer-bottom">
+      <p>&copy; 2026 Novacore Systems Inc. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#hero">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== INTERACTIVE CONTACT / CONSULTATION DRAWER MODAL ==================== -->
+  <div class="modal-overlay" id="contactModal" aria-hidden="true" onclick="handleOverlayClick(event)">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow-text">Get in Touch</span>
+          <h3 class="modal-title" id="modal-title">Start Your Custom Project</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeContactModal()" aria-label="Close modal">&times;</button>
+      </div>
+
+      <form class="modal-form" id="projectForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="clientName" class="form-label">Full Name</label>
+          <input type="text" id="clientName" class="form-input" placeholder="e.g. Alex Mercer" required>
+        </div>
+
+        <div class="form-group">
+          <label for="clientEmail" class="form-label">Work Email</label>
+          <input type="email" id="clientEmail" class="form-input" placeholder="alex@company.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="systemType" class="form-label">System Requirements</label>
+          <select id="systemType" class="form-select" required>
+            <option value="">Select project type...</option>
+            <option value="custom-web">Custom Web Application / SaaS Platform</option>
+            <option value="custom-software">Enterprise Software & Microservice Engine</option>
+            <option value="automated-system">Automated Data Pipeline & Cloud System</option>
+            <option value="complete-architecture">Full Custom Architecture from Scratch</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="projectDetails" class="form-label">Brief Overview of Your Vision</label>
+          <textarea id="projectDetails" class="form-textarea" rows="3" placeholder="Tell us about the workflows, challenges, or specifications you need engineered..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+          <span>Submit Project Inquiry</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <p class="form-footnote">Direct consultation with senior engineering leads. Response within 24 hours.</p>
+      </form>
+
+      <div class="modal-success-state" id="formSuccessMessage" style="display: none;">
+        <div class="success-icon-wrap">✓</div>
+        <h4>Inquiry Received</h4>
+        <p>Our lead software architect will review your project requirements and follow up within 24 business hours.</p>
+        <button class="btn btn-outline mt-4" onclick="closeContactModal()">Return to Overview</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects Showcase — Novacore Systems</title>
+  <meta name="description" content="Explore our portfolio of custom web applications, enterprise software architectures, and automated cloud systems.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- ponytail: projects.css imports base styles.css, zero style duplication -->
+  <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+
+  <!-- Background Blueprint Technical Grid Texture -->
+  <div class="blueprint-grid-bg" aria-hidden="true"></div>
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="header-container" id="site-header">
+    <nav class="nav-pill" aria-label="Main Navigation">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-symbol">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
+            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">Novacore<span class="logo-accent">.sys</span></span>
+      </a>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="index.html#process" class="nav-link">Our Process</a>
+        <a href="projects.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Projects</a>
+        <a href="index.html#about" class="nav-link">About Us</a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="btn btn-primary btn-pill" id="nav-cta-btn">
+          Contact us
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="hero" style="padding-bottom: 2rem;">
+      <div class="section-container hero-container">
+        
+        <div class="eyebrow-badge">
+          <span class="badge-dot"></span>
+          <span>Engineered Portfolio &bull; Verified Production Systems</span>
+        </div>
+
+        <h1 class="hero-title">
+          Case Studies in<br>
+          <span class="text-gradient-blue">Custom Software & Systems</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Real-world bespoke web applications, high-throughput microservice cores, and automated cloud systems deployed for market leaders.
+        </p>
+
+      </div>
+
+      <!-- Hero Bottom Organic Curve Divider -->
+      <div class="hero-bottom-curve" aria-hidden="true">
+        <svg viewBox="0 0 1440 96" fill="none" preserveAspectRatio="none">
+          <path d="M0,0 C360,96 1080,96 1440,0 L1440,96 L0,96 Z" fill="#fafbfc"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==================== PROJECTS SHOWCASE ==================== -->
+    <section style="padding: 3rem 0 6rem 0;">
+      <div class="section-container">
+        
+        <!-- Filter Tabs -->
+        <div class="projects-filter-bar">
+          <button class="filter-pill active" onclick="filterProjects('all', this)">All Systems (6)</button>
+          <button class="filter-pill" onclick="filterProjects('web', this)">Custom Web</button>
+          <button class="filter-pill" onclick="filterProjects('software', this)">Enterprise Software</button>
+          <button class="filter-pill" onclick="filterProjects('cloud', this)">Automated Systems</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsContainer">
+          
+          <!-- Project 1 -->
+          <article class="project-card card-ice-blue" data-category="web">
+            <div>
+              <div class="project-tag-row">
+                <span class="tech-tag">React 19</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Next.js SSR</span>
+              </div>
+              <h3 class="project-title">OmniFlow Global ERP</h3>
+              <p class="project-desc">
+                Custom administrative web portal unifying procurement, enterprise inventory, and multi-currency billing across 14 international fulfillment hubs.
+              </p>
+            </div>
+            <div>
+              <div class="project-metric-box">
+                <span class="metric-data">10x</span>
+                <span class="metric-caption">Throughput Boost<br>Sub-100ms Page Load</span>
+              </div>
+              <a href="contact.html" class="project-footer-link">
+                <span>Request Case Study Specs</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card card-mint" data-category="software">
+            <div>
+              <div class="project-tag-row">
+                <span class="tech-tag">Python Core</span>
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">PostgreSQL</span>
+              </div>
+              <h3 class="project-title">ApexTelemetry Event Engine</h3>
+              <p class="project-desc">
+                High-throughput distributed backend processing 45,000 real-time telemetry events/second with sub-15ms database query latency and zero dropped packets.
+              </p>
+            </div>
+            <div>
+              <div class="project-metric-box">
+                <span class="metric-data">&lt; 15ms</span>
+                <span class="metric-caption">Event Processing<br>45K Ops / Sec</span>
+              </div>
+              <a href="contact.html" class="project-footer-link">
+                <span>Request Architecture Review</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card card-lavender" data-category="cloud">
+            <div>
+              <div class="project-tag-row">
+                <span class="tech-tag">AWS Cloud</span>
+                <span class="tech-tag">Docker / K8s</span>
+                <span class="tech-tag">CI/CD Pipeline</span>
+              </div>
+              <h3 class="project-title">StrataCloud Autoscaler</h3>
+              <p class="project-desc">
+                Autonomous serverless infrastructure and auto-scaling cloud cluster that intelligently provisions compute based on incoming queue depth and loads.
+              </p>
+            </div>
+            <div>
+              <div class="project-metric-box">
+                <span class="metric-data">-42%</span>
+                <span class="metric-caption">Cloud Bill Reduction<br>Zero Downtime</span>
+              </div>
+              <a href="contact.html" class="project-footer-link">
+                <span>Request Architecture Review</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article class="project-card card-cyan" data-category="web">
+            <div>
+              <div class="project-tag-row">
+                <span class="tech-tag">Next.js</span>
+                <span class="tech-tag">GraphQL</span>
+                <span class="tech-tag">HIPAA Compliant</span>
+              </div>
+              <h3 class="project-title">HealthSync Exchange Portal</h3>
+              <p class="project-desc">
+                Zero-trust encrypted web application for medical clinics and diagnostic labs, providing secure patient record syncing and audit logging.
+              </p>
+            </div>
+            <div>
+              <div class="project-metric-box">
+                <span class="metric-data">100%</span>
+                <span class="metric-caption">Audit Compliance<br>End-to-End Encrypted</span>
+              </div>
+              <a href="contact.html" class="project-footer-link">
+                <span>Request Case Study Specs</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article class="project-card card-amber" data-category="cloud">
+            <div>
+              <div class="project-tag-row">
+                <span class="tech-tag">Go Microservices</span>
+                <span class="tech-tag">Kafka</span>
+                <span class="tech-tag">Redis Cluster</span>
+              </div>
+              <h3 class="project-title">LogiPrime Automated Dispatch</h3>
+              <p class="project-desc">
+                Automated freight routing and driver dispatch engine matching thousands of cargo loads to optimal carriers with dynamic pricing algorithms.
+              </p>
+            </div>
+            <div>
+              <div class="project-metric-box">
+                <span class="metric-data">3.4x</span>
+                <span class="metric-caption">Faster Routing<br>99.98% SLA Handover</span>
+              </div>
+              <a href="contact.html" class="project-footer-link">
+                <span>Request Architecture Review</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article class="project-card card-ice-blue" data-category="software">
+            <div>
+              <div class="project-tag-row">
+                <span class="tech-tag">Rust Core</span>
+                <span class="tech-tag">WebSockets</span>
+                <span class="tech-tag">TimescaleDB</span>
+              </div>
+              <h3 class="project-title">FinPulse Wealth Core</h3>
+              <p class="project-desc">
+                High-frequency algorithmic portfolio rebalancing engine handling automated tax-loss harvesting and fractional order execution for wealth managers.
+              </p>
+            </div>
+            <div>
+              <div class="project-metric-box">
+                <span class="metric-data">$850M+</span>
+                <span class="metric-caption">AUM Processed<br>Sub-second Settlement</span>
+              </div>
+              <a href="contact.html" class="project-footer-link">
+                <span>Request Architecture Review</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== CALL TO ACTION ==================== -->
+    <section class="cta-section">
+      <div class="section-container">
+        <div class="cta-box">
+          <span class="eyebrow-text eyebrow-white">Have a Complex Requirement?</span>
+          <h2 class="cta-title">Let's engineer your custom software.</h2>
+          <p class="cta-subtitle">
+            Book a direct technical session with our lead architects. We will analyze your specifications and build a fixed-scope roadmap.
+          </p>
+          <div class="cta-btn-group">
+            <a href="contact.html" class="btn btn-white">Schedule Discovery Session</a>
+            <a href="index.html#process" class="btn btn-ghost-white">Review Our Process</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="section-container footer-container">
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <span class="logo-symbol">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
+              <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="logo-text">Novacore<span class="logo-accent">.sys</span></span>
+        </div>
+        <p class="footer-tagline">
+          Custom webs, software and cloud systems engineered for enterprise scale and permanent IP ownership.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Capabilities</h4>
+        <ul class="footer-list">
+          <li><a href="index.html#services">Custom Web Applications</a></li>
+          <li><a href="index.html#services">Enterprise Software Systems</a></li>
+          <li><a href="index.html#services">Cloud Automations & APIs</a></li>
+          <li><a href="index.html#process">High-Scale Database Design</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="projects.html">Project Showcase</a></li>
+          <li><a href="index.html#process">Engineering Process</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">System Status</h4>
+        <div class="footer-status-card">
+          <div class="status-indicator">
+            <span class="status-live-pulse"></span>
+            <span>All Global Systems Nominal</span>
+          </div>
+          <span class="status-meta">Latency: 14ms &bull; SLA 99.99%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container footer-bottom">
+      <p>&copy; 2026 Novacore Systems Inc. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#hero">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ponytail: 5-line filter logic using native DOM dataset. No library needed. -->
+  <script>
+    function filterProjects(category, btn) {
+      document.querySelectorAll('.filter-pill').forEach(el => el.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
