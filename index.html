@@ -35,15 +35,21 @@
       <div class="nav-menu" id="nav-menu">
         <a href="#services" class="nav-link">Services</a>
         <a href="#process" class="nav-link">Our Process</a>
+        <a href="#estimator" class="nav-link">Estimator</a>
         <a href="projects.html" class="nav-link">Projects</a>
         <a href="#metrics" class="nav-link">Impact</a>
         <a href="#about" class="nav-link">About Us</a>
       </div>
 
       <div class="nav-actions">
+        <!-- ponytail: 1-button theme toggle with native icon & accessible aria-label -->
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button>
         <a href="contact.html" class="btn btn-primary btn-pill" id="nav-cta-btn">
           Contact us
         </a>
+        <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
       </div>
     </nav>
   </header>
@@ -103,11 +109,11 @@
                 <span class="ctrl-dot ctrl-yellow"></span>
                 <span class="ctrl-dot ctrl-green"></span>
               </div>
-              <div class="dashboard-searchbar">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2.5">
-                  <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
-                </svg>
-                <span class="search-placeholder">Search systems, microservices, databases & APIs...</span>
+              <!-- ponytail: 3-tab native switcher between Visual Flow, Live API Pings, and Architecture JSON -->
+              <div class="dashboard-tabs" role="tablist" aria-label="System Inspector Tabs">
+                <button class="dash-tab-btn active" data-tab="pipeline" onclick="switchDashboardTab('pipeline')" role="tab">⚡ Pipeline</button>
+                <button class="dash-tab-btn" data-tab="api" onclick="switchDashboardTab('api')" role="tab">🟢 API Stream</button>
+                <button class="dash-tab-btn" data-tab="spec" onclick="switchDashboardTab('spec')" role="tab">📋 Spec JSON</button>
               </div>
               <div class="dashboard-status-pill">
                 <span class="status-live-pulse"></span>
@@ -119,17 +125,14 @@
             <div class="dashboard-body">
               <!-- Sidebar Icons -->
               <aside class="dashboard-sidebar">
-                <button class="sidebar-btn active" title="Active Core Architecture">
+                <button class="sidebar-btn active" title="Active Core Architecture" onclick="switchDashboardTab('pipeline')">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                 </button>
-                <button class="sidebar-btn" title="Database Shards">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
-                </button>
-                <button class="sidebar-btn" title="APIs & Endpoints">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
-                </button>
-                <button class="sidebar-btn" title="Live Telemetry">
+                <button class="sidebar-btn" title="Live API Pings" onclick="switchDashboardTab('api')">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </button>
+                <button class="sidebar-btn" title="Architecture Spec JSON" onclick="switchDashboardTab('spec')">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
                 </button>
               </aside>
 
@@ -137,44 +140,105 @@
               <div class="dashboard-content">
                 <div class="dashboard-interactive-panel">
                   
-                  <!-- Vector Collaboration / Engineering Centerpiece -->
-                  <div class="system-illustration-container">
+                  <!-- VIEW 1: Visual Pipeline Flow -->
+                  <div class="dashboard-view active" data-view="pipeline">
+                    <div class="system-illustration-container">
+                      <div class="illustration-badge">
+                        <span class="illustration-badge-icon">⚡</span>
+                        <span>Next-Gen Architecture Flow</span>
+                      </div>
+
+                      <div class="system-flow-diagram">
+                        <div class="flow-node node-client">
+                          <span class="node-title">Custom Web Frontend</span>
+                          <span class="node-desc">React 19 &bull; Next SSR &bull; Edge</span>
+                        </div>
+                        <div class="flow-connector">
+                          <span class="connector-line"></span>
+                          <span class="connector-label">gRPC / REST</span>
+                        </div>
+                        <div class="flow-node node-engine">
+                          <span class="node-title">Custom Software Core</span>
+                          <span class="node-desc">Distributed Event Engine</span>
+                        </div>
+                        <div class="flow-connector">
+                          <span class="connector-line"></span>
+                          <span class="connector-label">Sub-10ms Pipeline</span>
+                        </div>
+                        <div class="flow-node node-storage">
+                          <span class="node-title">Automated Systems</span>
+                          <span class="node-desc">Zero-Downtime Cloud DB</span>
+                        </div>
+                      </div>
+
+                      <h3 class="dashboard-heading">Systems engineered to outperform, not patch</h3>
+                      <p class="dashboard-subtext">
+                        We replace brittle no-code tools and off-the-shelf templates with custom, proprietary architectures that give your enterprise full technical autonomy.
+                      </p>
+
+                      <div class="dashboard-mini-actions">
+                        <button class="btn btn-primary btn-sm" onclick="openContactModal()">Deploy Custom Solution</button>
+                        <button class="btn btn-outline btn-sm" onclick="toggleTelemetryDemo()">Simulate High Load</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- VIEW 2: Live API Telemetry Stream -->
+                  <div class="dashboard-view" data-view="api">
                     <div class="illustration-badge">
-                      <span class="illustration-badge-icon">⚡</span>
-                      <span>Next-Gen Architecture</span>
+                      <span class="illustration-badge-icon">📡</span>
+                      <span>Realtime Telemetry & Microservices</span>
                     </div>
-
-                    <div class="system-flow-diagram">
-                      <div class="flow-node node-client">
-                        <span class="node-title">Custom Web Frontend</span>
-                        <span class="node-desc">React 19 &bull; Vite &bull; SSR</span>
+                    <div class="api-terminal-box">
+                      <div class="api-terminal-header">
+                        <span>Cluster: production-us-east-1</span>
+                        <span>Active Nodes: 18 &bull; P99 Latency: 6ms</span>
                       </div>
-                      <div class="flow-connector">
-                        <span class="connector-line"></span>
-                        <span class="connector-label">gRPC / REST</span>
-                      </div>
-                      <div class="flow-node node-engine">
-                        <span class="node-title">Custom Software Core</span>
-                        <span class="node-desc">Distributed Event Engine</span>
-                      </div>
-                      <div class="flow-connector">
-                        <span class="connector-line"></span>
-                        <span class="connector-label">Sub-10ms Pipeline</span>
-                      </div>
-                      <div class="flow-node node-storage">
-                        <span class="node-title">Automated Systems</span>
-                        <span class="node-desc">Zero-Downtime Cloud DB</span>
+                      <div class="api-log-stream" id="apiLogStream">
+                        <div class="api-log-row">
+                          <span class="api-badge-method method-grpc">gRPC</span>
+                          <span class="api-endpoint-text">Novacore.TelemetryService.IngestEvent</span>
+                          <span class="api-latency">3ms</span>
+                        </div>
+                        <div class="api-log-row">
+                          <span class="api-badge-method method-post">POST</span>
+                          <span class="api-endpoint-text">/v1/auth/exchange-session-key</span>
+                          <span class="api-latency">11ms</span>
+                        </div>
+                        <div class="api-log-row">
+                          <span class="api-badge-method method-get">GET</span>
+                          <span class="api-endpoint-text">/v1/clusters/health-check</span>
+                          <span class="api-latency">2ms</span>
+                        </div>
                       </div>
                     </div>
-
-                    <h3 class="dashboard-heading">Systems engineered to outperform, not patch</h3>
-                    <p class="dashboard-subtext">
-                      We replace brittle no-code tools and off-the-shelf templates with custom, proprietary architectures that give your enterprise full technical autonomy.
-                    </p>
-
                     <div class="dashboard-mini-actions">
-                      <button class="btn btn-primary btn-sm" onclick="openContactModal()">Deploy Custom Solution</button>
-                      <button class="btn btn-outline btn-sm" onclick="toggleTelemetryDemo()">Simulate High Load</button>
+                      <button class="btn btn-primary btn-sm" onclick="openContactModal()">Connect Your API Endpoints</button>
+                      <button class="btn btn-outline btn-sm" onclick="switchDashboardTab('spec')">View JSON Schema</button>
+                    </div>
+                  </div>
+
+                  <!-- VIEW 3: Architecture Spec JSON -->
+                  <div class="dashboard-view" data-view="spec">
+                    <div class="illustration-badge">
+                      <span class="illustration-badge-icon">📋</span>
+                      <span>Enterprise Cluster Spec</span>
+                    </div>
+                    <div class="json-spec-box">{
+  <span style="color:#60a5fa">"cluster"</span>: <span style="color:#34d399">"novacore-production-mesh"</span>,
+  <span style="color:#60a5fa">"engine"</span>: {
+    <span style="color:#60a5fa">"runtime"</span>: <span style="color:#34d399">"FastAPI / Go 1.23 Distributed"</span>,
+    <span style="color:#60a5fa">"throughput_sla"</span>: <span style="color:#f59e0b">"50,000 req/sec"</span>,
+    <span style="color:#60a5fa">"zero_downtime_deploy"</span>: <span style="color:#c084fc">true</span>
+  },
+  <span style="color:#60a5fa">"database"</span>: {
+    <span style="color:#60a5fa">"primary"</span>: <span style="color:#34d399">"PostgreSQL 16 HA + Read Replicas"</span>,
+    <span style="color:#60a5fa">"caching"</span>: <span style="color:#34d399">"Redis Cluster (Sub-1ms)"</span>
+  },
+  <span style="color:#60a5fa">"ip_ownership"</span>: <span style="color:#34d399">"100% Client-Owned / Zero SaaS Lock-in"</span>
+}</div>
+                    <div class="dashboard-mini-actions">
+                      <button class="btn btn-primary btn-sm" onclick="openContactModal()">Build This Architecture</button>
                     </div>
                   </div>
 
@@ -447,6 +511,111 @@
             <div class="stat-item">
               <span class="stat-number" id="stat-4">+10</span>
               <span class="stat-label">Years continuous uptime</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== INTERACTIVE ARCHITECTURE SCOPE ESTIMATOR ==================== -->
+    <section class="estimator-section" id="estimator">
+      <div class="section-container">
+        
+        <div class="section-header-centered">
+          <span class="eyebrow-text">Dynamic Project Scoping</span>
+          <h2 class="section-heading">Interactive Architecture Estimator</h2>
+          <p class="section-subtext">
+            Configure your system domain, scale parameters, and cloud foundation. Calculate estimated engineering delivery timelines and architecture blueprints in real time.
+          </p>
+        </div>
+
+        <div class="estimator-card glow-card" id="estimatorSection">
+          <div class="estimator-grid">
+            
+            <!-- Controls Column -->
+            <div class="estimator-controls">
+              
+              <!-- 1. Domain Type -->
+              <div>
+                <span class="estimator-group-label">1. Architecture Domain</span>
+                <div class="estimator-pills-row">
+                  <button type="button" class="est-pill-btn active" data-est-type="web" onclick="setEstimatorType('web', this)">
+                    <span>Custom Web App</span>
+                    <span class="est-pill-sub">SaaS & Portals</span>
+                  </button>
+                  <button type="button" class="est-pill-btn" data-est-type="software" onclick="setEstimatorType('software', this)">
+                    <span>Enterprise Software</span>
+                    <span class="est-pill-sub">High-Throughput Engines</span>
+                  </button>
+                  <button type="button" class="est-pill-btn" data-est-type="cloud" onclick="setEstimatorType('cloud', this)">
+                    <span>Automated Systems</span>
+                    <span class="est-pill-sub">Cloud Infra & APIs</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Target Scale Slider -->
+              <div class="estimator-slider-wrap">
+                <span class="estimator-group-label">2. Target Production Scale</span>
+                <input type="range" class="est-slider" min="1" max="3" value="2" oninput="setEstimatorScale(this.value)" aria-label="Production Scale">
+                <div class="est-slider-labels">
+                  <span>MVP Launch (&lt;20K Users)</span>
+                  <span style="color:var(--color-primary)">Growth Scale (500K Users)</span>
+                  <span>Global High-SLA (10M+ Users)</span>
+                </div>
+              </div>
+
+              <!-- 3. Infrastructure Foundation -->
+              <div>
+                <span class="estimator-group-label">3. Cloud Foundation Tier</span>
+                <div class="estimator-pills-row">
+                  <button type="button" class="est-pill-btn active" data-est-cloud="edge" onclick="setEstimatorCloud('edge', this)">
+                    <span>Edge Serverless</span>
+                    <span class="est-pill-sub">Ultra-fast global points</span>
+                  </button>
+                  <button type="button" class="est-pill-btn" data-est-cloud="k8s" onclick="setEstimatorCloud('k8s', this)">
+                    <span>Dedicated K8s Mesh</span>
+                    <span class="est-pill-sub">Container autoscaling</span>
+                  </button>
+                  <button type="button" class="est-pill-btn" data-est-cloud="hybrid" onclick="setEstimatorCloud('hybrid', this)">
+                    <span>Multi-Region HA</span>
+                    <span class="est-pill-sub">Zero-downtime failover</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Output Panel -->
+            <div class="estimator-output-panel">
+              <div class="est-metric-badge">
+                <span class="est-metric-title">Estimated Delivery Sprint</span>
+                <span class="est-metric-val" id="estTimeVal">4-6 Weeks</span>
+              </div>
+
+              <div class="est-spec-item">
+                <span class="est-spec-label">Recommended Tech Stack</span>
+                <span class="est-spec-desc" id="estStackVal">React 19 + Node.js Microservices + PostgreSQL + Redis</span>
+              </div>
+
+              <div class="est-spec-item">
+                <span class="est-spec-label">Allocated Engineering Pod</span>
+                <span class="est-spec-desc" id="estTeamVal">1 Architect + 2 Fullstack Devs</span>
+              </div>
+
+              <div class="est-spec-item">
+                <span class="est-spec-label">Included Enterprise Guarantees</span>
+                <span class="est-spec-desc" style="font-size: 0.8125rem; color: var(--color-text-muted);">
+                  ✓ 100% IP & Source Code Transfer &bull; Zero SaaS Seats<br>
+                  ✓ Automated CI/CD Pipelines &bull; Penetration Tested
+                </span>
+              </div>
+
+              <button class="btn btn-primary btn-block" onclick="transferEstimatorToModal()">
+                <span>Transfer Blueprint to Consultation &rarr;</span>
+              </button>
             </div>
 
           </div>

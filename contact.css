@@ -23,8 +23,8 @@
 }
 
 .contact-guarantee-card {
-  background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-xl);
   padding: 2rem;
   box-shadow: var(--shadow-subtle);
@@ -56,7 +56,7 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #eff6ff;
+  background: var(--color-primary-light);
   color: var(--color-primary);
   font-weight: 800;
   font-size: 0.8125rem;
@@ -78,8 +78,8 @@
 }
 
 .contact-direct-card {
-  background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
-  border: 1px solid #dbeafe;
+  background: var(--surface-ice-blue);
+  border: 1px solid var(--border-ice-blue);
   border-radius: var(--radius-xl);
   padding: 1.75rem;
 }
@@ -111,8 +111,8 @@
 
 /* Right form column */
 .contact-form-card {
-  background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-2xl);
   padding: clamp(2rem, 4vw, 3rem);
   box-shadow: var(--shadow-card);

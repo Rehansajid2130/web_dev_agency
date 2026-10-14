@@ -36,14 +36,20 @@
         <a href="index.html" class="nav-link">Home</a>
         <a href="index.html#services" class="nav-link">Services</a>
         <a href="index.html#process" class="nav-link">Our Process</a>
+        <a href="index.html#estimator" class="nav-link">Estimator</a>
         <a href="projects.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Projects</a>
         <a href="index.html#about" class="nav-link">About Us</a>
       </div>
 
       <div class="nav-actions">
+        <!-- ponytail: 1-button theme toggle with native icon & accessible aria-label -->
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button>
         <a href="contact.html" class="btn btn-primary btn-pill" id="nav-cta-btn">
           Contact us
         </a>
+        <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
       </div>
     </nav>
   </header>
@@ -81,6 +87,11 @@
     <section style="padding: 3rem 0 6rem 0;">
       <div class="section-container">
         
+        <!-- Live Keyword Search Bar -->
+        <div style="max-width: 520px; margin: 0 auto 1.5rem auto; position: relative;">
+          <input type="search" id="projectSearch" class="form-input" style="width: 100%; border-radius: var(--radius-pill); padding: 0.75rem 1.4rem; border: 1px solid var(--color-border-subtle); background: var(--color-card-bg); color: var(--color-text-main); box-shadow: var(--shadow-subtle);" placeholder="🔍 Search projects by keyword or tech stack (e.g. React, Python, K8s)..." oninput="searchProjects(this.value)">
+        </div>
+
         <!-- Filter Tabs -->
         <div class="projects-filter-bar">
           <button class="filter-pill active" onclick="filterProjects('all', this)">All Systems (6)</button>
@@ -93,7 +104,7 @@
         <div class="projects-grid" id="projectsContainer">
           
           <!-- Project 1 -->
-          <article class="project-card card-ice-blue" data-category="web">
+          <article class="project-card card-ice-blue glow-card" data-category="web">
             <div>
               <div class="project-tag-row">
                 <span class="tech-tag">React 19</span>
@@ -110,15 +121,15 @@
                 <span class="metric-data">10x</span>
                 <span class="metric-caption">Throughput Boost<br>Sub-100ms Page Load</span>
               </div>
-              <a href="contact.html" class="project-footer-link">
-                <span>Request Case Study Specs</span>
+              <button type="button" class="project-footer-link" onclick="openCaseStudy('web')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
+                <span>View Architecture Specs</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </button>
             </div>
           </article>
 
           <!-- Project 2 -->
-          <article class="project-card card-mint" data-category="software">
+          <article class="project-card card-mint glow-card" data-category="software">
             <div>
               <div class="project-tag-row">
                 <span class="tech-tag">Python Core</span>
@@ -135,15 +146,15 @@
                 <span class="metric-data">&lt; 15ms</span>
                 <span class="metric-caption">Event Processing<br>45K Ops / Sec</span>
               </div>
-              <a href="contact.html" class="project-footer-link">
-                <span>Request Architecture Review</span>
+              <button type="button" class="project-footer-link" onclick="openCaseStudy('software')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
+                <span>View Architecture Specs</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </button>
             </div>
           </article>
 
           <!-- Project 3 -->
-          <article class="project-card card-lavender" data-category="cloud">
+          <article class="project-card card-lavender glow-card" data-category="cloud">
             <div>
               <div class="project-tag-row">
                 <span class="tech-tag">AWS Cloud</span>
@@ -160,15 +171,15 @@
                 <span class="metric-data">-42%</span>
                 <span class="metric-caption">Cloud Bill Reduction<br>Zero Downtime</span>
               </div>
-              <a href="contact.html" class="project-footer-link">
-                <span>Request Architecture Review</span>
+              <button type="button" class="project-footer-link" onclick="openCaseStudy('cloud')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
+                <span>View Architecture Specs</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </button>
             </div>
           </article>
 
           <!-- Project 4 -->
-          <article class="project-card card-cyan" data-category="web">
+          <article class="project-card card-cyan glow-card" data-category="web">
             <div>
               <div class="project-tag-row">
                 <span class="tech-tag">Next.js</span>
@@ -185,15 +196,15 @@
                 <span class="metric-data">100%</span>
                 <span class="metric-caption">Audit Compliance<br>End-to-End Encrypted</span>
               </div>
-              <a href="contact.html" class="project-footer-link">
-                <span>Request Case Study Specs</span>
+              <button type="button" class="project-footer-link" onclick="openCaseStudy('web')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
+                <span>View Architecture Specs</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </button>
             </div>
           </article>
 
           <!-- Project 5 -->
-          <article class="project-card card-amber" data-category="cloud">
+          <article class="project-card card-amber glow-card" data-category="cloud">
             <div>
               <div class="project-tag-row">
                 <span class="tech-tag">Go Microservices</span>
@@ -210,15 +221,15 @@
                 <span class="metric-data">3.4x</span>
                 <span class="metric-caption">Faster Routing<br>99.98% SLA Handover</span>
               </div>
-              <a href="contact.html" class="project-footer-link">
-                <span>Request Architecture Review</span>
+              <button type="button" class="project-footer-link" onclick="openCaseStudy('cloud')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
+                <span>View Architecture Specs</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </button>
             </div>
           </article>
 
           <!-- Project 6 -->
-          <article class="project-card card-ice-blue" data-category="software">
+          <article class="project-card card-ice-blue glow-card" data-category="software">
             <div>
               <div class="project-tag-row">
                 <span class="tech-tag">Rust Core</span>
@@ -235,10 +246,10 @@
                 <span class="metric-data">$850M+</span>
                 <span class="metric-caption">AUM Processed<br>Sub-second Settlement</span>
               </div>
-              <a href="contact.html" class="project-footer-link">
-                <span>Request Architecture Review</span>
+              <button type="button" class="project-footer-link" onclick="openCaseStudy('software')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
+                <span>View Architecture Specs</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
+              </button>
             </div>
           </article>
 
@@ -325,15 +336,54 @@
     </div>
   </footer>
 
-  <!-- ponytail: 5-line filter logic using native DOM dataset. No library needed. -->
+  <!-- ponytail: HTML5 <dialog> gives native backdrop, ESC-key dismiss, and focus trap with zero library -->
+  <dialog id="caseStudyDialog" class="case-study-dialog">
+    <button type="button" class="dialog-close-btn" onclick="closeCaseStudy()" aria-label="Close dialog">&times;</button>
+    <div style="margin-bottom: 1.5rem;">
+      <span class="eyebrow-text">Architecture Case Study</span>
+      <h3 id="caseTitle" style="font-size: 1.65rem; margin-bottom: 0.25rem;">OmniFlow Global ERP</h3>
+      <p id="caseSubtitle" style="color: var(--color-text-muted); font-size: 0.875rem;">Custom administrative web portal & multi-currency billing engine</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+      <div style="background: var(--color-bg-page); padding: 1rem; border-radius: var(--radius-md); border-left: 3px solid #ef4444;">
+        <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #ef4444; margin-bottom: 0.25rem;">The Architecture Challenge</strong>
+        <p id="caseProblem" style="font-size: 0.875rem; margin: 0; color: var(--color-text-body);"></p>
+      </div>
+      <div style="background: var(--color-bg-page); padding: 1rem; border-radius: var(--radius-md); border-left: 3px solid var(--color-primary);">
+        <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); margin-bottom: 0.25rem;">Engineered Solution</strong>
+        <p id="caseArch" style="font-size: 0.875rem; margin: 0; color: var(--color-text-body);"></p>
+      </div>
+      <div style="background: var(--color-bg-page); padding: 1rem; border-radius: var(--radius-md); border-left: 3px solid #10b981;">
+        <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #10b981; margin-bottom: 0.25rem;">Production Impact</strong>
+        <p id="caseResult" style="font-size: 0.875rem; margin: 0; color: var(--color-text-body); font-weight: 600;"></p>
+      </div>
+    </div>
+    <div style="display: flex; gap: 0.75rem; justify-content: flex-end; flex-wrap: wrap;">
+      <button type="button" class="btn btn-ghost" onclick="closeCaseStudy()">Close</button>
+      <a href="contact.html" class="btn btn-primary">Deploy Similar Architecture &rarr;</a>
+    </div>
+  </dialog>
+
+  <!-- ponytail: 8-line native filter + instant text search -->
   <script>
+    let activeCategory = 'all';
     function filterProjects(category, btn) {
       document.querySelectorAll('.filter-pill').forEach(el => el.classList.remove('active'));
       btn.classList.add('active');
+      activeCategory = category;
+      applyProjectFilters();
+    }
+    function searchProjects(query) {
+      applyProjectFilters(query.toLowerCase().trim());
+    }
+    function applyProjectFilters(searchQuery = document.getElementById('projectSearch')?.value.toLowerCase().trim() || '') {
       document.querySelectorAll('.project-card').forEach(card => {
-        card.style.display = (category === 'all' || card.dataset.category === category) ? 'flex' : 'none';
+        const matchesCategory = (activeCategory === 'all' || card.dataset.category === activeCategory);
+        const matchesSearch = !searchQuery || card.textContent.toLowerCase().includes(searchQuery);
+        card.style.display = (matchesCategory && matchesSearch) ? 'flex' : 'none';
       });
     }
   </script>
+  <script src="main.js"></script>
 </body>
 </html>
