@@ -1614,8 +1614,8 @@ h1, h2, h3, h4 {
 }
 
 .modal-panel {
-  background: #ffffff;
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: var(--color-modal-bg);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-2xl);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   width: 100%;
@@ -1643,22 +1643,22 @@ h1, h2, h3, h4 {
 }
 
 .modal-close-btn {
-  background: #f1f5f9;
-  border: none;
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-subtle);
   width: 32px;
   height: 32px;
   border-radius: 50%;
   font-size: 1.25rem;
-  color: #64748b;
+  color: var(--color-text-muted);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .modal-close-btn:hover {
-  background: #e2e8f0;
+  background: var(--color-border-subtle);
   color: var(--color-navy);
 }
 
@@ -1685,8 +1685,8 @@ h1, h2, h3, h4 {
   font-size: 0.9375rem;
   padding: 0.75rem 0.95rem;
   border-radius: var(--radius-md);
-  border: 1px solid #cbd5e1;
-  background-color: #f8fafc;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-input-bg);
   color: var(--color-navy);
   transition: all var(--transition-fast);
 }
@@ -1694,7 +1694,7 @@ h1, h2, h3, h4 {
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  background-color: #ffffff;
+  background-color: var(--color-card-bg);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
