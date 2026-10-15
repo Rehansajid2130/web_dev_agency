@@ -858,13 +858,6 @@ h1, h2, h3, h4 {
   border-radius: 50%;
   background-color: #10b981;
   box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
-  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
 }
 
 .dashboard-body {
@@ -1698,13 +1691,6 @@ h1, h2, h3, h4 {
   margin: 0 auto 1rem auto;
 }
 
-/* Subtle pulse animation for connector points */
-@keyframes connectorPulse {
-  0% { transform: scale(0.8); opacity: 0.4; }
-  50% { transform: scale(1.6); opacity: 1; box-shadow: 0 0 10px #3b82f6; }
-  100% { transform: scale(0.8); opacity: 0.4; }
-}
-
 .connector-line::before {
   content: '';
   position: absolute;
@@ -1715,7 +1701,7 @@ h1, h2, h3, h4 {
   background: var(--color-primary);
   border-radius: 50%;
   transform: translateX(-50%);
-  animation: connectorPulse 1.8s infinite ease-in-out;
+  box-shadow: 0 0 6px rgba(37, 99, 235, 0.4);
 }
 
 /* --- DASHBOARD INTERACTIVE TABS & VIEWS --- */
