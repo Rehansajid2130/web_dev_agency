@@ -1,0 +1,19 @@
+{
+  "name": "novacore-agency",
+  "version": "1.0.0",
+  "description": "Novacore Systems: Web, Mobile, and ERP Systems Engineering Studio",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "agency",
+    "portfolio",
+    "web",
+    "mobile",
+    "erp"
+  ],
+  "author": "",
+  "license": "ISC"
+}
