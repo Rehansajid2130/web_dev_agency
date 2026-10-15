@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Process & Governance — Novacore Systems</title>
+  <meta name="description" content="Our 5-phase deterministic engineering methodology: from contract-first architecture discovery to zero-downtime production deployment and full IP handover.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Base styles and scoped process styling -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="process.css">
+</head>
+<body>
+
+  <!-- Background Blueprint Technical Grid Texture -->
+  <div class="blueprint-grid-bg" aria-hidden="true"></div>
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="header-container" id="site-header">
+    <nav class="nav-pill" aria-label="Main Navigation">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-symbol">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
+            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">Novacore<span class="logo-accent">.sys</span></span>
+      </a>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="process.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Our Process</a>
+        <a href="index.html#estimator" class="nav-link">Estimator</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About Us</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button>
+        <a href="contact.html" class="btn btn-primary btn-pill" id="nav-cta-btn">
+          Contact us
+        </a>
+        <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="process-hero">
+      <div class="section-container hero-container">
+        <h1 class="hero-title">
+          Deterministic delivery.<br>
+          <span class="text-gradient-blue">Zero scope creep, complete IP transfer.</span>
+        </h1>
+        <p class="hero-subtitle">
+          Our engineering lifecycle eradicates ambiguity. From initial data contract specification to automated blue/green deployment, each phase has concrete milestone gates and verifiable acceptance criteria.
+        </p>
+      </div>
+
+      <!-- Hero Bottom Curve Divider -->
+      <div class="hero-bottom-curve" aria-hidden="true">
+        <svg viewBox="0 0 1440 96" fill="none" preserveAspectRatio="none">
+          <path d="M0,0 C360,96 1080,96 1440,0 L1440,96 L0,96 Z" fill="var(--color-curve-fill)"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==================== METHODOLOGY HIGHLIGHTS ==================== -->
+    <section class="section-container">
+      <div class="process-overview-grid">
+        <div class="process-highlight-box">
+          <span class="highlight-box-step">Discipline 01</span>
+          <h3 class="highlight-box-title">Contract-First Design</h3>
+          <p class="highlight-box-desc">
+            We write schema contracts, API endpoints, and database models before authoring application logic. This prevents expensive architectural rework mid-sprint.
+          </p>
+        </div>
+        <div class="process-highlight-box">
+          <span class="highlight-box-step">Discipline 02</span>
+          <h3 class="highlight-box-title">Continuous Telemetry</h3>
+          <p class="highlight-box-desc">
+            You don't wait months to see software. Clients receive access to live staging environments and telemetry dashboards updated after every pull request.
+          </p>
+        </div>
+        <div class="process-highlight-box">
+          <span class="highlight-box-step">Discipline 03</span>
+          <h3 class="highlight-box-title">Full IP Ownership</h3>
+          <p class="highlight-box-desc">
+            Upon final milestone signoff, 100% of the intellectual property, git repositories, deployment keys, and documentation are transferred to your company.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 5-PHASE TIMELINE ==================== -->
+    <section class="section-container">
+      <div class="section-header-centered">
+        <span class="eyebrow-text">5-Stage Roadmap</span>
+        <h2 class="section-heading">The Engineering Lifecycle</h2>
+        <p class="section-subtext">
+          A systematic breakdown of how custom software projects transition from architectural discovery to lifetime production operation.
+        </p>
+      </div>
+
+      <div class="phases-timeline-stack">
+
+        <!-- Phase 1 -->
+        <article class="phase-card glow-card">
+          <div>
+            <span class="phase-number-badge">Phase 01 &bull; Discovery & Spec</span>
+            <h3 class="phase-heading">Architectural Discovery & Contract Design</h3>
+            <p class="phase-summary">
+              We audit your operational bottlenecks, transaction volume projections, data security requirements, and legacy integrations. Together, we define strict API specifications, database schemas, and service-level agreements (SLAs).
+            </p>
+            <div class="phase-deliverables-box">
+              <h4 class="deliverables-box-title">Key Phase Deliverables</h4>
+              <ul class="deliverables-checklist">
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Formal OpenAPI 3.1 & gRPC Proto Schema Definitions</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Relational Database Entity-Relationship Diagram (ERD)</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Fixed-Scope Milestone Schedule with Exact Sprint Timelines</span>
+                </li>
+              </ul>
+            </div>
+            <a href="contact.html" class="btn btn-outline btn-sm">Inquire About Discovery &rarr;</a>
+          </div>
+
+          <div class="phase-technical-visual">
+            <div class="tech-visual-header">
+              <span>Gate 01 Checkpoint</span>
+              <span>Spec Signed</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Typical Duration</span>
+              <span class="detail-value">1–2 Weeks</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Lead Engineer</span>
+              <span class="detail-value">Principal Architect</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Output Artifact</span>
+              <span class="detail-value">Technical PRD & Schemas</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Client Time Commitment</span>
+              <span class="detail-value">~3 Hours Total</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Phase 2 -->
+        <article class="phase-card glow-card">
+          <div>
+            <span class="phase-number-badge">Phase 02 &bull; Staging & Telemetry</span>
+            <h3 class="phase-heading">Sandbox Setup & Staging Telemetry</h3>
+            <p class="phase-summary">
+              Before core domain services are built, we provision your dedicated production-parity staging environment on isolated cloud clusters. Continuous integration pipelines are linked directly to your GitHub organization.
+            </p>
+            <div class="phase-deliverables-box">
+              <h4 class="deliverables-box-title">Key Phase Deliverables</h4>
+              <ul class="deliverables-checklist">
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Isolated Staging URL with Live Branch Previews</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Automated CI/CD Pipeline with Linting & Security Scans</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Real-Time Telemetry Dashboard for Sprint Velocity Tracking</span>
+                </li>
+              </ul>
+            </div>
+            <a href="projects.html" class="btn btn-outline btn-sm">View Sample Deployments &rarr;</a>
+          </div>
+
+          <div class="phase-technical-visual">
+            <div class="tech-visual-header">
+              <span>Gate 02 Checkpoint</span>
+              <span>CI/CD Active</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Typical Duration</span>
+              <span class="detail-value">1 Week</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Cloud Environment</span>
+              <span class="detail-value">AWS / GCP Isolated VPC</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Deploy Frequency</span>
+              <span class="detail-value">Continuous (Per Commit)</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Test Automation</span>
+              <span class="detail-value">Zero-Downtime Sandbox</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Phase 3 -->
+        <article class="phase-card glow-card">
+          <div>
+            <span class="phase-number-badge">Phase 03 &bull; Core Construction</span>
+            <h3 class="phase-heading">Core System Engine Construction</h3>
+            <p class="phase-summary">
+              We engineer the primary application tier using domain-driven modular microservices, clean API boundaries, and reactive frontend components. Every commit includes automated unit and integration tests.
+            </p>
+            <div class="phase-deliverables-box">
+              <h4 class="deliverables-box-title">Key Phase Deliverables</h4>
+              <ul class="deliverables-checklist">
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Production-Grade React 19 Frontend with State Optimization</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>High-Throughput Go / Python Microservices & Event Workers</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>PostgreSQL Database Clustering with Connection Pooling</span>
+                </li>
+              </ul>
+            </div>
+            <a href="services.html" class="btn btn-outline btn-sm">Explore Core Capabilities &rarr;</a>
+          </div>
+
+          <div class="phase-technical-visual">
+            <div class="tech-visual-header">
+              <span>Gate 03 Checkpoint</span>
+              <span>Feature Complete</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Typical Duration</span>
+              <span class="detail-value">3–6 Weeks</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Code Quality</span>
+              <span class="detail-value">Strict TypeScript / Go Types</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Test Coverage</span>
+              <span class="detail-value">&gt; 90% Unit & Integration</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Client Sync</span>
+              <span class="detail-value">Weekly Milestone Demos</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Phase 4 -->
+        <article class="phase-card glow-card">
+          <div>
+            <span class="phase-number-badge">Phase 04 &bull; Hardening & Security</span>
+            <h3 class="phase-heading">Chaos Engineering & Penetration Profiling</h3>
+            <p class="phase-summary">
+              Before launch, we simulate extreme operational stress. We execute automated load tests generating tens of thousands of concurrent requests, test database failovers, and conduct comprehensive OWASP Top 10 security audits.
+            </p>
+            <div class="phase-deliverables-box">
+              <h4 class="deliverables-box-title">Key Phase Deliverables</h4>
+              <ul class="deliverables-checklist">
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>High-Concurrency Load Testing Audit Report (P99 &lt; 15ms)</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Automated Disaster Recovery & Database Failover Verification</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>AppSec Penetration Testing & Vulnerability Remediation</span>
+                </li>
+              </ul>
+            </div>
+            <a href="contact.html" class="btn btn-outline btn-sm">Inquire on Security Standards &rarr;</a>
+          </div>
+
+          <div class="phase-technical-visual">
+            <div class="tech-visual-header">
+              <span>Gate 04 Checkpoint</span>
+              <span>Security Cleared</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Typical Duration</span>
+              <span class="detail-value">1–2 Weeks</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Concurrency Target</span>
+              <span class="detail-value">10x Projected Peak Load</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Vulnerabilities</span>
+              <span class="detail-value">0 Critical / 0 High</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Compliance</span>
+              <span class="detail-value">SOC 2 / HIPAA Ready</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Phase 5 -->
+        <article class="phase-card glow-card">
+          <div>
+            <span class="phase-number-badge">Phase 05 &bull; Launch & Handover</span>
+            <h3 class="phase-heading">Zero-Downtime Rollout & Lifetime Handover</h3>
+            <p class="phase-summary">
+              We execute a seamless blue/green production deployment with automated database data migration. Once live, we hand over all root administrative access, source code repositories, and architectural documentation.
+            </p>
+            <div class="phase-deliverables-box">
+              <h4 class="deliverables-box-title">Key Phase Deliverables</h4>
+              <ul class="deliverables-checklist">
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Seamless Zero-Downtime DNS & Database Cutover</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>100% Intellectual Property & Source Code Transfer</span>
+                </li>
+                <li class="deliverable-check-item">
+                  <span class="icon">✓</span>
+                  <span>Comprehensive Runbooks, Architecture Docs & 30-Day Post-Launch SLA</span>
+                </li>
+              </ul>
+            </div>
+            <a href="contact.html" class="btn btn-primary btn-sm">Start Your Project Roadmap &rarr;</a>
+          </div>
+
+          <div class="phase-technical-visual">
+            <div class="tech-visual-header">
+              <span>Gate 05 Checkpoint</span>
+              <span>Live in Production</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Cutover Downtime</span>
+              <span class="detail-value">0.0 seconds</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">IP Ownership</span>
+              <span class="detail-value">100% Transferred</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Warranty Window</span>
+              <span class="detail-value">30 Days Active Guard</span>
+            </div>
+            <div class="tech-visual-detail-row">
+              <span class="detail-label">Post-Launch Support</span>
+              <span class="detail-value">Ongoing Availability</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================== GOVERNANCE & SAFEGUARDS ==================== -->
+    <section class="governance-section">
+      <div class="section-container">
+        <div class="section-header-centered">
+          <span class="eyebrow-text">Risk Governance</span>
+          <h2 class="section-heading">How We Eliminate Client Risk</h2>
+          <p class="section-subtext">
+            Software projects typically fail from unclear contracts, runaway scope, and vendor lock-in. We structure our engagements with firm institutional guardrails.
+          </p>
+        </div>
+
+        <div class="governance-grid">
+          <div class="governance-card">
+            <span class="gov-icon">🔒</span>
+            <h3 class="gov-title">Fixed-Scope Milestone Guarantees</h3>
+            <p class="gov-desc">
+              Every phase is bound to unambiguous deliverables and pre-agreed acceptance criteria. No surprise invoices or open-ended billable hours.
+            </p>
+          </div>
+          <div class="governance-card">
+            <span class="gov-icon">📂</span>
+            <h3 class="gov-title">Sovereign Source Code Ownership</h3>
+            <p class="gov-desc">
+              You own your git repository from commit #1. No proprietary studio frameworks or vendor-locked dependencies. If you ever want to bring engineering in-house, handover takes minutes.
+            </p>
+          </div>
+          <div class="governance-card">
+            <span class="gov-icon">⚡</span>
+            <h3 class="gov-title">Production-Parity Staging</h3>
+            <p class="gov-desc">
+              Test features in an exact mirror of your production environment with realistic datasets, ensuring zero surprises when features launch.
+            </p>
+          </div>
+          <div class="governance-card">
+            <span class="gov-icon">🛡️</span>
+            <h3 class="gov-title">Post-Launch Warranty Window</h3>
+            <p class="gov-desc">
+              Every system comes with 30 days of complimentary lead engineer monitoring and immediate bug remediation to guarantee seamless operations under real traffic.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CALL TO ACTION ==================== -->
+    <section class="cta-section">
+      <div class="section-container">
+        <div class="cta-box">
+          <span class="eyebrow-text eyebrow-white">Begin With Architectural Certainty</span>
+          <h2 class="cta-title">Schedule your technical discovery session.</h2>
+          <p class="cta-subtitle">
+            Speak directly with a lead systems engineer. We will review your current technical bottlenecks and establish a structured engineering roadmap.
+          </p>
+          <div class="cta-btn-group">
+            <a href="contact.html" class="btn btn-white">Book Discovery Session</a>
+            <a href="index.html#estimator" class="btn btn-ghost-white">Estimate Project Sizing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="section-container footer-container">
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <span class="logo-symbol">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
+              <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="logo-text">Novacore<span class="logo-accent">.sys</span></span>
+        </div>
+        <p class="footer-tagline">
+          Custom webs, software and cloud systems engineered for enterprise scale and permanent IP ownership.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Capabilities</h4>
+        <ul class="footer-list">
+          <li><a href="services.html">Custom Web Applications</a></li>
+          <li><a href="services.html">Enterprise Software Systems</a></li>
+          <li><a href="services.html">Cloud Automations & APIs</a></li>
+          <li><a href="process.html">High-Scale Database Design</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="services.html">Capabilities & Services</a></li>
+          <li><a href="process.html">Engineering Process</a></li>
+          <li><a href="projects.html">Project Showcase</a></li>
+          <li><a href="about.html">About Our Studio</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">System Status</h4>
+        <div class="footer-status-card">
+          <div class="status-indicator">
+            <span class="status-live-pulse"></span>
+            <span>All Global Systems Nominal</span>
+          </div>
+          <span class="status-meta">Latency: 14ms &bull; SLA 99.99%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container footer-bottom">
+      <p>&copy; 2026 Novacore Systems Inc. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#process-hero">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

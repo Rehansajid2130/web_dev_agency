@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Our Engineering Studio — Novacore Systems</title>
+  <meta name="description" content="Discover our architectural principles, engineering leadership, and institutional commitment to permanent IP ownership and bespoke software platforms.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Base styles and scoped about styling -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+  <!-- Background Blueprint Technical Grid Texture -->
+  <div class="blueprint-grid-bg" aria-hidden="true"></div>
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="header-container" id="site-header">
+    <nav class="nav-pill" aria-label="Main Navigation">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-symbol">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
+            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="logo-text">Novacore<span class="logo-accent">.sys</span></span>
+      </a>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="process.html" class="nav-link">Our Process</a>
+        <a href="index.html#estimator" class="nav-link">Estimator</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">About Us</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button>
+        <a href="contact.html" class="btn btn-primary btn-pill" id="nav-cta-btn">
+          Contact us
+        </a>
+        <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero-section" id="about-hero">
+      <div class="section-container hero-container">
+        <h1 class="hero-title">
+          Engineering principles over hype.<br>
+          <span class="text-gradient-blue">Permanent software architectures.</span>
+        </h1>
+        <p class="hero-subtitle">
+          We are a systems-first software studio founded by senior engineers. We reject the short-term agency model of bloated dependencies and perpetual retainer lock-in.
+        </p>
+      </div>
+
+      <!-- Hero Bottom Curve Divider -->
+      <div class="hero-bottom-curve" aria-hidden="true">
+        <svg viewBox="0 0 1440 96" fill="none" preserveAspectRatio="none">
+          <path d="M0,0 C360,96 1080,96 1440,0 L1440,96 L0,96 Z" fill="var(--color-curve-fill)"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ==================== STUDIO MANIFESTO ==================== -->
+    <section class="section-container">
+      <div class="manifesto-card glow-card">
+        <span class="eyebrow-text">Studio Manifesto</span>
+        <h2 class="manifesto-lead">
+          "One-Time Capital Architecture,<br>Lifetime Operational Scalability."
+        </h2>
+        <p class="manifesto-text">
+          Traditional web agencies sell temporary marketing veneer that rots within eighteen months. Commercial SaaS vendors extract perpetual monthly rent that grows with every new hire. We partner with ambitious leaders who demand custom-engineered software platforms that compound in value, run with near-zero idle cost, and remain completely under client ownership forever.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== CORE ARCHITECTURAL PRINCIPLES ==================== -->
+    <section class="section-container">
+      <div class="section-header-centered">
+        <span class="eyebrow-text">Institutional Doctrine</span>
+        <h2 class="section-heading">Our Engineering Principles</h2>
+        <p class="section-subtext">
+          These six non-negotiable guidelines govern how our principal architects design, test, and deliver custom systems.
+        </p>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle-card">
+          <span class="principle-num">Principle 01</span>
+          <h3 class="principle-title">100% Sovereign IP Ownership</h3>
+          <p class="principle-desc">
+            You own the git repositories, database schemas, CI/CD configs, and patentable assets from day one. We never trap clients in proprietary frameworks or hosting markups.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">Principle 02</span>
+          <h3 class="principle-title">Contract-First Type Safety</h3>
+          <p class="principle-desc">
+            We use strict TypeScript, Go, and OpenAPI / gRPC schemas to enforce end-to-end type safety between frontend interfaces, backend engines, and database models.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">Principle 03</span>
+          <h3 class="principle-title">Zero Monolithic Dependency Bloat</h3>
+          <p class="principle-desc">
+            We reject fragile third-party plugins and sprawling monoliths. Every library we introduce is audited for vulnerability footprint, maintenance track record, and runtime size.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">Principle 04</span>
+          <h3 class="principle-title">Direct Architect Access</h3>
+          <p class="principle-desc">
+            No middle managers or non-technical account representatives translating your needs. Clients collaborate directly with principal software and systems engineers.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">Principle 05</span>
+          <h3 class="principle-title">Deterministic Roadmaps & Fixed Sprints</h3>
+          <p class="principle-desc">
+            We work on fixed milestone budgets with concrete acceptance criteria. Sprints deliver functioning, testable software every single week on staging sandboxes.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <span class="principle-num">Principle 06</span>
+          <h3 class="principle-title">Security & Compliance as Defaults</h3>
+          <p class="principle-desc">
+            Role-based access control, cryptographic session handling, encryption at rest, and automated audit logging are engineered from commit #1 — not patched on later.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== TRACK RECORD STATS ==================== -->
+    <section class="track-record-section">
+      <div class="section-container">
+        <div class="track-record-grid">
+          <div>
+            <div class="track-item-num">$850M+</div>
+            <div class="track-item-label">Processed Volume</div>
+            <p class="track-item-sub">Handled by custom client engines</p>
+          </div>
+          <div>
+            <div class="track-item-num">100%</div>
+            <div class="track-item-label">Full Code Handover</div>
+            <p class="track-item-sub">Zero vendor lock-in or retention</p>
+          </div>
+          <div>
+            <div class="track-item-num">99.99%</div>
+            <div class="track-item-label">Production Uptime</div>
+            <p class="track-item-sub">Across multi-region deployments</p>
+          </div>
+          <div>
+            <div class="track-item-num">$0</div>
+            <div class="track-item-label">Recurring Seat Rent</div>
+            <p class="track-item-sub">Permanent software asset model</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FREQUENTLY ASKED QUESTIONS ==================== -->
+    <section class="section-container">
+      <div class="section-header-centered">
+        <span class="eyebrow-text">Executive Clarity</span>
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <p class="section-subtext">
+          Clear answers to common questions about custom engineering, intellectual property, and long-term maintenance.
+        </p>
+      </div>
+
+      <div class="faq-stack">
+        <div class="faq-card">
+          <h3 class="faq-question">Why invest in custom software instead of an off-the-shelf SaaS subscription?</h3>
+          <p class="faq-answer">
+            Off-the-shelf SaaS seems affordable on day one, but as your team scales to 20, 50, or 200 users, monthly seat licenses snowball into five- and six-figure recurring line items. More importantly, off-the-shelf software forces your team to bend their workflows around generic vendor limitations. A custom software architecture is a one-time capital asset that fits your exact operations, scales without marginal cost, and belongs to your company forever.
+          </p>
+        </div>
+
+        <div class="faq-card">
+          <h3 class="faq-question">What happens if we bring in-house engineers or hire a full-time tech team later?</h3>
+          <p class="faq-answer">
+            Our systems are specifically architected for effortless engineering onboarding. We build on industry standard stacks (React, TypeScript, Go, Python, PostgreSQL, Docker) with standard repository structures, comprehensive API documentation, and detailed operational runbooks. Any competent senior engineer can clone your repository, run the local container environment, and make their first production commit in under an hour.
+          </p>
+        </div>
+
+        <div class="faq-card">
+          <h3 class="faq-question">How do you prevent budget overruns and scope creep?</h3>
+          <p class="faq-answer">
+            We mandate a thorough Phase 01 Architectural Discovery before writing production code. In this phase, we map out exact API contracts, database schemas, and user journeys. Every milestone is defined with explicit acceptance criteria. If new feature ideas emerge during development, they are evaluated against subsequent phases, ensuring your delivery date and budget remain deterministic.
+          </p>
+        </div>
+
+        <div class="faq-card">
+          <h3 class="faq-question">Who owns the intellectual property and copyright?</h3>
+          <p class="faq-answer">
+            You do. 100%. All code, database schemas, deployment pipelines, design assets, and technical documentation are legally assigned to your organization upon project completion. There are no licensing restrictions, royalties, or third-party studio dependencies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CALL TO ACTION ==================== -->
+    <section class="cta-section">
+      <div class="section-container">
+        <div class="cta-box">
+          <span class="eyebrow-text eyebrow-white">Build Permanent Value</span>
+          <h2 class="cta-title">Let's discuss your next system architecture.</h2>
+          <p class="cta-subtitle">
+            Speak directly with our senior systems architects to analyze your operational requirements and receive an engineering scope breakdown.
+          </p>
+          <div class="cta-btn-group">
+            <a href="contact.html" class="btn btn-white">Consult With an Architect</a>
+            <a href="services.html" class="btn btn-ghost-white">Explore All Services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="section-container footer-container">
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <span class="logo-symbol">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
+              <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="logo-text">Novacore<span class="logo-accent">.sys</span></span>
+        </div>
+        <p class="footer-tagline">
+          Custom webs, software and cloud systems engineered for enterprise scale and permanent IP ownership.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Capabilities</h4>
+        <ul class="footer-list">
+          <li><a href="services.html">Custom Web Applications</a></li>
+          <li><a href="services.html">Enterprise Software Systems</a></li>
+          <li><a href="services.html">Cloud Automations & APIs</a></li>
+          <li><a href="process.html">High-Scale Database Design</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="services.html">Capabilities & Services</a></li>
+          <li><a href="process.html">Engineering Process</a></li>
+          <li><a href="projects.html">Project Showcase</a></li>
+          <li><a href="about.html">About Our Studio</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">System Status</h4>
+        <div class="footer-status-card">
+          <div class="status-indicator">
+            <span class="status-live-pulse"></span>
+            <span>All Global Systems Nominal</span>
+          </div>
+          <span class="status-meta">Latency: 14ms &bull; SLA 99.99%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container footer-bottom">
+      <p>&copy; 2026 Novacore Systems Inc. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#about-hero">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

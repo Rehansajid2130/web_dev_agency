@@ -1,0 +1,158 @@
+/* ==========================================================================
+   ABOUT & STUDIO PHILOSOPHY PAGE STYLING
+   Scoped extensions for studio manifesto, engineering principles,
+   leadership credentials, and technical FAQ.
+   ========================================================================== */
+@import "styles.css";
+
+/* Manifesto Banner Card */
+.manifesto-card {
+  background: var(--surface-ice-blue);
+  border: 1px solid var(--border-ice-blue);
+  border-radius: var(--radius-2xl);
+  padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
+  text-align: center;
+  max-width: 1080px;
+  margin: 0 auto 4.5rem auto;
+  box-shadow: var(--shadow-card);
+}
+
+.manifesto-lead {
+  font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  color: var(--color-navy);
+  line-height: 1.35;
+  max-width: 840px;
+  margin: 0 auto 1.5rem auto;
+}
+
+.manifesto-text {
+  font-size: 1.05rem;
+  color: var(--color-text-body);
+  line-height: 1.7;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* Engineering Principles Grid */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto 5rem auto;
+}
+
+.principle-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.principle-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-ice-blue);
+  box-shadow: var(--shadow-card);
+}
+
+.principle-num {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.principle-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+}
+
+.principle-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-body);
+  line-height: 1.65;
+}
+
+/* Studio Track Record Bar */
+.track-record-section {
+  padding: 4.5rem 0;
+  background: var(--color-card-bg);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: 5rem;
+}
+
+.track-record-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.track-item-num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.track-item-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  margin-bottom: 0.25rem;
+}
+
+.track-item-sub {
+  font-size: 0.775rem;
+  color: var(--color-text-muted);
+}
+
+/* Technical FAQ Accordion / Cards */
+.faq-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 900px;
+  margin: 0 auto 5rem auto;
+}
+
+.faq-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 2rem;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-fast);
+}
+
+.faq-card:hover {
+  border-color: var(--border-ice-blue);
+}
+
+.faq-question {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: 0.65rem;
+}
+
+.faq-answer {
+  font-size: 0.925rem;
+  color: var(--color-text-body);
+  line-height: 1.65;
+}

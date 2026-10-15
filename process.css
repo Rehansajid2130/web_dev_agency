@@ -1,0 +1,248 @@
+/* ==========================================================================
+   ENGINEERING PROCESS & GOVERNANCE PAGE STYLING
+   Scoped extensions for 5-phase delivery methodology, gate checkpoints,
+   and deterministic milestone tracking.
+   ========================================================================== */
+@import "styles.css";
+
+/* Process Overview Banner */
+.process-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto 4rem auto;
+}
+
+.process-highlight-box {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-smooth);
+}
+
+.process-highlight-box:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-card);
+}
+
+.highlight-box-step {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.highlight-box-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+}
+
+.highlight-box-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-body);
+  line-height: 1.6;
+}
+
+/* Detailed Vertical Timeline Phases */
+.phases-timeline-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  max-width: 1080px;
+  margin: 0 auto 5rem auto;
+  position: relative;
+}
+
+.phase-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.phase-card:hover {
+  border-color: var(--border-ice-blue);
+  box-shadow: var(--shadow-elevated);
+}
+
+.phase-number-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+  background: var(--surface-ice-blue);
+  border: 1px solid var(--border-ice-blue);
+  color: var(--color-primary-dark);
+  margin-bottom: 1.25rem;
+}
+
+[data-theme="dark"] .phase-number-badge {
+  color: #60a5fa;
+}
+
+.phase-heading {
+  font-size: clamp(1.5rem, 2.5vw, 2.15rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.phase-summary {
+  font-size: 0.95rem;
+  color: var(--color-text-body);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.phase-deliverables-box {
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.deliverables-box-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-navy);
+  margin-bottom: 0.75rem;
+}
+
+.deliverables-checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.deliverable-check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+.deliverable-check-item span.icon {
+  color: #10b981;
+}
+
+/* Phase Technical Visual Artifact Box */
+.phase-technical-visual {
+  background: var(--surface-ice-blue);
+  border: 1px solid var(--border-ice-blue);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tech-visual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary-dark);
+  border-bottom: 1px solid var(--border-ice-blue);
+  padding-bottom: 0.75rem;
+}
+
+[data-theme="dark"] .tech-visual-header {
+  color: #93c5fd;
+}
+
+.tech-visual-detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+}
+
+.detail-label {
+  color: var(--color-text-muted);
+}
+
+.detail-value {
+  font-weight: 700;
+  color: var(--color-navy);
+  font-family: var(--font-display);
+}
+
+/* Risk Mitigation Safeguards Section */
+.governance-section {
+  padding: 4.5rem 0;
+  background: var(--color-card-bg);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: 5rem;
+}
+
+.governance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.governance-card {
+  padding: 1.75rem;
+  background: var(--color-bg-page);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+}
+
+.gov-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.gov-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: 0.5rem;
+}
+
+.gov-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-body);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .phase-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

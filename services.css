@@ -1,0 +1,255 @@
+/* ==========================================================================
+   SERVICES & CAPABILITIES PAGE STYLING
+   Scoped extensions for enterprise service domains, architecture deep dives,
+   and comparison breakdown matrix.
+   ========================================================================== */
+@import "styles.css";
+
+/* Section Intro & Metric Bar */
+.services-metric-banner {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto 4rem auto;
+}
+
+.service-stat-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-subtle);
+  transition: all var(--transition-smooth);
+}
+
+.service-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+  border-color: var(--color-primary);
+}
+
+.service-stat-val {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+  margin-bottom: 0.35rem;
+}
+
+.service-stat-label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.service-stat-desc {
+  font-size: 0.775rem;
+  color: var(--color-text-muted);
+}
+
+/* Service Deep-Dive Stack */
+.service-domain-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto 5rem auto;
+}
+
+.service-domain-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-2xl);
+  padding: clamp(2rem, 4vw, 3.5rem);
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-smooth);
+}
+
+.service-domain-card:hover {
+  border-color: var(--border-ice-blue);
+  box-shadow: var(--shadow-elevated);
+}
+
+.service-domain-title {
+  font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.service-domain-lead {
+  font-size: 1.05rem;
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+[data-theme="dark"] .service-domain-lead {
+  color: #60a5fa;
+}
+
+.service-domain-body {
+  font-size: 0.95rem;
+  color: var(--color-text-body);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.service-deliverables-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.service-deliverable-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+.deliverable-check {
+  color: #10b981;
+  font-weight: 800;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Technical Specification Visual Box inside Card */
+.domain-spec-visual {
+  background: var(--surface-ice-blue);
+  border: 1px solid var(--border-ice-blue);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.spec-visual-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--border-ice-blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary-dark);
+}
+
+[data-theme="dark"] .spec-visual-header {
+  color: #93c5fd;
+}
+
+.spec-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.spec-metric-name {
+  color: var(--color-text-body);
+}
+
+.spec-metric-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: var(--color-navy);
+}
+
+/* Comparison Matrix Section */
+.comparison-section {
+  padding: 5rem 0;
+  background: var(--color-card-bg);
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: 5rem;
+}
+
+.comparison-table-wrapper {
+  overflow-x: auto;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: left;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.comparison-table th {
+  font-size: 0.8125rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.comparison-table th.col-highlight {
+  color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.05);
+  border-top: 3px solid var(--color-primary);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.comparison-table td.col-highlight {
+  background: rgba(37, 99, 235, 0.03);
+  font-weight: 700;
+  color: var(--color-navy);
+}
+
+[data-theme="dark"] .comparison-table th.col-highlight {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+[data-theme="dark"] .comparison-table td.col-highlight {
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.comparison-feature-name {
+  font-weight: 700;
+  color: var(--color-navy);
+  font-size: 0.9375rem;
+}
+
+.comparison-feature-sub {
+  font-size: 0.775rem;
+  color: var(--color-text-muted);
+  display: block;
+  margin-top: 2px;
+}
+
+@media (max-width: 900px) {
+  .service-domain-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
