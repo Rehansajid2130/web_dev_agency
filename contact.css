@@ -111,8 +111,402 @@
   background: var(--color-card-bg);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-2xl);
-  padding: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
   box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-card-top {
+  margin-bottom: 1.5rem;
+}
+
+.form-main-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.75rem);
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-top: 0.35rem;
+  letter-spacing: -0.02em;
+}
+
+/* Stepper Progress Header */
+.form-stepper-wrap {
+  background: var(--surface-ice-blue);
+  border: 1px solid var(--border-ice-blue);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.stepper-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.stepper-current-label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--color-navy);
+}
+
+.step-num-pill {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.02em;
+}
+
+.stepper-percentage {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Progress Bar Track */
+.progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(37, 99, 235, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #2563eb, #38bdf8);
+  border-radius: 999px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Stepper Nodes Indicators */
+.stepper-steps-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.stepper-node {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  font-family: inherit;
+  transition: opacity var(--transition-fast);
+}
+
+.node-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-card-bg);
+  border: 1.5px solid var(--color-border-subtle);
+  color: var(--color-text-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.node-name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text-body);
+  transition: color var(--transition-fast);
+}
+
+.stepper-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border-subtle);
+  transition: background var(--transition-fast);
+}
+
+.stepper-node.active .node-circle {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.stepper-node.active .node-name {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.stepper-node.completed .node-circle {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.stepper-node.completed .node-name {
+  color: var(--color-navy);
+}
+
+.stepper-line.completed {
+  background: #10b981;
+}
+
+/* Step content visibility and animation */
+.form-step {
+  display: none;
+}
+
+.form-step.active {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  animation: stepFadeSlide 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes stepFadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-header {
+  margin-bottom: 0.5rem;
+}
+
+.step-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-navy);
+  margin-bottom: 0.25rem;
+}
+
+.step-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-body);
+  line-height: 1.5;
+}
+
+.required-star {
+  color: #ef4444;
+}
+
+.optional-tag {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-left: 0.25rem;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 0.25rem;
+}
+
+.field-error {
+  display: none;
+  font-size: 0.78125rem;
+  color: #ef4444;
+  margin-top: 0.25rem;
+  font-weight: 600;
+}
+
+.form-input.is-invalid, .form-textarea.is-invalid {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+/* Project Scope Cards Grid */
+.project-type-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}
+
+.scope-card {
+  position: relative;
+  background: var(--color-input-bg);
+  border: 1.5px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.scope-card:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  background: var(--surface-ice-blue);
+  transform: translateY(-1px);
+}
+
+.scope-card.selected {
+  background: var(--surface-ice-blue);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.scope-card-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.scope-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.scope-card-info strong {
+  font-size: 0.875rem;
+  color: var(--color-navy);
+  font-weight: 700;
+}
+
+.scope-card-info span {
+  font-size: 0.75rem;
+  color: var(--color-text-body);
+  line-height: 1.35;
+}
+
+.scope-check {
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: transparent;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.scope-card.selected .scope-check {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Step 3 Live Summary Strip */
+.step-summary-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  background: var(--surface-ice-blue);
+  border: 1px solid var(--border-ice-blue);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.summary-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.summary-val {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--color-navy);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Quick prompt chips */
+.spec-prompt-tags {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.spec-tag-hint {
+  font-size: 0.71875rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.spec-tag {
+  background: var(--surface-ice-blue);
+  border: 1px solid var(--border-ice-blue);
+  color: var(--color-primary);
+  font-size: 0.71875rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+}
+
+.spec-tag:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+/* Step Action Buttons */
+.step-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btn-step-back {
+  padding: 0.85rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.btn-step-next, .btn-step-submit {
+  flex: 1;
+  padding: 0.85rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .form-grid-row {
@@ -129,4 +523,15 @@
   .form-grid-row {
     grid-template-columns: 1fr;
   }
+  .project-type-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .step-summary-strip {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .node-name {
+    display: none;
+  }
 }
+

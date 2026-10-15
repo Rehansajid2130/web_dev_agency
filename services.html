@@ -47,7 +47,9 @@
           Contact us
         </a>
         <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <span class="hamburger-line line-top"></span>
+          <span class="hamburger-line line-mid"></span>
+          <span class="hamburger-line line-bot"></span>
         </button>
       </div>
     </nav>
@@ -424,5 +426,35 @@
   </footer>
 
   <script src="main.js"></script>
+
+  <!--
+    Plainware Motion Pro: smooth scrolling (Lenis 1.3.1, https://github.com/darkroomengineering/lenis)
+    Settings:
+      lerp 0.1             smoothing per frame, this is what you feel (lower = softer, higher = snappier)
+      wheelMultiplier 0.8  scroll distance per wheel tick (1 = browser default)
+      duration 1.6         glide length in seconds, only used by Lenis if you remove lerp
+      easing 1-(1-t)^7     strong ease-out curve, used together with duration
+      smoothWheel true     smooth mouse wheels and trackpads
+      syncTouch false      phones and tablets keep native touch scrolling
+      anchors false        Framer handles its own scroll-to-section links
+    Visitors with Reduce Motion turned on get normal browser scrolling.
+    To remove: Site Settings → Custom Code → End of <body> tag → delete this whole block → publish.
+  -->
+  <script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function start() {
+      if (!window.Lenis) return;
+      var lenis = new Lenis({
+        duration: 1.6, lerp: 0.1, wheelMultiplier: 0.8,
+        easing: function (t) { return 1 - Math.pow(1 - t, 7); },
+        smoothWheel: true, syncTouch: false, anchors: false
+      });
+      (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
+    }
+    if (window.Lenis) start(); else window.addEventListener('load', start);
+  })();
+  </script>
 </body>
 </html>

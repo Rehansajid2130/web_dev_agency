@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStatsObserver();
   initNavbarScrollState();
   initCardGlow();
+  initCustomCursor();
 });
 
 // Theme management with localStorage and system preference detection
@@ -39,9 +40,16 @@ function updateThemeIcon() {
 function toggleMobileMenu() {
   const menu = document.getElementById('nav-menu');
   const btn = document.querySelector('.mobile-toggle-btn');
+  const header = document.getElementById('site-header');
   if (menu) {
     const isOpen = menu.classList.toggle('is-open');
-    if (btn) btn.setAttribute('aria-expanded', isOpen);
+    if (btn) {
+      btn.classList.toggle('is-active', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+    if (header) {
+      header.classList.toggle('nav-menu-open', isOpen);
+    }
   }
 }
 
@@ -153,16 +161,47 @@ function animateNumber(elementId, start, end, prefix = '', suffix = '') {
   }, frameRate);
 }
 
-// Navbar elevation on scroll
+// Navbar elevation on scroll (Framer Emeth pill dock state)
 function initNavbarScrollState() {
   const navPill = document.querySelector('.nav-pill');
   if (!navPill) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navPill.style.boxShadow = '0 12px 30px -5px rgba(15, 23, 42, 0.12)';
+  function updateNavbar() {
+    if (window.scrollY > 20) {
+      navPill.classList.add('scrolled');
     } else {
-      navPill.style.boxShadow = '0 10px 25px -5px rgba(15, 23, 42, 0.05)';
+      navPill.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', updateNavbar, { passive: true });
+  updateNavbar();
+
+  // Close mobile menu on resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 880) {
+      const menu = document.getElementById('nav-menu');
+      const btn = document.querySelector('.mobile-toggle-btn');
+      if (menu && menu.classList.contains('is-open')) {
+        menu.classList.remove('is-open');
+        if (btn) {
+          btn.classList.remove('is-active');
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      }
+    }
+  }, { passive: true });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const nav = document.querySelector('.nav-pill');
+    const menu = document.getElementById('nav-menu');
+    const btn = document.querySelector('.mobile-toggle-btn');
+    if (menu && menu.classList.contains('is-open') && nav && !nav.contains(e.target)) {
+      menu.classList.remove('is-open');
+      if (btn) {
+        btn.classList.remove('is-active');
+        btn.setAttribute('aria-expanded', 'false');
+      }
     }
   });
 }
@@ -311,3 +350,88 @@ function closeCaseStudy() {
   const dialog = document.getElementById('caseStudyDialog');
   if (dialog) dialog.close();
 }
+
+// Simple and smooth Figma cursor (black border, white center)
+function initCustomCursor() {
+  if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let cursor = document.getElementById('customCursor');
+  if (!cursor) {
+    cursor = document.createElement('div');
+    cursor.id = 'customCursor';
+    cursor.className = 'custom-cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    cursor.innerHTML = `
+      <svg class="figma-cursor-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.5 2.5L20.5 9.5L13.5 13.5L9.5 20.5L3.5 2.5Z" fill="#000000" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    `;
+    document.body.appendChild(cursor);
+  }
+
+  let mouseX = -100;
+  let mouseY = -100;
+  let cursorX = -100;
+  let cursorY = -100;
+  let isVisible = false;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!isVisible) {
+      isVisible = true;
+      cursor.classList.add('is-visible');
+    }
+  }, { passive: true });
+
+  window.addEventListener('mousedown', () => {
+    cursor.classList.add('is-clicking');
+  });
+
+  window.addEventListener('mouseup', () => {
+    cursor.classList.remove('is-clicking');
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.classList.remove('is-visible');
+    isVisible = false;
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.classList.add('is-visible');
+    isVisible = true;
+  });
+
+  // Interactive hover states delegation
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target;
+    if (!target) return;
+
+    if (target.closest('a, button, [role="button"], .nav-link, .btn, .theme-toggle-btn, .mobile-toggle-btn, .phase-tab-item, .dash-tab-btn, .pill-btn, .filter-pill, .stepper-node, .framer-phase-card, .footer-bottom-links a')) {
+      cursor.classList.add('is-hover');
+    } else {
+      cursor.classList.remove('is-hover');
+    }
+
+    if (target.closest('input[type="text"], input[type="email"], textarea, select')) {
+      cursor.classList.add('is-text');
+    } else {
+      cursor.classList.remove('is-text');
+    }
+  }, { passive: true });
+
+  // Smooth lerp loop (arrow tip is at 3.5px, 2.5px)
+  const lerp = (start, end, amt) => start + (end - start) * amt;
+
+  function loop() {
+    cursorX = lerp(cursorX, mouseX, 0.24);
+    cursorY = lerp(cursorY, mouseY, 0.24);
+    cursor.style.transform = `translate3d(${cursorX - 3.5}px, ${cursorY - 2.5}px, 0)`;
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+}
+
+
+
