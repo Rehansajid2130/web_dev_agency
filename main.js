@@ -250,25 +250,40 @@ function initCardGlow() {
 // Case study dialog
 const caseStudyData = {
   web: {
-    title: 'OmniFlow Global ERP',
-    subtitle: 'Custom administrative web portal & multi-currency billing engine',
-    problem: 'The client faced crippling latency (>3.5s page loads) and inventory race conditions across 14 European distribution warehouses.',
-    architecture: 'Next.js 15 App Router with Edge SSR, optimistic cache invalidation, and automated PostgreSQL horizontal partitioning.',
-    result: 'Reduced global latency to under 85ms and eliminated stock desynchronization.'
+    title: 'HealthSync Exchange Portal',
+    subtitle: 'Zero-trust HIPAA-compliant medical web application & client portal',
+    problem: 'The client faced severe latency and security risks synchronizing electronic health records across 40 diagnostic clinical facilities.',
+    architecture: 'Next.js 15 App Router with Edge SSR, cryptographic audit trails, OAuth 2.0 / SAML SSO, and partitioned PostgreSQL schemas.',
+    result: 'Achieved 100% HIPAA compliance audit score and reduced clinical record retrieval latency to under 85ms.'
   },
+  mobile: {
+    title: 'FieldOps Mobile Suite',
+    subtitle: 'Offline-first native mobile application for iOS & Android',
+    problem: 'Over 4,000 field technicians experienced lost work orders and application freezing when servicing equipment in remote subterranean basements.',
+    architecture: 'React Native with native Swift & Kotlin hardware bridges, local encrypted SQLite databases, CRDT conflict reconciliation, and background sync queues.',
+    result: 'Eliminated 100% of field data loss incidents and decreased service ticket turnaround time by 38% across both iOS and Android fleets.'
+  },
+  erp: {
+    title: 'OmniFlow Global ERP',
+    subtitle: 'Custom enterprise ERP & multi-warehouse inventory engine',
+    problem: 'The client was spending $350K/year in legacy commercial ERP seat fees while suffering warehouse stock desynchronization and 4-second query delays.',
+    architecture: 'Custom ERP core in Go and React 19, distributed transaction sagas for inventory reservation, automated double-entry general ledger, and multi-currency billing.',
+    result: 'Reduced order reconciliation from 18 minutes to 4 seconds, eliminated recurring seat fees permanently, and unified 14 international fulfillment hubs.'
+  },
+  // Backward compatibility aliases
   software: {
-    title: 'ApexTelemetry Event Engine',
-    subtitle: 'High-throughput distributed backend processing 45k ops/sec',
-    problem: 'Out-of-the-box message brokers dropped critical telemetry frames under peak traffic spikes.',
-    architecture: 'Custom async FastAPI / Python core integrated with Redis Pub/Sub buffer and partitioned time-series storage.',
-    result: '100% telemetry capture rate with sub-15ms write confirmation at 45,000 events/second.'
+    title: 'OmniFlow Global ERP',
+    subtitle: 'Custom enterprise ERP & multi-warehouse inventory engine',
+    problem: 'Legacy ERP seat fees and inventory race conditions across multiple warehouse locations.',
+    architecture: 'Custom ERP core in Go and React 19 with distributed transaction sagas and automated general ledger.',
+    result: 'Eliminated recurring seat licenses permanently and brought stock reconciliation to under 4 seconds.'
   },
   cloud: {
-    title: 'StrataCloud Autoscaler',
-    subtitle: 'Autonomous serverless cloud orchestration infrastructure',
-    problem: 'Over-provisioned idle compute was draining monthly infrastructure budgets by over $18,000.',
-    architecture: 'Custom predictive autoscaler deployed on AWS EKS with event-driven KEDA workers and Terraform state automation.',
-    result: 'Decreased month-over-month cloud spend by 42% while improving SLA uptime to 99.99%.'
+    title: 'FieldOps Mobile Suite',
+    subtitle: 'Offline-first native mobile application for iOS & Android',
+    problem: 'Data loss when field technicians operated in low-connectivity industrial zones.',
+    architecture: 'Local encrypted SQLite, CRDT synchronization, and background sync pipelines.',
+    result: 'Eliminated 100% of field data loss across 4,000 active devices.'
   }
 };
 
