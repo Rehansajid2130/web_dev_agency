@@ -36,7 +36,6 @@
         <a href="index.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Home</a>
         <a href="services.html" class="nav-link">Services</a>
         <a href="process.html" class="nav-link">Our Process</a>
-        <a href="#estimator" class="nav-link">Estimator</a>
         <a href="projects.html" class="nav-link">Projects</a>
         <a href="about.html" class="nav-link">About Us</a>
       </div>
@@ -516,110 +515,6 @@
       </div>
     </section>
 
-    <!-- ==================== INTERACTIVE ARCHITECTURE SCOPE ESTIMATOR ==================== -->
-    <section class="estimator-section" id="estimator">
-      <div class="section-container">
-        
-        <div class="section-header-centered">
-          <span class="eyebrow-text">Dynamic Project Scoping</span>
-          <h2 class="section-heading">Interactive Architecture Estimator</h2>
-          <p class="section-subtext">
-            Configure your system domain, scale parameters, and cloud foundation. Calculate estimated engineering delivery timelines and architecture blueprints in real time.
-          </p>
-        </div>
-
-        <div class="estimator-card glow-card" id="estimatorSection">
-          <div class="estimator-grid">
-            
-            <!-- Controls Column -->
-            <div class="estimator-controls">
-              
-              <!-- 1. Domain Type -->
-              <div>
-                <span class="estimator-group-label">1. Architecture Domain</span>
-                <div class="estimator-pills-row">
-                  <button type="button" class="est-pill-btn active" data-est-type="web" onclick="setEstimatorType('web', this)">
-                    <span>Custom Web App</span>
-                    <span class="est-pill-sub">SaaS & Portals</span>
-                  </button>
-                  <button type="button" class="est-pill-btn" data-est-type="software" onclick="setEstimatorType('software', this)">
-                    <span>Enterprise Software</span>
-                    <span class="est-pill-sub">High-Throughput Engines</span>
-                  </button>
-                  <button type="button" class="est-pill-btn" data-est-type="cloud" onclick="setEstimatorType('cloud', this)">
-                    <span>Automated Systems</span>
-                    <span class="est-pill-sub">Cloud Infra & APIs</span>
-                  </button>
-                </div>
-              </div>
-
-              <!-- 2. Target Scale Slider -->
-              <div class="estimator-slider-wrap">
-                <span class="estimator-group-label">2. Target Production Scale</span>
-                <input type="range" class="est-slider" min="1" max="3" value="2" oninput="setEstimatorScale(this.value)" aria-label="Production Scale">
-                <div class="est-slider-labels">
-                  <span>MVP Launch (&lt;20K Users)</span>
-                  <span style="color:var(--color-primary)">Growth Scale (500K Users)</span>
-                  <span>Global High-SLA (10M+ Users)</span>
-                </div>
-              </div>
-
-              <!-- 3. Infrastructure Foundation -->
-              <div>
-                <span class="estimator-group-label">3. Cloud Foundation Tier</span>
-                <div class="estimator-pills-row">
-                  <button type="button" class="est-pill-btn active" data-est-cloud="edge" onclick="setEstimatorCloud('edge', this)">
-                    <span>Edge Serverless</span>
-                    <span class="est-pill-sub">Ultra-fast global points</span>
-                  </button>
-                  <button type="button" class="est-pill-btn" data-est-cloud="k8s" onclick="setEstimatorCloud('k8s', this)">
-                    <span>Dedicated K8s Mesh</span>
-                    <span class="est-pill-sub">Container autoscaling</span>
-                  </button>
-                  <button type="button" class="est-pill-btn" data-est-cloud="hybrid" onclick="setEstimatorCloud('hybrid', this)">
-                    <span>Multi-Region HA</span>
-                    <span class="est-pill-sub">Zero-downtime failover</span>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Output Panel -->
-            <div class="estimator-output-panel">
-              <div class="est-metric-badge">
-                <span class="est-metric-title">Estimated Delivery Sprint</span>
-                <span class="est-metric-val" id="estTimeVal">4-6 Weeks</span>
-              </div>
-
-              <div class="est-spec-item">
-                <span class="est-spec-label">Recommended Tech Stack</span>
-                <span class="est-spec-desc" id="estStackVal">React 19 + Node.js Microservices + PostgreSQL + Redis</span>
-              </div>
-
-              <div class="est-spec-item">
-                <span class="est-spec-label">Allocated Engineering Pod</span>
-                <span class="est-spec-desc" id="estTeamVal">1 Architect + 2 Fullstack Devs</span>
-              </div>
-
-              <div class="est-spec-item">
-                <span class="est-spec-label">Included Enterprise Guarantees</span>
-                <span class="est-spec-desc" style="font-size: 0.8125rem; color: var(--color-text-muted);">
-                  ✓ 100% IP & Source Code Transfer &bull; Zero SaaS Seats<br>
-                  ✓ Automated CI/CD Pipelines &bull; Penetration Tested
-                </span>
-              </div>
-
-              <button class="btn btn-primary btn-block" onclick="transferEstimatorToModal()">
-                <span>Transfer Blueprint to Consultation &rarr;</span>
-              </button>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </section>
 
     <!-- ==================== 4. ABOUT & BLUEPRINT SCHEMATIC (IMAGE 2) ==================== -->
     <section class="about-section" id="about">

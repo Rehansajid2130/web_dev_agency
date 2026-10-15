@@ -1,6 +1,6 @@
 /**
  * Novacore Systems: Client logic
- * UI behaviors, theme management, scope estimator, and modal mechanics.
+ * UI behaviors, theme management, and modal mechanics.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initStatsObserver();
   initNavbarScrollState();
   initCardGlow();
-  initScopeEstimator();
 });
 
 // Theme management with localStorage and system preference detection
@@ -233,92 +232,6 @@ function toggleTelemetryDemo() {
   }
 }
 
-// Architecture scope estimator
-const estimatorState = {
-  type: 'web',
-  scale: 2, // 1: MVP, 2: Growth, 3: Enterprise
-  cloud: 'edge'
-};
-
-const scopeSpecs = {
-  web: {
-    title: 'Custom Web Application',
-    time: ['2-3 Weeks', '4-6 Weeks', '8-12 Weeks'],
-    stack: [
-      'Next.js 15 + Supabase + Tailwind + Edge CDN',
-      'React 19 + Node.js Microservices + PostgreSQL + Redis',
-      'Micro-frontend Architecture + Multi-region Go APIs + CockroachDB'
-    ],
-    team: ['1 Fullstack Architect', '1 Architect + 2 Fullstack Devs', 'Dedicated 4-Engineer System Pod']
-  },
-  software: {
-    title: 'Enterprise Software Engine',
-    time: ['3-4 Weeks', '6-8 Weeks', '10-14 Weeks'],
-    stack: [
-      'FastAPI + Postgres Core + Docker Compose',
-      'Distributed Python/Go Core + Kafka Event Bus + PostgreSQL',
-      'Event-Sourced Event Engine + K8s Mesh + Multi-Zone Cluster'
-    ],
-    team: ['1 Backend Architect', '1 Principal + 2 Backend Specialists', 'Full Distributed Systems Pod']
-  },
-  cloud: {
-    title: 'Automated Cloud Platform',
-    time: ['2-3 Weeks', '4-5 Weeks', '6-8 Weeks'],
-    stack: [
-      'AWS Lambda Serverless + Terraform + GitHub Actions CI/CD',
-      'AWS EKS / GCP GKE + ArgoCD + Datadog + Automated Scaling',
-      'Zero-Trust Multi-Cloud Mesh + Cloudflare Workers + Distributed DB'
-    ],
-    team: ['1 Cloud Engineer', '1 DevOps Architect + 1 Systems Dev', 'Dedicated SRE & Infra Pod']
-  }
-};
-
-function initScopeEstimator() {
-  const container = document.getElementById('estimatorSection');
-  if (!container) return;
-  updateEstimatorView();
-}
-
-function setEstimatorType(type, btn) {
-  estimatorState.type = type;
-  document.querySelectorAll('[data-est-type]').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  updateEstimatorView();
-}
-
-function setEstimatorScale(val) {
-  estimatorState.scale = parseInt(val, 10);
-  updateEstimatorView();
-}
-
-function setEstimatorCloud(cloud, btn) {
-  estimatorState.cloud = cloud;
-  document.querySelectorAll('[data-est-cloud]').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  updateEstimatorView();
-}
-
-function updateEstimatorView() {
-  const current = scopeSpecs[estimatorState.type];
-  if (!current) return;
-  const idx = estimatorState.scale - 1;
-
-  const timeEl = document.getElementById('estTimeVal');
-  const stackEl = document.getElementById('estStackVal');
-  const teamEl = document.getElementById('estTeamVal');
-
-  if (timeEl) timeEl.textContent = current.time[idx];
-  if (stackEl) stackEl.textContent = current.stack[idx];
-  if (teamEl) teamEl.textContent = current.team[idx];
-}
-
-function transferEstimatorToModal() {
-  const current = scopeSpecs[estimatorState.type];
-  const idx = estimatorState.scale - 1;
-  const scaleName = idx === 0 ? 'MVP Launch' : (idx === 1 ? 'Growth Scale' : 'Global Enterprise');
-  const note = `[Scope Estimator Blueprint]\n- Solution Domain: ${current.title}\n- Target Scale: ${scaleName}\n- Estimated Sprint: ${current.time[idx]}\n- Recommended Stack: ${current.stack[idx]}\n\nPlease review our technical architecture roadmap.`;
-  openContactModal(note);
-}
 
 // Card spotlight hover effect
 function initCardGlow() {
