@@ -1,7 +1,4 @@
-/* ==========================================================================
-   NOVACORE SYSTEMS — DESIGN SYSTEM STYLESHEET
-   Extracted from Blueprint SaaS & Tech Pastel Aesthetics
-   ========================================================================== */
+/* Novacore Systems: Design System Stylesheet */
 
 /* --- 1. CSS VARIABLES & TOKENS --- */
 :root {
@@ -83,7 +80,7 @@
   --transition-smooth: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ponytail: comprehensive CSS variables and component overrides for dark blueprint mode */
+/* Dark theme tokens and overrides */
 [data-theme="dark"] {
   --color-navy: #f8fafc;
   --color-text-main: #f8fafc;
@@ -1701,7 +1698,7 @@ h1, h2, h3, h4 {
   margin: 0 auto 1rem auto;
 }
 
-/* ponytail: 1 keyframe animation gives continuous pulse life to diagram */
+/* Subtle pulse animation for connector points */
 @keyframes connectorPulse {
   0% { transform: scale(0.8); opacity: 0.4; }
   50% { transform: scale(1.6); opacity: 1; box-shadow: 0 0 10px #3b82f6; }

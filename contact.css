@@ -1,10 +1,7 @@
-/* ponytail: reuse base styles, tokens, typography, navbar, and footer from styles.css */
+/* Contact page scoped styles */
 @import "styles.css";
 
-/* ==========================================================================
-   CONTACT PAGE SPECIFIC STYLING
-   Scoped 2-column layout for client project intake & architecture consultation.
-   ========================================================================== */
+
 
 .contact-layout-grid {
   display: grid;

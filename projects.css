@@ -1,10 +1,5 @@
-/* ponytail: reuse entire base system, tokens, typography, navbar, and footer from styles.css */
+/* Projects showcase styles */
 @import "styles.css";
-
-/* ==========================================================================
-   PROJECTS SHOWCASE PAGE STYLING
-   Scoped extensions for portfolio filters and case study cards.
-   ========================================================================== */
 
 /* Filter pill group */
 .projects-filter-bar {

@@ -1,6 +1,6 @@
 /**
- * NOVACORE SYSTEMS — JAVASCRIPT LOGIC
- * Interactive UI behaviors, telemetry simulation, theme management, scope estimator, and modal mechanics.
+ * Novacore Systems: Client logic
+ * UI behaviors, theme management, scope estimator, and modal mechanics.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScopeEstimator();
 });
 
-// --- 1. THEME ENGINE (DARK / LIGHT BLUEPRINT) ---
-// ponytail: 12-line native theme switcher with localStorage & OS preference detection
+// Theme management with localStorage and system preference detection
 function initTheme() {
   const saved = localStorage.getItem('theme') || 
     (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -37,8 +36,7 @@ function updateThemeIcon() {
   });
 }
 
-// --- 2. MOBILE MENU DRAWER ---
-// ponytail: native 4-line drawer toggle
+// Mobile navigation drawer toggle
 function toggleMobileMenu() {
   const menu = document.getElementById('nav-menu');
   const btn = document.querySelector('.mobile-toggle-btn');
@@ -48,7 +46,7 @@ function toggleMobileMenu() {
   }
 }
 
-// --- 3. MODAL / CONTACT DRAWER CONTROLS ---
+// Modal and contact drawer controls
 function openContactModal(prefillNote = '') {
   const modal = document.getElementById('contactModal');
   if (modal) {
@@ -113,7 +111,7 @@ function handleFormSubmit(event) {
   }, 600);
 }
 
-// --- 4. STATS NUMBER COUNT-UP ON SCROLL ---
+// Stats counter on scroll
 function initStatsObserver() {
   const statsBanner = document.querySelector('.gradient-stats-banner');
   if (!statsBanner) return;
@@ -156,7 +154,7 @@ function animateNumber(elementId, start, end, prefix = '', suffix = '') {
   }, frameRate);
 }
 
-// --- 5. NAVBAR GLASS BLUR EFFECT ON SCROLL ---
+// Navbar elevation on scroll
 function initNavbarScrollState() {
   const navPill = document.querySelector('.nav-pill');
   if (!navPill) return;
@@ -170,13 +168,11 @@ function initNavbarScrollState() {
   });
 }
 
-// --- 6. HERO DASHBOARD TABS & SIMULATION ---
+// Hero dashboard tab switching
 function switchDashboardTab(tabName) {
-  // Update Tab Buttons
   document.querySelectorAll('.dash-tab-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.tab === tabName);
   });
-  // Update Views
   document.querySelectorAll('.dashboard-view').forEach(view => {
     view.classList.toggle('active', view.dataset.view === tabName);
   });
@@ -237,8 +233,7 @@ function toggleTelemetryDemo() {
   }
 }
 
-// --- 7. INTERACTIVE ARCHITECTURE SCOPE ESTIMATOR ---
-// ponytail: reactive pricing & spec calculation with 0 dependencies
+// Architecture scope estimator
 const estimatorState = {
   type: 'web',
   scale: 2, // 1: MVP, 2: Growth, 3: Enterprise
@@ -325,8 +320,7 @@ function transferEstimatorToModal() {
   openContactModal(note);
 }
 
-// --- 8. SUBTLE CARD SPOTLIGHT HOVER EFFECT ---
-// ponytail: native pointermove updating CSS variables for spotlight borders
+// Card spotlight hover effect
 function initCardGlow() {
   document.querySelectorAll('.glow-card, .process-card, .capability-highlight-card, .schematic-card').forEach(card => {
     card.classList.add('glow-card');
@@ -340,8 +334,7 @@ function initCardGlow() {
   });
 }
 
-// --- 9. CASE STUDY MODAL FOR PROJECTS.HTML ---
-// ponytail: HTML5 <dialog> gives native backdrop, ESC-key dismiss, and focus trap with zero library
+// Case study dialog
 const caseStudyData = {
   web: {
     title: 'OmniFlow Global ERP',
