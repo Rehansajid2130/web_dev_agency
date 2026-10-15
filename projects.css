@@ -67,24 +67,6 @@
   box-shadow: var(--shadow-card);
 }
 
-/* Tags bar inside card */
-.project-tag-row {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.25rem;
-}
-
-.tech-tag {
-  font-size: 0.725rem;
-  font-weight: 700;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-pill);
-  background: var(--color-bg-page);
-  border: 1px solid var(--color-border-subtle);
-  color: var(--color-navy);
-}
 
 .project-title {
   font-size: 1.35rem;
