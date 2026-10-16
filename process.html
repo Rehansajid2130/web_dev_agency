@@ -728,12 +728,13 @@
     (function () {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       function start() {
-        if (!window.Lenis) return;
+        if (!window.Lenis || window.lenis) return;
         var lenis = new Lenis({
           duration: 1.6, lerp: 0.1, wheelMultiplier: 0.8,
           easing: function (t) { return 1 - Math.pow(1 - t, 7); },
           smoothWheel: true, syncTouch: false, anchors: false
         });
+        window.lenis = lenis;
         (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
       }
       if (window.Lenis) start(); else window.addEventListener('load', start);
