@@ -118,122 +118,476 @@
         <div class="projects-grid" id="projectsContainer">
           
           <!-- Project 1: ERP -->
-          <article class="project-card card-ice-blue glow-card" data-category="erp">
-            <div>
-              <h3 class="project-title">OmniFlow Global ERP</h3>
-              <p class="project-desc">
-                Custom enterprise ERP platform unifying procurement, multi-warehouse inventory, and multi-currency billing across 14 international fulfillment hubs.
-              </p>
-            </div>
-            <div>
-              <div class="project-metric-box">
-                <span class="metric-data">10x</span>
-                <span class="metric-caption">Throughput Boost<br>Sub-100ms Page Load</span>
+          <article class="project-card" id="project-card-erp" data-category="erp" aria-expanded="false">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('erp', event)" role="button" tabindex="0" aria-label="Toggle OmniFlow Global ERP case study">
+              <div class="project-header-top">
+                <span class="project-category-badge">Custom ERP</span>
+                <div class="project-expand-indicator">
+                  <span class="expand-text">Explore Specs</span>
+                  <span class="expand-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                  </span>
+                </div>
               </div>
-              <button type="button" class="project-footer-link" onclick="openCaseStudy('erp')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
-                <span>View Architecture Specs</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+
+              <h3 class="project-title">OmniFlow Global ERP</h3>
+
+              <div class="project-stack-strip">
+                <span class="stack-tag">Go (Golang)</span>
+                <span class="stack-tag">PostgreSQL 16</span>
+                <span class="stack-tag">React 19</span>
+                <span class="stack-tag">Redis Cluster</span>
+                <span class="stack-tag">Docker / K8s</span>
+              </div>
+            </div>
+
+            <div class="project-card-details" id="project-details-erp">
+              <div class="project-card-details-inner">
+                <div class="case-study-expanded-content">
+                  <div class="case-col-left">
+                    <div class="case-block challenge-block">
+                      <span class="case-block-label">Architecture Challenge</span>
+                      <p class="case-block-text">The client was spending $350K/year in legacy commercial ERP seat fees while suffering warehouse stock desynchronization and 4-second query delays across 14 international fulfillment hubs.</p>
+                    </div>
+                    <div class="case-block solution-block">
+                      <span class="case-block-label">Engineered Solution</span>
+                      <p class="case-block-text">Custom ERP core in Go and React 19, distributed transaction sagas for inventory reservation, automated double-entry general ledger, and multi-currency billing.</p>
+                      <div class="case-pattern-tag">
+                        <span style="font-size: 1rem;">📐</span>
+                        <span><strong>Data Architecture:</strong> Distributed transaction sagas with idempotent ledger entries, write-ahead logs, and regional read-replicas.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="case-col-right">
+                    <div class="case-block impact-block">
+                      <span class="case-block-label">Measured Production Impact</span>
+                      <p class="case-block-text">Reduced order reconciliation from 18 minutes to 4 seconds, eliminated recurring seat fees permanently, and unified 14 international fulfillment hubs.</p>
+                    </div>
+
+                    <div class="expanded-benchmark-strip">
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">84ms P99</span>
+                        <span class="expanded-benchmark-lbl">Latency Metric</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">18,500 req/s</span>
+                        <span class="expanded-benchmark-lbl">Peak Throughput</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">-$350K/yr Seats</span>
+                        <span class="expanded-benchmark-lbl">Cost Saved</span>
+                      </div>
+                    </div>
+
+                    <div class="expanded-actions-bar">
+                      <a href="contact.html?project=erp&ref=OmniFlow+Global+ERP&scope=custom-erp" class="btn btn-primary">
+                        <span>Consult on Similar System</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </a>
+                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('erp', event)">
+                        <span>Collapse</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
 
           <!-- Project 2: Mobile -->
-          <article class="project-card card-mint glow-card" data-category="mobile">
-            <div>
-              <h3 class="project-title">FieldOps Mobile Suite</h3>
-              <p class="project-desc">
-                Offline-first iOS & Android mobile application for 4,000+ field technicians, featuring local SQLite synchronization, biometric security, and barcode hardware scanning.
-              </p>
-            </div>
-            <div>
-              <div class="project-metric-box">
-                <span class="metric-data">0 sec</span>
-                <span class="metric-caption">Offline Data Loss<br>60 FPS Native UI</span>
+          <article class="project-card" id="project-card-mobile" data-category="mobile" aria-expanded="false">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('mobile', event)" role="button" tabindex="0" aria-label="Toggle FieldOps Mobile Suite case study">
+              <div class="project-header-top">
+                <span class="project-category-badge">Native Mobile</span>
+                <div class="project-expand-indicator">
+                  <span class="expand-text">Explore Specs</span>
+                  <span class="expand-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                  </span>
+                </div>
               </div>
-              <button type="button" class="project-footer-link" onclick="openCaseStudy('mobile')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
-                <span>View Architecture Specs</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+
+              <h3 class="project-title">FieldOps Mobile Suite</h3>
+
+              <div class="project-stack-strip">
+                <span class="stack-tag">Swift 6</span>
+                <span class="stack-tag">Kotlin</span>
+                <span class="stack-tag">SQLite / SQLCipher</span>
+                <span class="stack-tag">CRDT Sync</span>
+                <span class="stack-tag">WebSockets</span>
+              </div>
+            </div>
+
+            <div class="project-card-details" id="project-details-mobile">
+              <div class="project-card-details-inner">
+                <div class="case-study-expanded-content">
+                  <div class="case-col-left">
+                    <div class="case-block challenge-block">
+                      <span class="case-block-label">Architecture Challenge</span>
+                      <p class="case-block-text">Over 4,000 field technicians experienced lost work orders and application freezing when servicing equipment in remote subterranean basements without cellular service.</p>
+                    </div>
+                    <div class="case-block solution-block">
+                      <span class="case-block-label">Engineered Solution</span>
+                      <p class="case-block-text">React Native with native Swift & Kotlin hardware bridges, local encrypted SQLite databases, CRDT conflict reconciliation, and background sync queues.</p>
+                      <div class="case-pattern-tag">
+                        <span style="font-size: 1rem;">📐</span>
+                        <span><strong>Data Architecture:</strong> Local-first encrypted SQLite database utilizing Conflict-free Replicated Data Types (CRDTs) with deterministic state vector merges.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="case-col-right">
+                    <div class="case-block impact-block">
+                      <span class="case-block-label">Measured Production Impact</span>
+                      <p class="case-block-text">Eliminated 100% of field data loss incidents and decreased service ticket turnaround time by 38% across both iOS and Android fleets.</p>
+                    </div>
+
+                    <div class="expanded-benchmark-strip">
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">0s Data Loss</span>
+                        <span class="expanded-benchmark-lbl">Integrity Metric</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">60 FPS Native</span>
+                        <span class="expanded-benchmark-lbl">Fluid UI</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">+38% Velocity</span>
+                        <span class="expanded-benchmark-lbl">Field Efficiency</span>
+                      </div>
+                    </div>
+
+                    <div class="expanded-actions-bar">
+                      <a href="contact.html?project=mobile&ref=FieldOps+Mobile+Suite&scope=mobile-app" class="btn btn-primary">
+                        <span>Consult on Similar System</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </a>
+                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('mobile', event)">
+                        <span>Collapse</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
 
           <!-- Project 3: Web -->
-          <article class="project-card card-cyan glow-card" data-category="web">
-            <div>
-              <h3 class="project-title">HealthSync Exchange Portal</h3>
-              <p class="project-desc">
-                Zero-trust encrypted web application for medical clinics and diagnostic labs, providing secure patient record syncing and audit-grade telemetry.
-              </p>
-            </div>
-            <div>
-              <div class="project-metric-box">
-                <span class="metric-data">100%</span>
-                <span class="metric-caption">Audit Compliance<br>End-to-End Encrypted</span>
+          <article class="project-card" id="project-card-web" data-category="web" aria-expanded="false">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('web', event)" role="button" tabindex="0" aria-label="Toggle HealthSync Exchange Portal case study">
+              <div class="project-header-top">
+                <span class="project-category-badge">Web Application</span>
+                <div class="project-expand-indicator">
+                  <span class="expand-text">Explore Specs</span>
+                  <span class="expand-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                  </span>
+                </div>
               </div>
-              <button type="button" class="project-footer-link" onclick="openCaseStudy('web')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
-                <span>View Architecture Specs</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+
+              <h3 class="project-title">HealthSync Exchange Portal</h3>
+
+              <div class="project-stack-strip">
+                <span class="stack-tag">Next.js 15</span>
+                <span class="stack-tag">TypeScript</span>
+                <span class="stack-tag">PostgreSQL (RLS)</span>
+                <span class="stack-tag">OAuth 2.0 / SAML</span>
+                <span class="stack-tag">Redis</span>
+              </div>
+            </div>
+
+            <div class="project-card-details" id="project-details-web">
+              <div class="project-card-details-inner">
+                <div class="case-study-expanded-content">
+                  <div class="case-col-left">
+                    <div class="case-block challenge-block">
+                      <span class="case-block-label">Architecture Challenge</span>
+                      <p class="case-block-text">The client faced severe latency and security risks synchronizing electronic health records across 40 diagnostic clinical facilities.</p>
+                    </div>
+                    <div class="case-block solution-block">
+                      <span class="case-block-label">Engineered Solution</span>
+                      <p class="case-block-text">Next.js 15 App Router with Edge SSR, cryptographic audit trails, OAuth 2.0 / SAML SSO, and partitioned PostgreSQL schemas.</p>
+                      <div class="case-pattern-tag">
+                        <span style="font-size: 1rem;">📐</span>
+                        <span><strong>Data Architecture:</strong> PostgreSQL Row-Level Security (RLS) with AES-256 GCM encrypted field storage and append-only cryptographic audit logs.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="case-col-right">
+                    <div class="case-block impact-block">
+                      <span class="case-block-label">Measured Production Impact</span>
+                      <p class="case-block-text">Achieved 100% HIPAA compliance audit score and reduced clinical record retrieval latency to under 42ms.</p>
+                    </div>
+
+                    <div class="expanded-benchmark-strip">
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">42ms P99</span>
+                        <span class="expanded-benchmark-lbl">Response Time</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">12,500 req/s</span>
+                        <span class="expanded-benchmark-lbl">Ingress Scale</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">100% HIPAA</span>
+                        <span class="expanded-benchmark-lbl">Audit Standard</span>
+                      </div>
+                    </div>
+
+                    <div class="expanded-actions-bar">
+                      <a href="contact.html?project=web&ref=HealthSync+Exchange+Portal&scope=custom-web" class="btn btn-primary">
+                        <span>Consult on Similar System</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </a>
+                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('web', event)">
+                        <span>Collapse</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
 
           <!-- Project 4: ERP -->
-          <article class="project-card card-lavender glow-card" data-category="erp">
-            <div>
-              <h3 class="project-title">ApexLedger Manufacturing ERP</h3>
-              <p class="project-desc">
-                Shop-floor ERP system tracking real-time bill-of-materials (BOM), automated machine scheduling, and double-entry accounting replacing legacy SAP installations.
-              </p>
-            </div>
-            <div>
-              <div class="project-metric-box">
-                <span class="metric-data">-$420K</span>
-                <span class="metric-caption">Annual Seat Fees<br>99.99% Uptime</span>
+          <article class="project-card" id="project-card-apex" data-category="erp" aria-expanded="false">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('apex', event)" role="button" tabindex="0" aria-label="Toggle ApexLedger Manufacturing ERP case study">
+              <div class="project-header-top">
+                <span class="project-category-badge">Enterprise ERP</span>
+                <div class="project-expand-indicator">
+                  <span class="expand-text">Explore Specs</span>
+                  <span class="expand-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                  </span>
+                </div>
               </div>
-              <button type="button" class="project-footer-link" onclick="openCaseStudy('erp')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
-                <span>View Architecture Specs</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+
+              <h3 class="project-title">ApexLedger Manufacturing ERP</h3>
+
+              <div class="project-stack-strip">
+                <span class="stack-tag">Rust</span>
+                <span class="stack-tag">Apache Kafka</span>
+                <span class="stack-tag">PostgreSQL</span>
+                <span class="stack-tag">WebSockets</span>
+                <span class="stack-tag">Docker</span>
+              </div>
+            </div>
+
+            <div class="project-card-details" id="project-details-apex">
+              <div class="project-card-details-inner">
+                <div class="case-study-expanded-content">
+                  <div class="case-col-left">
+                    <div class="case-block challenge-block">
+                      <span class="case-block-label">Architecture Challenge</span>
+                      <p class="case-block-text">High-cost SAP licenses with 2-minute batch inventory sync delays causing assembly line work stoppages.</p>
+                    </div>
+                    <div class="case-block solution-block">
+                      <span class="case-block-label">Engineered Solution</span>
+                      <p class="case-block-text">Event-driven Rust microservices, Apache Kafka event streams, and real-time WebSockets telemetry to shop-floor tablets.</p>
+                      <div class="case-pattern-tag">
+                        <span style="font-size: 1rem;">📐</span>
+                        <span><strong>Data Architecture:</strong> Event-sourced ledger architecture using Kafka topic partitions with zero-downtime schema evolution.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="case-col-right">
+                    <div class="case-block impact-block">
+                      <span class="case-block-label">Measured Production Impact</span>
+                      <p class="case-block-text">Eliminated $420,000 in recurring annual SAP seat fees and cut bill-of-materials recalculation from 120s to 1.2s.</p>
+                    </div>
+
+                    <div class="expanded-benchmark-strip">
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">18ms P99</span>
+                        <span class="expanded-benchmark-lbl">BOM Calc Latency</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">35,000 evt/s</span>
+                        <span class="expanded-benchmark-lbl">Event Stream</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">-$420K Fees</span>
+                        <span class="expanded-benchmark-lbl">Annual Savings</span>
+                      </div>
+                    </div>
+
+                    <div class="expanded-actions-bar">
+                      <a href="contact.html?project=apex&ref=ApexLedger+Manufacturing+ERP&scope=custom-erp" class="btn btn-primary">
+                        <span>Consult on Similar System</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </a>
+                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('apex', event)">
+                        <span>Collapse</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
 
           <!-- Project 5: Mobile -->
-          <article class="project-card card-amber glow-card" data-category="mobile">
-            <div>
-              <h3 class="project-title">SwiftPay Consumer Wallet</h3>
-              <p class="project-desc">
-                Fintech mobile application with Secure Enclave biometrics, instant peer-to-peer transfers, and native push notification infrastructure serving 250,000 active mobile users.
-              </p>
-            </div>
-            <div>
-              <div class="project-metric-box">
-                <span class="metric-data">&lt; 0.8s</span>
-                <span class="metric-caption">Cold App Launch<br>4.9★ App Store</span>
+          <article class="project-card" id="project-card-swiftpay" data-category="mobile" aria-expanded="false">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('swiftpay', event)" role="button" tabindex="0" aria-label="Toggle SwiftPay Consumer Wallet case study">
+              <div class="project-header-top">
+                <span class="project-category-badge">Native Mobile</span>
+                <div class="project-expand-indicator">
+                  <span class="expand-text">Explore Specs</span>
+                  <span class="expand-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                  </span>
+                </div>
               </div>
-              <button type="button" class="project-footer-link" onclick="openCaseStudy('mobile')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
-                <span>View Architecture Specs</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+
+              <h3 class="project-title">SwiftPay Consumer Wallet</h3>
+
+              <div class="project-stack-strip">
+                <span class="stack-tag">Swift</span>
+                <span class="stack-tag">Kotlin</span>
+                <span class="stack-tag">Secure Enclave</span>
+                <span class="stack-tag">mTLS Gateways</span>
+                <span class="stack-tag">PostgreSQL</span>
+              </div>
+            </div>
+
+            <div class="project-card-details" id="project-details-swiftpay">
+              <div class="project-card-details-inner">
+                <div class="case-study-expanded-content">
+                  <div class="case-col-left">
+                    <div class="case-block challenge-block">
+                      <span class="case-block-label">Architecture Challenge</span>
+                      <p class="case-block-text">High fraudulent chargeback rates and 2.4-second peer-to-peer transfer lag during peak shopping volumes.</p>
+                    </div>
+                    <div class="case-block solution-block">
+                      <span class="case-block-label">Engineered Solution</span>
+                      <p class="case-block-text">Native iOS (Swift) & Android (Kotlin) app with Apple Secure Enclave & Android Keystore hardware biometric signature verification.</p>
+                      <div class="case-pattern-tag">
+                        <span style="font-size: 1rem;">📐</span>
+                        <span><strong>Data Architecture:</strong> Hardware-backed asymmetric key cryptography with mutual TLS (mTLS) token-bound API sessions.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="case-col-right">
+                    <div class="case-block impact-block">
+                      <span class="case-block-label">Measured Production Impact</span>
+                      <p class="case-block-text">Achieved sub-0.8s cold app launch, zero credential theft vulnerabilities, and 4.9★ rating across 250,000 active users.</p>
+                    </div>
+
+                    <div class="expanded-benchmark-strip">
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">&lt; 0.8s</span>
+                        <span class="expanded-benchmark-lbl">Cold App Launch</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">250K Users</span>
+                        <span class="expanded-benchmark-lbl">Active Fleet</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">99.999%</span>
+                        <span class="expanded-benchmark-lbl">Settlement SLA</span>
+                      </div>
+                    </div>
+
+                    <div class="expanded-actions-bar">
+                      <a href="contact.html?project=swiftpay&ref=SwiftPay+Consumer+Wallet&scope=mobile-app" class="btn btn-primary">
+                        <span>Consult on Similar System</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </a>
+                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('swiftpay', event)">
+                        <span>Collapse</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
 
           <!-- Project 6: Web -->
-          <article class="project-card card-ice-blue glow-card" data-category="web">
-            <div>
-              <h3 class="project-title">QuantPulse Trading Terminal</h3>
-              <p class="project-desc">
-                High-frequency institutional trading web application with real-time WebSockets, sub-15ms market depth streaming, and customizable charting workspaces.
-              </p>
-            </div>
-            <div>
-              <div class="project-metric-box">
-                <span class="metric-data">Sub-15ms</span>
-                <span class="metric-caption">Order Execution<br>$850M+ Volume</span>
+          <article class="project-card" id="project-card-quantpulse" data-category="web" aria-expanded="false">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('quantpulse', event)" role="button" tabindex="0" aria-label="Toggle QuantPulse Trading Terminal case study">
+              <div class="project-header-top">
+                <span class="project-category-badge">Web Application</span>
+                <div class="project-expand-indicator">
+                  <span class="expand-text">Explore Specs</span>
+                  <span class="expand-chevron">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                  </span>
+                </div>
               </div>
-              <button type="button" class="project-footer-link" onclick="openCaseStudy('web')" style="background:none; border:none; cursor:pointer; font-family:inherit; padding:0; width:100%; justify-content:space-between;">
-                <span>View Architecture Specs</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+
+              <h3 class="project-title">QuantPulse Trading Terminal</h3>
+
+              <div class="project-stack-strip">
+                <span class="stack-tag">Rust (Wasm)</span>
+                <span class="stack-tag">Binary WebSockets</span>
+                <span class="stack-tag">ClickHouse</span>
+                <span class="stack-tag">WebGL</span>
+                <span class="stack-tag">TypeScript</span>
+              </div>
+            </div>
+
+            <div class="project-card-details" id="project-details-quantpulse">
+              <div class="project-card-details-inner">
+                <div class="case-study-expanded-content">
+                  <div class="case-col-left">
+                    <div class="case-block challenge-block">
+                      <span class="case-block-label">Architecture Challenge</span>
+                      <p class="case-block-text">Browser tab memory leaks and 300ms WebSocket rendering lag causing missed financial arbitrage opportunities.</p>
+                    </div>
+                    <div class="case-block solution-block">
+                      <span class="case-block-label">Engineered Solution</span>
+                      <p class="case-block-text">High-performance Canvas & WebGL rendering pipeline with Rust WebAssembly data decoder and multiplexed binary WebSockets.</p>
+                      <div class="case-pattern-tag">
+                        <span style="font-size: 1rem;">📐</span>
+                        <span><strong>Data Architecture:</strong> Columnar ClickHouse time-series storage with ring-buffer memory pools and Protobuf binary packet streaming.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="case-col-right">
+                    <div class="case-block impact-block">
+                      <span class="case-block-label">Measured Production Impact</span>
+                      <p class="case-block-text">Reduced order execution and order book depth streaming latency to under 15ms with $850M+ daily transacted volume.</p>
+                    </div>
+
+                    <div class="expanded-benchmark-strip">
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">12ms</span>
+                        <span class="expanded-benchmark-lbl">Execution Latency</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">$850M+</span>
+                        <span class="expanded-benchmark-lbl">Daily Volume</span>
+                      </div>
+                      <div class="expanded-benchmark-card">
+                        <span class="expanded-benchmark-val">60 FPS</span>
+                        <span class="expanded-benchmark-lbl">Canvas Rendering</span>
+                      </div>
+                    </div>
+
+                    <div class="expanded-actions-bar">
+                      <a href="contact.html?project=quantpulse&ref=QuantPulse+Trading+Terminal&scope=custom-web" class="btn btn-primary">
+                        <span>Consult on Similar System</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </a>
+                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('quantpulse', event)">
+                        <span>Collapse</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
 
@@ -335,54 +689,6 @@
     </div>
   </footer>
 
-  <!-- Native dialog backdrop and focus management for case studies -->
-  <dialog id="caseStudyDialog" class="case-study-dialog">
-    <button type="button" class="dialog-close-btn" onclick="closeCaseStudy()" aria-label="Close dialog">&times;</button>
-    <div style="margin-bottom: 1.5rem;">
-      <span class="eyebrow-text">Architecture Case Study</span>
-      <h3 id="caseTitle" style="font-size: 1.65rem; margin-bottom: 0.25rem;">OmniFlow Global ERP</h3>
-      <p id="caseSubtitle" style="color: var(--color-text-muted); font-size: 0.875rem;">Custom administrative web portal & multi-currency billing engine</p>
-    </div>
-    <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
-      <div style="background: var(--color-bg-page); padding: 1rem; border-radius: var(--radius-md); border-left: 3px solid #ef4444;">
-        <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #ef4444; margin-bottom: 0.25rem;">The Architecture Challenge</strong>
-        <p id="caseProblem" style="font-size: 0.875rem; margin: 0; color: var(--color-text-body);"></p>
-      </div>
-      <div style="background: var(--color-bg-page); padding: 1rem; border-radius: var(--radius-md); border-left: 3px solid var(--color-primary);">
-        <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--color-primary); margin-bottom: 0.25rem;">Engineered Solution</strong>
-        <p id="caseArch" style="font-size: 0.875rem; margin: 0; color: var(--color-text-body);"></p>
-      </div>
-      <div style="background: var(--color-bg-page); padding: 1rem; border-radius: var(--radius-md); border-left: 3px solid #10b981;">
-        <strong style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #10b981; margin-bottom: 0.25rem;">Production Impact</strong>
-        <p id="caseResult" style="font-size: 0.875rem; margin: 0; color: var(--color-text-body); font-weight: 600;"></p>
-      </div>
-    </div>
-    <div style="display: flex; gap: 0.75rem; justify-content: flex-end; flex-wrap: wrap;">
-      <button type="button" class="btn btn-ghost" onclick="closeCaseStudy()">Close</button>
-      <a href="contact.html" class="btn btn-primary">Deploy Similar Architecture &rarr;</a>
-    </div>
-  </dialog>
-
-  <!-- Category filter and search logic -->
-  <script>
-    let activeCategory = 'all';
-    function filterProjects(category, btn) {
-      document.querySelectorAll('.filter-pill').forEach(el => el.classList.remove('active'));
-      btn.classList.add('active');
-      activeCategory = category;
-      applyProjectFilters();
-    }
-    function searchProjects(query) {
-      applyProjectFilters(query.toLowerCase().trim());
-    }
-    function applyProjectFilters(searchQuery = document.getElementById('projectSearch')?.value.toLowerCase().trim() || '') {
-      document.querySelectorAll('.project-card').forEach(card => {
-        const matchesCategory = (activeCategory === 'all' || card.dataset.category === activeCategory);
-        const matchesSearch = !searchQuery || card.textContent.toLowerCase().includes(searchQuery);
-        card.style.display = (matchesCategory && matchesSearch) ? 'flex' : 'none';
-      });
-    }
-  </script>
   <script type="module" src="main.js"></script>
 
   <!--

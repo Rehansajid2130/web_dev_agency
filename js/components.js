@@ -83,80 +83,352 @@ document.addEventListener('keydown', (e) => {
 // ==================== 2. CASE STUDY DIALOG ====================
 
 /**
- * Architectural case study dataset.
- * @type {Record<string, {title: string, subtitle: string, problem: string, architecture: string, result: string}>}
+ * Architectural case study dataset with complete stack blueprints and metrics.
+ * @type {Record<string, {
+ *   title: string,
+ *   subtitle: string,
+ *   problem: string,
+ *   architecture: string,
+ *   result: string,
+ *   stack: string[],
+ *   metrics: { p99: string, throughput: string, efficiency: string },
+ *   dataPattern: string
+ * }>}
  */
 export const caseStudyData = {
+  erp: {
+    title: 'OmniFlow Global ERP',
+    subtitle: 'Custom enterprise ERP & multi-warehouse inventory engine',
+    problem: 'The client was spending $350K/year in legacy commercial ERP seat fees while suffering warehouse stock desynchronization and 4-second query delays across 14 international fulfillment hubs.',
+    architecture: 'Custom ERP core in Go and React 19, distributed transaction sagas for inventory reservation, automated double-entry general ledger, and multi-currency billing.',
+    result: 'Reduced order reconciliation from 18 minutes to 4 seconds, eliminated recurring seat fees permanently, and unified 14 international fulfillment hubs.',
+    stack: ['Go (Golang)', 'PostgreSQL 16', 'React 19', 'Redis Cluster', 'Docker / K8s', 'gRPC'],
+    metrics: { p99: '84ms P99', throughput: '18,500 req/s', efficiency: '-$350K/yr Seats' },
+    dataPattern: 'Distributed transaction sagas with idempotent ledger entries, write-ahead logs, and read-replicas per geographic zone.'
+  },
+  mobile: {
+    title: 'FieldOps Mobile Suite',
+    subtitle: 'Offline-first native mobile application for iOS & Android',
+    problem: 'Over 4,000 field technicians experienced lost work orders and application freezing when servicing equipment in remote subterranean basements without cellular service.',
+    architecture: 'React Native with native Swift & Kotlin hardware bridges, local encrypted SQLite databases, CRDT conflict reconciliation, and background sync queues.',
+    result: 'Eliminated 100% of field data loss incidents and decreased service ticket turnaround time by 38% across both iOS and Android fleets.',
+    stack: ['Swift', 'Kotlin', 'SQLite / SQLCipher', 'CRDTs', 'Node.js', 'WebSockets'],
+    metrics: { p99: '0s Data Loss', throughput: '60 FPS Native', efficiency: '+38% Field Velocity' },
+    dataPattern: 'Local-first encrypted SQLite database utilizing Conflict-free Replicated Data Types (CRDTs) with deterministic state vector merges.'
+  },
   web: {
     title: 'HealthSync Exchange Portal',
     subtitle: 'Zero-trust HIPAA-compliant medical web application & client portal',
     problem: 'The client faced severe latency and security risks synchronizing electronic health records across 40 diagnostic clinical facilities.',
     architecture: 'Next.js 15 App Router with Edge SSR, cryptographic audit trails, OAuth 2.0 / SAML SSO, and partitioned PostgreSQL schemas.',
-    result: 'Achieved 100% HIPAA compliance audit score and reduced clinical record retrieval latency to under 85ms.'
+    result: 'Achieved 100% HIPAA compliance audit score and reduced clinical record retrieval latency to under 85ms.',
+    stack: ['Next.js 15', 'TypeScript', 'PostgreSQL (RLS)', 'Redis Cache', 'OAuth 2.0 / SAML', 'Tailwind'],
+    metrics: { p99: '42ms P99', throughput: '12,500 req/s', efficiency: '100% HIPAA Score' },
+    dataPattern: 'PostgreSQL Row-Level Security (RLS) with AES-256 GCM encrypted field storage and append-only cryptographic audit logs.'
   },
-  mobile: {
-    title: 'FieldOps Mobile Suite',
-    subtitle: 'Offline-first native mobile application for iOS & Android',
-    problem: 'Over 4,000 field technicians experienced lost work orders and application freezing when servicing equipment in remote subterranean basements.',
-    architecture: 'React Native with native Swift & Kotlin hardware bridges, local encrypted SQLite databases, CRDT conflict reconciliation, and background sync queues.',
-    result: 'Eliminated 100% of field data loss incidents and decreased service ticket turnaround time by 38% across both iOS and Android fleets.'
+  apex: {
+    title: 'ApexLedger Manufacturing ERP',
+    subtitle: 'Shop-floor automated machine scheduling & double-entry accounting',
+    problem: 'High-cost SAP licenses with 2-minute batch inventory sync delays causing assembly line work stoppages.',
+    architecture: 'Event-driven Rust microservices, Apache Kafka event streams, and real-time WebSockets telemetry to shop-floor tablets.',
+    result: 'Eliminated $420,000 in recurring annual SAP seat fees and cut bill-of-materials recalculation from 120s to 1.2s.',
+    stack: ['Rust', 'Apache Kafka', 'PostgreSQL', 'WebSockets', 'Tailwind', 'Docker'],
+    metrics: { p99: '18ms P99', throughput: '35,000 events/s', efficiency: '-$420K SAP Fees' },
+    dataPattern: 'Event-sourced ledger architecture using Kafka topic partitions with zero-downtime schema evolution.'
   },
-  erp: {
-    title: 'OmniFlow Global ERP',
-    subtitle: 'Custom enterprise ERP & multi-warehouse inventory engine',
-    problem: 'The client was spending $350K/year in legacy commercial ERP seat fees while suffering warehouse stock desynchronization and 4-second query delays.',
-    architecture: 'Custom ERP core in Go and React 19, distributed transaction sagas for inventory reservation, automated double-entry general ledger, and multi-currency billing.',
-    result: 'Reduced order reconciliation from 18 minutes to 4 seconds, eliminated recurring seat fees permanently, and unified 14 international fulfillment hubs.'
+  swiftpay: {
+    title: 'SwiftPay Consumer Wallet',
+    subtitle: 'Fintech mobile application with Secure Enclave biometrics',
+    problem: 'High fraudulent chargeback rates and 2.4-second peer-to-peer transfer lag during peak shopping volumes.',
+    architecture: 'Native iOS (Swift) & Android (Kotlin) app with Apple Secure Enclave & Android Keystore hardware biometric signature verification.',
+    result: 'Achieved sub-0.8s cold app launch, zero credential theft vulnerabilities, and 4.9★ rating across 250,000 active users.',
+    stack: ['Swift', 'Kotlin', 'Go API Gateway', 'PostgreSQL', 'Redis', 'Apple Pay API'],
+    metrics: { p99: '0.8s Cold Launch', throughput: '250K Users', efficiency: '99.999% Settlement' },
+    dataPattern: 'Hardware-backed asymmetric key cryptography with mutual TLS (mTLS) token-bound API sessions.'
   },
+  quantpulse: {
+    title: 'QuantPulse Trading Terminal',
+    subtitle: 'Institutional algorithmic trading terminal & market streaming web portal',
+    problem: 'Browser tab memory leaks and 300ms WebSocket rendering lag causing missed financial arbitrage opportunities.',
+    architecture: 'High-performance Canvas & WebGL rendering pipeline with Rust WebAssembly data decoder and multiplexed binary WebSockets.',
+    result: 'Reduced order execution and order book depth streaming latency to under 15ms with $850M+ daily transacted volume.',
+    stack: ['Rust (Wasm)', 'WebGL / Canvas', 'TypeScript', 'Binary WebSockets', 'ClickHouse', 'Redis'],
+    metrics: { p99: '12ms Latency', throughput: '$850M+ Daily', efficiency: '60 FPS at 100K updates' },
+    dataPattern: 'Columnar ClickHouse time-series storage with ring-buffer memory pools and Protobuf binary packet streaming.'
+  },
+  // Backward compatibility aliases
   software: {
     title: 'OmniFlow Global ERP',
     subtitle: 'Custom enterprise ERP & multi-warehouse inventory engine',
     problem: 'Legacy ERP seat fees and inventory race conditions across multiple warehouse locations.',
     architecture: 'Custom ERP core in Go and React 19 with distributed transaction sagas and automated general ledger.',
-    result: 'Eliminated recurring seat licenses permanently and brought stock reconciliation to under 4 seconds.'
+    result: 'Eliminated recurring seat licenses permanently and brought stock reconciliation to under 4 seconds.',
+    stack: ['Go', 'PostgreSQL 16', 'React 19', 'Redis Cluster'],
+    metrics: { p99: '84ms P99', throughput: '18,500 req/s', efficiency: '-$350K/yr Seats' },
+    dataPattern: 'Distributed transaction sagas with write-ahead logs and regional read-replicas.'
   },
   cloud: {
     title: 'FieldOps Mobile Suite',
     subtitle: 'Offline-first native mobile application for iOS & Android',
     problem: 'Data loss when field technicians operated in low-connectivity industrial zones.',
     architecture: 'Local encrypted SQLite, CRDT synchronization, and background sync pipelines.',
-    result: 'Eliminated 100% of field data loss across 4,000 active devices.'
+    result: 'Eliminated 100% of field data loss across 4,000 active devices.',
+    stack: ['Swift', 'Kotlin', 'SQLite / SQLCipher', 'CRDTs'],
+    metrics: { p99: '0s Data Loss', throughput: '60 FPS Native', efficiency: '+38% Field Velocity' },
+    dataPattern: 'Conflict-free Replicated Data Types (CRDTs) with state vector reconciliation.'
   }
 };
 
 /**
- * Open the native case study <dialog> and populate data.
- * @param {string} type - Case study identifier key ('web' | 'mobile' | 'erp').
+ * Toggle expanding/collapsing a project case study card with smooth physics and automatic scroll adjustment.
+ * @param {string} cardId - Case study identifier ('erp' | 'mobile' | 'web' | 'apex' | 'swiftpay' | 'quantpulse').
+ * @param {Event} [event] - Triggering click or keyboard event.
  * @returns {void}
  */
-export function openCaseStudy(type) {
-  const dialog = /** @type {HTMLDialogElement|null} */ (document.getElementById('caseStudyDialog'));
-  const data = caseStudyData[type] || caseStudyData['web'];
-  if (!dialog) return;
+export function toggleCaseStudyCard(cardId, event) {
+  if (event) {
+    const target = /** @type {HTMLElement|null} */ (event.target);
+    // If the click is on an outbound link or inside an action button, do not toggle
+    if (target && target.closest('a')) return;
+    event.stopPropagation();
+  }
 
-  const titleEl = document.getElementById('caseTitle');
-  const subEl = document.getElementById('caseSubtitle');
-  const probEl = document.getElementById('caseProblem');
-  const archEl = document.getElementById('caseArch');
-  const resEl = document.getElementById('caseResult');
+  const targetCard = document.getElementById(`project-card-${cardId}`);
+  if (!targetCard) return;
 
-  if (titleEl) titleEl.textContent = data.title;
-  if (subEl) subEl.textContent = data.subtitle;
-  if (probEl) probEl.textContent = data.problem;
-  if (archEl) archEl.textContent = data.architecture;
-  if (resEl) resEl.textContent = data.result;
+  const isCurrentlyExpanded = targetCard.classList.contains('is-expanded');
 
-  dialog.showModal();
+  // Collapse any other open card for clean accordion physics
+  document.querySelectorAll('.project-card.is-expanded').forEach(card => {
+    if (card !== targetCard) {
+      card.classList.remove('is-expanded');
+      card.setAttribute('aria-expanded', 'false');
+      const text = card.querySelector('.expand-text');
+      if (text) text.textContent = 'Explore Specs';
+    }
+  });
+
+  if (isCurrentlyExpanded) {
+    targetCard.classList.remove('is-expanded');
+    targetCard.setAttribute('aria-expanded', 'false');
+    const text = targetCard.querySelector('.expand-text');
+    if (text) text.textContent = 'Explore Specs';
+  } else {
+    targetCard.classList.add('is-expanded');
+    targetCard.setAttribute('aria-expanded', 'true');
+    const text = targetCard.querySelector('.expand-text');
+    if (text) text.textContent = 'Collapse';
+
+    // Smooth physics scroll to ensure top of expanded card is in clean reading view
+    setTimeout(() => {
+      const navOffset = 90;
+      const targetPos = targetCard.getBoundingClientRect().top + window.scrollY - navOffset;
+      if (window.lenis) {
+        window.lenis.scrollTo(targetPos, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+      }
+    }, 180);
+  }
 }
 
 /**
- * Close the native case study dialog.
+ * Open/expand a specific project case study card.
+ * @param {string} cardId - Project key identifier.
+ * @returns {void}
+ */
+export function openCaseStudy(cardId) {
+  const targetCard = document.getElementById(`project-card-${cardId}`);
+  if (targetCard && !targetCard.classList.contains('is-expanded')) {
+    toggleCaseStudyCard(cardId);
+  }
+}
+
+/**
+ * Collapse all expanded project cards.
  * @returns {void}
  */
 export function closeCaseStudy() {
-  const dialog = /** @type {HTMLDialogElement|null} */ (document.getElementById('caseStudyDialog'));
-  if (dialog) dialog.close();
+  document.querySelectorAll('.project-card.is-expanded').forEach(card => {
+    card.classList.remove('is-expanded');
+    card.setAttribute('aria-expanded', 'false');
+    const text = card.querySelector('.expand-text');
+    if (text) text.textContent = 'Explore Specs';
+  });
 }
+
+
+// ==================== 2B. ARCHITECTURE CONFIGURATOR COMPATIBILITY ====================
+
+/**
+ * Presets mapping for dynamic architecture generation.
+ */
+const blueprintPresets = {
+  web: {
+    name: 'Custom High-Throughput Web Platform',
+    runtime: 'Go (Golang) / Next.js 15 Edge SSR',
+    db: 'PostgreSQL 16 (Partitioned Schemas)',
+    cache: 'Redis 7.2 Cluster (Sub-1ms Latency)',
+    sync: 'HTTP/2 Server-Sent Events (SSE)',
+    security: 'OAuth 2.0 / SAML SSO + RBAC',
+    latencyTarget: 'Sub-45ms P99',
+    nodes: [
+      { icon: '🌐', label: 'Cloudflare Edge', spec: 'Global Anycast' },
+      { icon: '⚡', label: 'Go Ingress', spec: 'API Gateway' },
+      { icon: '🧩', label: 'App Cluster', spec: 'Next.js 15 SSR' },
+      { icon: '🔥', label: 'Redis Cache', spec: 'Sub-1ms Bus' },
+      { icon: '🗄️', label: 'Postgres 16', spec: 'Partitioned' }
+    ]
+  },
+  mobile: {
+    name: 'Offline-First Native Mobile Architecture',
+    runtime: 'Swift 6 (iOS) & Kotlin (Android)',
+    db: 'Local SQLCipher (Encrypted SQLite)',
+    cache: 'State-Vector CRDT Engine',
+    sync: 'Multiplexed WebSockets + Background Queue',
+    security: 'Hardware Secure Enclave / Keystore Biometrics',
+    latencyTarget: 'Zero Offline Latency (60 FPS)',
+    nodes: [
+      { icon: '📱', label: 'Native Fleet', spec: 'iOS & Android' },
+      { icon: '🔒', label: 'Local SQLite', spec: 'AES-256 Cipher' },
+      { icon: '🧬', label: 'CRDT Sync', spec: 'Deterministic' },
+      { icon: '⚡', label: 'Ingress Queue', spec: 'Background FIFO' },
+      { icon: '🗄️', label: 'Postgres Cloud', spec: 'Event Sourced' }
+    ]
+  },
+  erp: {
+    name: 'Distributed Enterprise ERP Hub',
+    runtime: 'Go Microservices & React 19 Core',
+    db: 'PostgreSQL 16 + TimescaleDB (Time-series)',
+    cache: 'Apache Kafka Event Bus + Redis',
+    sync: 'Distributed Sagas & Idempotent Ledger',
+    security: 'Zero-Trust Multi-Tenant Row-Level Security',
+    latencyTarget: 'Sub-100ms Operations & Billing',
+    nodes: [
+      { icon: '🏭', label: 'Global Hubs', spec: '14 Fulfillment Nodes' },
+      { icon: '⚙️', label: 'Go Sagas Core', spec: 'Distributed Ops' },
+      { icon: '📬', label: 'Kafka Bus', spec: 'Event Streaming' },
+      { icon: '📒', label: 'General Ledger', spec: 'Double-Entry' },
+      { icon: '🗄️', label: 'Postgres DB', spec: 'TimescaleDB' }
+    ]
+  }
+};
+
+/**
+ * Set platform selection in configurator.
+ * @param {'web'|'mobile'|'erp'} platformKey - Selected platform.
+ * @returns {void}
+ */
+export function setArchPlatform(platformKey) {
+  archConfigState.platform = platformKey;
+  document.querySelectorAll('.arch-platform-btn').forEach(el => {
+    const btn = /** @type {HTMLElement} */ (el);
+    btn.classList.toggle('active', btn.dataset.val === platformKey);
+  });
+  renderArchBlueprint();
+}
+
+/**
+ * Set scale parameter in configurator.
+ * @param {'growth'|'scaleup'|'enterprise'} scaleKey - Selected scale tier.
+ * @returns {void}
+ */
+export function setArchScale(scaleKey) {
+  archConfigState.scale = scaleKey;
+  document.querySelectorAll('.arch-scale-btn').forEach(el => {
+    const btn = /** @type {HTMLElement} */ (el);
+    btn.classList.toggle('active', btn.dataset.val === scaleKey);
+  });
+  renderArchBlueprint();
+}
+
+/**
+ * Toggle an architectural primitive checkbox.
+ * @param {string} primitiveKey - Selected capability primitive.
+ * @returns {void}
+ */
+export function toggleArchPrimitive(primitiveKey) {
+  if (archConfigState.primitives.has(primitiveKey)) {
+    archConfigState.primitives.delete(primitiveKey);
+  } else {
+    archConfigState.primitives.add(primitiveKey);
+  }
+  renderArchBlueprint();
+}
+
+/**
+ * Re-render the live architecture blueprint output.
+ * @returns {void}
+ */
+export function renderArchBlueprint() {
+  const preset = blueprintPresets[archConfigState.platform] || blueprintPresets['web'];
+  
+  // Calculate scale dynamic modifiers
+  let scaleNote = '10K - 100K DAU (Scaleup Tier)';
+  let latencyStr = preset.latencyTarget;
+  if (archConfigState.scale === 'growth') {
+    scaleNote = '< 10K DAU (Lean Scalable Foundation)';
+    latencyStr = 'Sub-60ms P99';
+  } else if (archConfigState.scale === 'enterprise') {
+    scaleNote = '1M+ Daily Events (Multi-Region Active-Active)';
+    latencyStr = 'Sub-25ms P99 SLA';
+  }
+
+  // Update elements
+  const titleEl = document.getElementById('blueprintTitle');
+  const scaleEl = document.getElementById('blueprintScale');
+  const latencyEl = document.getElementById('blueprintLatency');
+  const runtimeEl = document.getElementById('blueprintRuntime');
+  const dbEl = document.getElementById('blueprintDb');
+  const cacheEl = document.getElementById('blueprintCache');
+  const securityEl = document.getElementById('blueprintSecurity');
+
+  if (titleEl) titleEl.textContent = preset.name;
+  if (scaleEl) scaleEl.textContent = scaleNote;
+  if (latencyEl) latencyEl.textContent = latencyStr;
+  if (runtimeEl) runtimeEl.textContent = preset.runtime;
+  if (dbEl) dbEl.textContent = preset.db;
+  if (cacheEl) cacheEl.textContent = preset.cache;
+  if (securityEl) securityEl.textContent = preset.security;
+
+  // Render topology nodes
+  const nodesRow = document.getElementById('topologyNodesRow');
+  if (nodesRow && Array.isArray(preset.nodes)) {
+    nodesRow.innerHTML = preset.nodes.map((node, i) => `
+      <div class="topology-node">
+        <div class="topology-node-icon">${node.icon}</div>
+        <strong class="topology-node-label">${node.label}</strong>
+        <span class="topology-node-spec">${node.spec}</span>
+      </div>
+      ${i < preset.nodes.length - 1 ? '<span class="topology-arrow">&rarr;</span>' : ''}
+    `).join('');
+  }
+}
+
+/**
+ * Export configured architecture specifications to the consultation intake page.
+ * @returns {void}
+ */
+export function exportArchBlueprint() {
+  const preset = blueprintPresets[archConfigState.platform] || blueprintPresets['web'];
+  const prims = Array.from(archConfigState.primitives).join(', ');
+  const note = `[Engineered Architecture Specification]\n• Target Platform: ${preset.name}\n• Scale Tier: ${archConfigState.scale.toUpperCase()}\n• Core Runtime: ${preset.runtime}\n• Persistence Tier: ${preset.db}\n• Architectural Primitives: ${prims || 'Standard High-Throughput'}`;
+  
+  const platformScopeMap = {
+    web: 'custom-web',
+    mobile: 'mobile-app',
+    erp: 'custom-erp',
+    hft: 'custom-web'
+  };
+  const scope = platformScopeMap[archConfigState.platform] || 'custom-web';
+  const targetUrl = `contact.html?scope=${encodeURIComponent(scope)}&note=${encodeURIComponent(note)}`;
+  if (typeof window.navigateTo === 'function') {
+    window.navigateTo(targetUrl);
+  } else {
+    window.location.href = targetUrl;
+  }
+}
+
 
 
 // ==================== 3. PROCESS PAGE PHASE CONTROLLER ====================
@@ -225,6 +497,7 @@ export function filterProjects(category, btn = null) {
   document.querySelectorAll('.filter-pill').forEach(el => el.classList.remove('active'));
   if (btn) btn.classList.add('active');
   activeProjectCategory = category;
+  closeCaseStudy();
   applyProjectFilters();
 }
 
@@ -234,6 +507,7 @@ export function filterProjects(category, btn = null) {
  * @returns {void}
  */
 export function searchProjects(query) {
+  closeCaseStudy();
   applyProjectFilters(query.toLowerCase().trim());
 }
 
@@ -258,6 +532,7 @@ export function applyProjectFilters(searchQuery) {
  */
 export function initProjectsPage() {
   activeProjectCategory = 'all';
+  closeCaseStudy();
   applyProjectFilters();
 }
 
@@ -267,6 +542,7 @@ export function initProjectsPage() {
 let contactCurrentStep = 1;
 let contactMaxStep = 1;
 let contactSelectedScope = 'custom-web';
+let currentProjectBenchmark = '';
 
 const contactStepMeta = {
   1: { title: 'Contact Details', percent: '0%', pill: 'Step 1 of 3', width: '0%' },
@@ -348,8 +624,29 @@ export function updateLiveContactSummary() {
     summaryEmail.textContent = emailVal || '—';
   }
   if (summaryScope) {
-    summaryScope.textContent = contactScopeLabels[contactSelectedScope] || 'Custom Architecture';
+    const baseScope = contactScopeLabels[contactSelectedScope] || 'Custom Architecture';
+    summaryScope.textContent = currentProjectBenchmark ? `${baseScope} (Benchmark: ${currentProjectBenchmark})` : baseScope;
   }
+}
+
+/**
+ * Clear the project benchmark referral from the contact intake form.
+ * @returns {void}
+ */
+export function clearProjectReferral() {
+  currentProjectBenchmark = '';
+  const hiddenRef = /** @type {HTMLInputElement|null} */ (document.getElementById('contactReferencedProject'));
+  if (hiddenRef) hiddenRef.value = '';
+
+  const banner = document.getElementById('projectReferralBanner');
+  if (banner) banner.style.display = 'none';
+
+  const specsEl = /** @type {HTMLTextAreaElement|null} */ (document.getElementById('contactProjectSpecs'));
+  if (specsEl && specsEl.value.includes('[Project Benchmark Target:')) {
+    specsEl.value = '';
+  }
+
+  updateLiveContactSummary();
 }
 
 /**
@@ -527,9 +824,17 @@ export function handleContactSubmit(e) {
     const form = document.getElementById('contactPageForm');
     const stepper = document.querySelector('.form-stepper-wrap');
     const notice = document.getElementById('contactSuccessNotice');
+    const refBanner = document.getElementById('projectReferralBanner');
+    const noticeBody = document.getElementById('successNoticeBody');
+
+    if (refBanner) refBanner.style.display = 'none';
     if (form) form.style.display = 'none';
     if (stepper) stepper.style.display = 'none';
     if (notice) notice.style.display = 'block';
+
+    if (noticeBody && currentProjectBenchmark) {
+      noticeBody.textContent = `Our lead software architect has received your specifications for a system modeled on ${currentProjectBenchmark}. We will review your target architecture requirements and send an introductory agenda within 24 hours.`;
+    }
   }, 600);
 }
 
@@ -558,7 +863,93 @@ export function initContactPage() {
   contactCurrentStep = 1;
   contactMaxStep = 1;
   contactSelectedScope = 'custom-web';
+  currentProjectBenchmark = '';
   updateStepperUI(1);
+
+  // Check query parameters for project benchmark referral or prefilled architecture blueprint
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const projectParam = params.get('project');
+    const refParam = params.get('ref');
+    const scopeParam = params.get('scope');
+    const noteParam = params.get('note');
+
+    // Handle Project Benchmark Referral from "Consult on Similar System"
+    if (projectParam || refParam) {
+      const projectKey = (projectParam || '').toLowerCase();
+      const projectObj = caseStudyData[projectKey];
+      const projectTitle = refParam || projectObj?.title || 'Custom Engineering System';
+      currentProjectBenchmark = projectTitle;
+
+      // Determine target scope
+      let targetScope = scopeParam;
+      if (!targetScope || !contactScopeLabels[targetScope]) {
+        if (['erp', 'apex', 'software'].includes(projectKey)) {
+          targetScope = 'custom-erp';
+        } else if (['mobile', 'swiftpay', 'cloud'].includes(projectKey)) {
+          targetScope = 'mobile-app';
+        } else {
+          targetScope = 'custom-web';
+        }
+      }
+
+      if (targetScope && contactScopeLabels[targetScope]) {
+        selectProjectType(targetScope);
+      }
+
+      // Populate hidden input for form submission
+      const hiddenRef = /** @type {HTMLInputElement|null} */ (document.getElementById('contactReferencedProject'));
+      if (hiddenRef) {
+        hiddenRef.value = projectTitle;
+      }
+
+      // Configure and reveal the Project Benchmark banner
+      const refBanner = document.getElementById('projectReferralBanner');
+      const bannerTitle = document.getElementById('referralBannerTitle');
+      const bannerScope = document.getElementById('referralBannerScope');
+      const bannerDesc = document.getElementById('referralBannerDesc');
+
+      if (bannerTitle) bannerTitle.textContent = projectTitle;
+      if (bannerScope) bannerScope.textContent = contactScopeLabels[targetScope] || 'Custom Architecture';
+      if (bannerDesc) {
+        const stackList = projectObj?.stack ? projectObj.stack.slice(0, 4).join(', ') : '';
+        const stackText = stackList ? ` (${stackList})` : '';
+        bannerDesc.innerHTML = `You requested consultation on building a system similar to <strong>${projectTitle}</strong>${stackText}. We have pre-configured your project scope and pre-populated architectural specifications below.`;
+      }
+      if (refBanner) {
+        refBanner.style.display = 'block';
+      }
+
+      // Pre-fill technical specifications with structured benchmark requirements
+      const specsEl = /** @type {HTMLTextAreaElement|null} */ (document.getElementById('contactProjectSpecs'));
+      if (specsEl && !specsEl.value.trim()) {
+        const stackDetails = projectObj?.stack ? projectObj.stack.join(', ') : 'High-performance stack';
+        const archDetails = projectObj?.architecture ? `• Reference Architecture: ${projectObj.architecture}\n` : '';
+        const dataDetails = projectObj?.dataPattern ? `• Data & Transaction Pattern: ${projectObj.dataPattern}\n` : '';
+
+        specsEl.value = `[Project Benchmark Target: ${projectTitle}]\n` +
+          `• Core Technology Stack: ${stackDetails}\n` +
+          archDetails +
+          dataDetails +
+          `• Primary Scope: Engineer an enterprise-grade system modeled on ${projectTitle}, tailored to our organization's specific operational workflows.`;
+        specsEl.classList.remove('is-invalid');
+      }
+    } else if (scopeParam && contactScopeLabels[scopeParam]) {
+      selectProjectType(scopeParam);
+    }
+
+    if (noteParam) {
+      const specsEl = /** @type {HTMLTextAreaElement|null} */ (document.getElementById('contactProjectSpecs'));
+      if (specsEl) {
+        specsEl.value = noteParam;
+        specsEl.classList.remove('is-invalid');
+      }
+      const banner = document.getElementById('blueprintImportBanner');
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    }
+  } catch (_) {}
 
   const nameInput = document.getElementById('contactFullName');
   const emailInput = document.getElementById('contactWorkEmail');

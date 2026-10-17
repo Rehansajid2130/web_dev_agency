@@ -11,16 +11,26 @@ import { initStatsObserver, animateNumber, switchDashboardTab, startApiStreamSim
 import { initRouter, navigateTo, prefetchPage, normalizeUrl, reinitPageComponents } from './js/router.js';
 import { 
   openContactModal, closeContactModal, handleOverlayClick, handleFormSubmit,
-  caseStudyData, openCaseStudy, closeCaseStudy,
+  caseStudyData, openCaseStudy, closeCaseStudy, toggleCaseStudyCard,
   setPhaseTab, initProcessPage,
   filterProjects, searchProjects, applyProjectFilters, initProjectsPage,
   selectProjectType, appendSpecTag, updateLiveContactSummary, validateContactStep,
-  updateStepperUI, nextStep, prevStep, jumpToStep, handleContactSubmit, copyEmail, initContactPage
+  updateStepperUI, nextStep, prevStep, jumpToStep, handleContactSubmit, copyEmail, initContactPage,
+  clearProjectReferral,
+  setArchPlatform, setArchScale, toggleArchPrimitive, renderArchBlueprint, exportArchBlueprint
 } from './js/components.js';
 
 // ==================== GLOBAL COMPATIBILITY REGISTRATION ====================
 // Expose all public interactive handlers to window for inline HTML onclick attributes
 Object.assign(window, {
+  toggleCaseStudyCard,
+  clearProjectReferral,
+  // Architecture Configurator
+  setArchPlatform,
+  setArchScale,
+  toggleArchPrimitive,
+  renderArchBlueprint,
+  exportArchBlueprint,
   // Theme Engine
   initTheme,
   toggleTheme,
@@ -86,6 +96,17 @@ function bootstrapApp() {
   initCardGlow();
   initCustomCursor();
   initRouter();
+
+  // Page-specific initializers on direct load
+  if (document.querySelector('.framer-tab-btn')) {
+    initProcessPage();
+  }
+  if (document.querySelector('.project-card') || document.getElementById('archPlatformSelect')) {
+    initProjectsPage();
+  }
+  if (document.getElementById('contactPageForm')) {
+    initContactPage();
+  }
 }
 
 if (document.readyState === 'loading') {
