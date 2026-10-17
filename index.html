@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme-color="violet">
 
 <head>
   <meta charset="UTF-8">
@@ -16,9 +16,21 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      try {
+        var c = localStorage.getItem('bit3labs_theme_color') || 'violet';
+        document.documentElement.setAttribute('data-theme-color', c);
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
-<body>
+<body class="page-home">
 
   <!-- Background Blueprint Technical Grid Texture -->
   <div class="blueprint-grid-bg" aria-hidden="true"></div>
@@ -29,10 +41,10 @@
       <a href="#" class="brand-logo" id="brand-logo">
         <span class="logo-symbol">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB" />
-            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="var(--color-primary)" />
+            <path d="M2 17L12 22L22 17" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"
               stroke-linejoin="round" />
-            <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"
+            <path d="M2 12L12 17L22 12" stroke="var(--color-primary-dark)" stroke-width="2.5" stroke-linecap="round"
               stroke-linejoin="round" />
           </svg>
         </span>
@@ -40,7 +52,7 @@
       </a>
 
       <div class="nav-menu" id="nav-menu">
-        <a href="index.html" class="nav-link" style="color: var(--color-primary); font-weight: 700;">Home</a>
+        <a href="index.html" class="nav-link active">Home</a>
         <a href="services.html" class="nav-link">Services</a>
         <a href="process.html" class="nav-link">Our Process</a>
         <a href="projects.html" class="nav-link">Projects</a>
@@ -112,13 +124,13 @@
           <!-- Blueprint decorative circuit connectors around the mockup -->
           <svg class="blueprint-circuit-overlay" viewBox="0 0 1000 600" fill="none" preserveAspectRatio="none"
             aria-hidden="true">
-            <path d="M 60 120 H 160 A 24 24 0 0 1 184 144 V 240" stroke="#3B82F6" stroke-width="1.8"
+            <path d="M 60 120 H 160 A 24 24 0 0 1 184 144 V 240" stroke="var(--color-primary)" stroke-width="1.8"
               stroke-dasharray="6 6" opacity="0.45" />
-            <circle cx="184" cy="240" r="4" fill="#3B82F6" opacity="0.6" />
+            <circle cx="184" cy="240" r="4" fill="var(--color-primary)" opacity="0.6" />
 
-            <path d="M 940 80 H 840 A 24 24 0 0 0 816 104 V 280" stroke="#3B82F6" stroke-width="1.8"
+            <path d="M 940 80 H 840 A 24 24 0 0 0 816 104 V 280" stroke="var(--color-primary)" stroke-width="1.8"
               stroke-dasharray="6 6" opacity="0.45" />
-            <circle cx="816" cy="280" r="4" fill="#3B82F6" opacity="0.6" />
+            <circle cx="816" cy="280" r="4" fill="var(--color-primary)" opacity="0.6" />
           </svg>
 
           <div class="dashboard-card">
@@ -390,19 +402,19 @@
               <div class="illustration-frame frame-blue">
                 <svg class="line-illustration" viewBox="0 0 200 160" fill="none">
                   <!-- Custom Line-art: Web System Architecture -->
-                  <rect x="40" y="30" width="120" height="90" rx="10" stroke="#2563EB" stroke-width="2" />
-                  <path d="M40 55H160" stroke="#2563EB" stroke-width="1.5" stroke-dasharray="3 3" />
-                  <circle cx="55" cy="42" r="3" fill="#2563EB" />
-                  <circle cx="68" cy="42" r="3" fill="#60A5FA" />
-                  <circle cx="81" cy="42" r="3" fill="#93C5FD" />
+                  <rect x="40" y="30" width="120" height="90" rx="10" stroke="var(--color-primary)" stroke-width="2" />
+                  <path d="M40 55H160" stroke="var(--color-primary)" stroke-width="1.5" stroke-dasharray="3 3" />
+                  <circle cx="55" cy="42" r="3" fill="var(--color-primary)" />
+                  <circle cx="68" cy="42" r="3" fill="var(--color-primary-dark)" />
+                  <circle cx="81" cy="42" r="3" fill="var(--color-primary-light)" />
                   <!-- Flowchart inside screen -->
-                  <rect x="55" y="70" width="25" height="18" rx="4" stroke="#1D4ED8" stroke-width="1.5" />
-                  <path d="M80 79H95" stroke="#2563EB" stroke-width="1.5" />
-                  <rect x="95" y="70" width="25" height="18" rx="4" stroke="#1D4ED8" stroke-width="1.5" />
-                  <path d="M120 79H135" stroke="#2563EB" stroke-width="1.5" />
-                  <rect x="135" y="70" width="18" height="18" rx="4" fill="#EFF6FF" stroke="#1D4ED8"
+                  <rect x="55" y="70" width="25" height="18" rx="4" stroke="var(--color-primary-dark)" stroke-width="1.5" />
+                  <path d="M80 79H95" stroke="var(--color-primary)" stroke-width="1.5" />
+                  <rect x="95" y="70" width="25" height="18" rx="4" stroke="var(--color-primary-dark)" stroke-width="1.5" />
+                  <path d="M120 79H135" stroke="var(--color-primary)" stroke-width="1.5" />
+                  <rect x="135" y="70" width="18" height="18" rx="4" fill="var(--color-primary-light)" stroke="var(--color-primary-dark)"
                     stroke-width="1.5" />
-                  <path d="M80 120L70 145H130L120 120" stroke="#2563EB" stroke-width="2" />
+                  <path d="M80 120L70 145H130L120 120" stroke="var(--color-primary)" stroke-width="2" />
                 </svg>
                 <!-- Dashed circuit accents -->
                 <div class="frame-circuit-line"></div>
@@ -645,17 +657,17 @@
           <!-- Scalable Blueprint Circuit Overlay -->
           <svg class="schematic-svg" viewBox="0 0 1000 450" fill="none" preserveAspectRatio="none" aria-hidden="true">
             <!-- Left circuit traces -->
-            <path d="M 40 40 H 140 A 20 20 0 0 1 160 60 V 160 A 20 20 0 0 0 180 180 H 260" stroke="#3B82F6"
+            <path d="M 40 40 H 140 A 20 20 0 0 1 160 60 V 160 A 20 20 0 0 0 180 180 H 260" stroke="var(--color-primary)"
               stroke-width="1.8" stroke-dasharray="6 6" opacity="0.4" />
-            <circle cx="260" cy="180" r="4" fill="#3B82F6" opacity="0.7" />
+            <circle cx="260" cy="180" r="4" fill="var(--color-primary)" opacity="0.7" />
 
             <!-- Right circuit traces -->
-            <path d="M 960 40 H 860 A 20 20 0 0 0 840 60 V 220 A 20 20 0 0 1 820 240 H 760" stroke="#3B82F6"
+            <path d="M 960 40 H 860 A 20 20 0 0 0 840 60 V 220 A 20 20 0 0 1 820 240 H 760" stroke="var(--color-primary)"
               stroke-width="1.8" stroke-dasharray="6 6" opacity="0.4" />
-            <circle cx="760" cy="240" r="4" fill="#3B82F6" opacity="0.7" />
+            <circle cx="760" cy="240" r="4" fill="var(--color-primary)" opacity="0.7" />
 
-            <path d="M 60 410 H 200 A 20 20 0 0 0 220 390 V 300" stroke="#3B82F6" stroke-width="1.8" opacity="0.3" />
-            <circle cx="220" cy="300" r="4" fill="#2563EB" opacity="0.6" />
+            <path d="M 60 410 H 200 A 20 20 0 0 0 220 390 V 300" stroke="var(--color-primary)" stroke-width="1.8" opacity="0.3" />
+            <circle cx="220" cy="300" r="4" fill="var(--color-primary-dark)" opacity="0.6" />
           </svg>
 
           <div class="schematic-content">
@@ -700,16 +712,16 @@
               <div class="vault-circle-glow"></div>
               <svg width="220" height="220" viewBox="0 0 200 200" fill="none">
                 <!-- Vault & Digital Currency System Line Art -->
-                <circle cx="100" cy="100" r="75" stroke="#3B82F6" stroke-width="2" stroke-dasharray="4 4" />
-                <circle cx="100" cy="100" r="60" fill="#EFF6FF" stroke="#2563EB" stroke-width="2.5" />
+                <circle cx="100" cy="100" r="75" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="4 4" />
+                <circle cx="100" cy="100" r="60" fill="var(--color-primary-light)" stroke="var(--color-primary)" stroke-width="2.5" />
                 <!-- Vault Door & Core Gears -->
-                <circle cx="100" cy="100" r="30" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="2" />
-                <path d="M100 70V80M100 120V130M70 100H80M120 100H130" stroke="#1E40AF" stroke-width="3"
+                <circle cx="100" cy="100" r="30" fill="var(--color-primary-light)" stroke="var(--color-primary-dark)" stroke-width="2" />
+                <path d="M100 70V80M100 120V130M70 100H80M120 100H130" stroke="var(--color-primary-dark)" stroke-width="3"
                   stroke-linecap="round" />
-                <circle cx="100" cy="100" r="10" fill="#2563EB" />
+                <circle cx="100" cy="100" r="10" fill="var(--color-primary)" />
                 <!-- System Sparkles / Nodes -->
-                <path d="M160 50L165 60L175 65L165 70L160 80L155 70L145 65L155 60Z" fill="#3B82F6" />
-                <path d="M40 140L43 148L51 151L43 154L40 162L37 154L29 151L37 148Z" fill="#60A5FA" />
+                <path d="M160 50L165 60L175 65L165 70L160 80L155 70L145 65L155 60Z" fill="var(--color-primary)" />
+                <path d="M40 140L43 148L51 151L43 154L40 162L37 154L29 151L37 148Z" fill="var(--color-primary-dark)" />
               </svg>
             </div>
           </div>
@@ -745,10 +757,10 @@
         <div class="brand-logo">
           <span class="logo-symbol">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB" />
-              <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="var(--color-primary)" />
+              <path d="M2 17L12 22L22 17" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round"
                 stroke-linejoin="round" />
-              <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"
+              <path d="M2 12L12 17L22 12" stroke="var(--color-primary-dark)" stroke-width="2.5" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
           </span>

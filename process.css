@@ -96,7 +96,7 @@
 }
 
 [data-theme="dark"] .phase-number-badge {
-  color: #60a5fa;
+  color: var(--color-primary);
 }
 
 .phase-heading {
@@ -294,12 +294,12 @@
 }
 
 [data-theme="dark"] {
-  --tabs-bg-active: #111e3b;
-  --tabs-border-active: #1e3a8a;
+  --tabs-bg-active: #0c1222;
+  --tabs-border-active: var(--color-border-subtle);
 }
 
 .framer-tab-btn:hover {
-  background: rgba(37, 99, 235, 0.04);
+  background: var(--color-primary-light);
 }
 
 .framer-tab-btn.active {

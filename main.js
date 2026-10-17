@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initColorTheme();
   initStatsObserver();
   initNavbarScrollState();
   initCardGlow();
@@ -35,6 +36,54 @@ function updateThemeIcon() {
   document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
     btn.textContent = isDark ? '☀️' : '🌙';
   });
+}
+
+// ==================== DYNAMIC COLOR THEME PALETTE ENGINE ====================
+function initColorTheme() {
+  const savedColor = localStorage.getItem('bit3labs_theme_color') || 'violet';
+  setColorTheme(savedColor, false);
+  renderColorThemePicker();
+}
+
+function setColorTheme(colorName, save = true) {
+  document.documentElement.setAttribute('data-theme-color', colorName);
+  if (document.body) {
+    document.body.setAttribute('data-theme-color', colorName);
+  }
+  if (save) {
+    localStorage.setItem('bit3labs_theme_color', colorName);
+  }
+  document.querySelectorAll('.theme-color-swatch').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-color') === colorName);
+  });
+}
+window.setColorTheme = setColorTheme;
+
+function renderColorThemePicker() {
+  if (document.getElementById('themePaletteDock')) return;
+
+  const dock = document.createElement('aside');
+  dock.id = 'themePaletteDock';
+  dock.className = 'theme-palette-dock';
+  dock.setAttribute('aria-label', 'Theme Color Palette Switcher');
+
+  const currentColor = localStorage.getItem('bit3labs_theme_color') || 'violet';
+
+  dock.innerHTML = `
+    <span class="theme-palette-label">Theme</span>
+    <div class="theme-palette-swatches">
+      <button class="theme-color-swatch swatch-violet ${currentColor === 'violet' ? 'active' : ''}" data-color="violet" onclick="setColorTheme('violet')" title="Electric Violet (Linear / Raycast)" aria-label="Electric Violet Theme"></button>
+      <button class="theme-color-swatch swatch-black ${currentColor === 'black' ? 'active' : ''}" data-color="black" onclick="setColorTheme('black')" title="Stealth Onyx / Titanium Black (Apple Pro / Monochrome)" aria-label="Stealth Onyx Black Theme"></button>
+      <button class="theme-color-swatch swatch-green ${currentColor === 'green' ? 'active' : ''}" data-color="green" onclick="setColorTheme('green')" title="Nordic Pine / Forest Green (Deep Tech)" aria-label="Nordic Pine Green Theme"></button>
+      <button class="theme-color-swatch swatch-emerald ${currentColor === 'emerald' ? 'active' : ''}" data-color="emerald" onclick="setColorTheme('emerald')" title="Obsidian Emerald (Supabase / Jade)" aria-label="Obsidian Emerald Theme"></button>
+      <button class="theme-color-swatch swatch-cyan ${currentColor === 'cyan' ? 'active' : ''}" data-color="cyan" onclick="setColorTheme('cyan')" title="Quantum Cyan (Deep Cloud Teal)" aria-label="Quantum Cyan Theme"></button>
+      <button class="theme-color-swatch swatch-amber ${currentColor === 'amber' ? 'active' : ''}" data-color="amber" onclick="setColorTheme('amber')" title="Solar Amber (Luxury Bronze)" aria-label="Solar Amber Theme"></button>
+      <button class="theme-color-swatch swatch-rose ${currentColor === 'rose' ? 'active' : ''}" data-color="rose" onclick="setColorTheme('rose')" title="Champagne Ruby (Luxury Hardware)" aria-label="Champagne Ruby Theme"></button>
+      <button class="theme-color-swatch swatch-blue ${currentColor === 'blue' ? 'active' : ''}" data-color="blue" onclick="setColorTheme('blue')" title="Royal Cobalt (Blueprint Classic)" aria-label="Royal Cobalt Theme"></button>
+    </div>
+  `;
+
+  document.body.appendChild(dock);
 }
 
 // Mobile navigation drawer toggle
@@ -630,6 +679,14 @@ function initRouter() {
         currentMain.className = newMain.className;
         currentMain.id = newMain.id;
       }
+
+      // Sync body classes and theme attributes
+      if (newDoc.body) {
+        document.body.className = newDoc.body.className;
+        const color = localStorage.getItem('bit3labs_theme_color') || 'violet';
+        document.body.setAttribute('data-theme-color', color);
+      }
+      renderColorThemePicker();
 
       // Update page title and description
       document.title = newDoc.title;
