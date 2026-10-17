@@ -1,4 +1,4 @@
-# Novacore Systems — Web & Software Agency Platform
+# bit3labs — Web & Software Agency Platform
 
 A modern, high-performance web agency landing and showcase platform for custom web applications, enterprise software architectures, and automated cloud systems.
 

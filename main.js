@@ -1,5 +1,5 @@
 /**
- * Novacore Systems: Client logic
+ * bit3labs: Client logic
  * UI behaviors, theme management, and modal mechanics.
  */
 
@@ -220,7 +220,7 @@ function startApiStreamSimulation() {
   const sampleEndpoints = [
     { m: 'GET', ep: '/v1/clusters/eu-central-1/metrics', lat: '4ms' },
     { m: 'POST', ep: '/v1/events/dispatch-stream', lat: '12ms' },
-    { m: 'gRPC', ep: 'Novacore.DataService.SyncState', lat: '2ms' },
+    { m: 'gRPC', ep: 'bit3labs.DataService.SyncState', lat: '2ms' },
     { m: 'GET', ep: '/v1/telemetry/nodes/health', lat: '8ms' },
     { m: 'POST', ep: '/v1/auth/exchange-token', lat: '16ms' }
   ];
@@ -344,10 +344,10 @@ function closeCaseStudy() {
 
 // Simple and smooth Figma cursor (black border, white center)
 function initCustomCursor() {
-  if (window.__novacoreCursorInitialized) return;
+  if (window.__bit3labsCursorInitialized) return;
   if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  window.__novacoreCursorInitialized = true;
+  window.__bit3labsCursorInitialized = true;
 
   let cursor = document.getElementById('customCursor');
   if (!cursor) {
@@ -364,8 +364,8 @@ function initCustomCursor() {
   }
 
   // Restore cursor coordinates from session if available to avoid any jump
-  const savedX = parseFloat(sessionStorage.getItem('novacore_cursor_x'));
-  const savedY = parseFloat(sessionStorage.getItem('novacore_cursor_y'));
+  const savedX = parseFloat(sessionStorage.getItem('bit3labs_cursor_x'));
+  const savedY = parseFloat(sessionStorage.getItem('bit3labs_cursor_y'));
   const hasSaved = Number.isFinite(savedX) && Number.isFinite(savedY) && savedX > 0 && savedY > 0;
 
   let mouseX = hasSaved ? savedX : -500;
@@ -382,8 +382,8 @@ function initCustomCursor() {
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    sessionStorage.setItem('novacore_cursor_x', mouseX);
-    sessionStorage.setItem('novacore_cursor_y', mouseY);
+    sessionStorage.setItem('bit3labs_cursor_x', mouseX);
+    sessionStorage.setItem('bit3labs_cursor_y', mouseY);
 
     // CRITICAL: On the first movement, snap immediately to mouse pointer
     // so it NEVER lerps or flies in from the top of the screen!
@@ -458,8 +458,8 @@ function initCustomCursor() {
 
 // ==================== PRODUCTION CLIENT-SIDE ROUTER (SPA / PJAX) ====================
 function initRouter() {
-  if (window.__novacoreRouterInitialized) return;
-  window.__novacoreRouterInitialized = true;
+  if (window.__bit3labsRouterInitialized) return;
+  window.__bit3labsRouterInitialized = true;
 
   // Cache for instant page transitions
   const pageCache = new Map();
@@ -1063,7 +1063,7 @@ function handleContactSubmit(e) {
 window.handleContactSubmit = handleContactSubmit;
 
 function copyEmail(btn) {
-  navigator.clipboard.writeText('architects@novacore.sys').then(() => {
+  navigator.clipboard.writeText('hello@bit3labs.com').then(() => {
     const original = btn.textContent;
     btn.textContent = 'Copied!';
     btn.style.color = '#10b981';

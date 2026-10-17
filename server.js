@@ -36,5 +36,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '127.0.0.1', () => {
-  console.log(`Novacore Systems server running at http://127.0.0.1:${PORT}`);
+  console.log(`bit3labs server running at http://127.0.0.1:${PORT}`);
 });

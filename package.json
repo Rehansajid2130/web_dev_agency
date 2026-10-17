@@ -1,7 +1,7 @@
 {
-  "name": "novacore-agency",
+  "name": "bit3labs-agency",
   "version": "1.0.0",
-  "description": "Novacore Systems: Web, Mobile, and ERP Systems Engineering Studio",
+  "description": "bit3labs: Web, Mobile, and ERP Systems Engineering Studio",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
