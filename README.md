@@ -1,43 +1,116 @@
-# bit3labs — Web & Software Agency Platform
+# bit3labs — Enterprise Systems Engineering Platform
 
-A modern, high-performance web agency landing and showcase platform for custom web applications, enterprise software architectures, and automated cloud systems.
+A modern, high-performance web agency platform engineered for custom web applications, native mobile apps, and enterprise ERP systems.
 
-Built with clean semantic HTML, modular Vanilla CSS design tokens, and lightweight vanilla JavaScript.
+Built on an unapologetic **Zero-Dependency Architecture**: pure semantic HTML5, modular CSS3 design tokens, and lightweight Vanilla JavaScript. No framework overhead, no build-step tax, and permanent client IP ownership.
 
-## 🚀 Key Features
+---
 
-- **Blueprint SaaS & Tech Pastel Design System**: Extracted from modern high-end UI patterns featuring soft pastel gradients (Ice Blue, Mint, Lavender, Cyan, Amber), blueprint circuit vector traces, and crisp slate typography.
-- **Curved Off-Blue Hero Canvas**: Soft off-blue hero container with an organic SVG bottom curve transition and an interactive system telemetry dashboard mockup.
-- **Signature 3-Color Gradient Banner**: Vibrant multi-stop gradient (`#1D4ED8` ➔ `#7E22CE` ➔ `#06B6D4`) with animated count-up metrics for system uptime and performance stats.
-- **5-Stage Process Flow**: Asymmetric grid featuring large watermark numbers (`01` through `05`) for clear delivery transparent stages.
-- **Project Showcase Page (`projects.html`)**: Interactive category filtering (`Custom Web`, `Enterprise Software`, `Automated Systems`) and case study metric cards.
-- **Dedicated Architecture Contact Page (`contact.html`)**: 2-column layout with enterprise architecture guarantees, direct engineering contact channels, and project scoping intake form.
-- **Zero-Dependency Architecture**: Pure HTML5, modern CSS3 (with CSS variables and `@import` reusability), and Vanilla JS.
+## ⚡ 30-Second Developer Quickstart
 
-## 📁 Project Structure
+### Prerequisites
+- Node.js 18+ (for native `--watch` support)
 
-```
-├── DESIGN_SYSTEM.md    # Design system tokens and specifications
-├── README.md           # Project documentation
-├── index.html          # Main landing page (Hero, Services, Process, Metrics, About)
-├── styles.css          # Core design tokens, layout grids, components, and animations
-├── main.js             # Interactive counter observer, modal controls, and telemetry simulation
-├── projects.html       # Portfolio showcase with category filtering
-├── projects.css        # Scoped styles for projects showcase (imports styles.css)
-├── contact.html        # Dedicated architecture consultation intake page
-└── contact.css         # Scoped styles for contact page (imports styles.css)
-```
-
-## 🛠️ Local Development
-
-Serve locally using any static web server:
-
+### Run Locally
 ```bash
-# Using Python
-python -m http.server 3000
+# 1. Clone repository
+git clone https://github.com/bit3labs/agency-platform.git
+cd agency-platform
 
-# Using Node / npx
-npx serve -l 3000
+# 2. Start local development server with auto-reload
+npm run dev
+
+# 3. Open in your browser
+# Server listens on port 8190 by default
+open http://127.0.0.1:8190
 ```
 
-Open `http://localhost:3000` in your browser.
+### Smoke Test All Routes
+```bash
+npm run smoke
+```
+
+---
+
+## 🛠️ Developer Scripts
+
+| Command | Action | Description |
+| :--- | :--- | :--- |
+| `npm run dev` | `node --watch server.js` | Starts server with native Node file watcher on port `8190` |
+| `npm start` | `node server.js` | Production server startup |
+| `npm run check` | HTTP healthcheck | Pings `http://127.0.0.1:8190` to verify server liveness |
+| `npm run smoke` | Multi-route verification | Tests status codes (`200 OK`) across all 8 site routes |
+
+To run on a custom port:
+```bash
+PORT=3000 npm run dev
+```
+
+---
+
+## 📁 Repository Structure
+
+```
+├── server.js            # Hardened Node.js static server (path-traversal safe, security headers)
+├── package.json         # Developer scripts and project metadata
+├── README.md            # Developer handbook (this file)
+├── CONTRIBUTING.md      # Code standards, contribution guide & QA checklist
+├── DESIGN_SYSTEM.md     # Design tokens, color system, and typography specifications
+│
+├── index.html           # Main studio overview (Hero, capabilities, process, telemetry)
+├── services.html        # Engineering disciplines & SaaS vs. bespoke comparison
+├── process.html         # 5-stage architectural delivery lifecycle & interactive phase tabs
+├── projects.html        # Production case studies with interactive category filtering
+├── about.html           # Studio manifesto, engineering principles & track record
+├── contact.html         # Multi-step architecture consultation wizard & intake
+├── privacy.html         # GDPR / CCPA privacy policy & data retention governance
+├── terms.html           # Terms of service, IP assignment clauses & liability caps
+│
+├── styles.css           # Core design tokens, global layout grids, utility classes
+├── legal.css            # Scoped typography and styling for legal & compliance documents
+├── contact.css          # Multi-step intake wizard & scope selector styles
+├── process.css          # Asymmetric delivery flow & phase showcase styling
+├── projects.css         # Portfolio showcase & case study modal dialog styles
+├── about.css            # Studio manifesto and engineering principle card styles
+│
+├── main.js              # Global client orchestrator (SPA router, theme engine, modals)
+└── js/                  # Modular client architecture with full JSDoc typing
+    ├── theme.js         # Dark/light mode & 8-color dynamic palette dock engine
+    ├── cursor.js        # High-performance Figma canvas pointer & card glow physics
+    ├── telemetry.js     # Animated stats counter & live API stream simulation
+    ├── router.js        # Client-side SPA / PJAX transition router with prefetching
+    └── components.js    # Multi-step intake, filter logic & native dialog controllers
+```
+
+---
+
+## 🎨 Design System & Theming Engine
+
+All styling derives from centralized CSS custom properties in [`styles.css`](file:///c:/Users/lenovo/Desktop/agency/option2/styles.css) and specifications in [`DESIGN_SYSTEM.md`](file:///c:/Users/lenovo/Desktop/agency/option2/DESIGN_SYSTEM.md):
+
+- **Theme Modes**: Supports `dark` and `light` with automatic OS `prefers-color-scheme` fallback.
+- **Dynamic Palette Swatches**: 8 runtime-switchable brand accent palettes:
+  - `violet` (Electric Violet — Default)
+  - `black` (Stealth Onyx / Titanium)
+  - `green` (Nordic Pine)
+  - `emerald` (Obsidian Emerald)
+  - `cyan` (Quantum Cyan)
+  - `amber` (Solar Amber)
+  - `rose` (Champagne Ruby)
+  - `blue` (Royal Cobalt)
+- **Fluid Layout**: Strict rem-based typography and clamp-based containers preventing rigid pixel breakpoints.
+
+---
+
+## 🔒 Security & Regulatory Compliance
+
+This platform implements enterprise-grade technical safeguards:
+- **GDPR Article 32 Containment**: [`server.js`](file:///c:/Users/lenovo/Desktop/agency/option2/server.js) enforces path normalization and containment (`safePath.startsWith(__dirname)`), actively mitigating directory traversal attacks.
+- **HTTP Defensive Headers**: Automatically injects `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`, and `Permissions-Policy`.
+- **Accessibility**: Strict WCAG 2.1 / 2.2 Level AA compliance with `aria-describedby`, `aria-live="polite"`, and native `<dialog>` focus management.
+
+---
+
+## 🤝 Contributing
+
+Read [`CONTRIBUTING.md`](file:///c:/Users/lenovo/Desktop/agency/option2/CONTRIBUTING.md) for our engineering standards, component conventions, and QA approval checklists.

@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node --watch server.js",
+    "check": "node -e \"const http=require('http'); http.get('http://127.0.0.1:8190', r=>{console.log('bit3labs server operational [Status: ' + r.statusCode + ']'); process.exit(r.statusCode===200?0:1);}).on('error', e=>{console.error('Server offline:', e.message); process.exit(1);});\"",
+    "smoke": "node -e \"const http=require('http'); ['/','/services.html','/projects.html','/process.html','/about.html','/contact.html','/privacy.html','/terms.html'].forEach(p=>http.get('http://127.0.0.1:8190'+p, r=>console.log('✓ ' + p.padEnd(18) + ' [Status ' + r.statusCode + ']')));\""
   },
   "keywords": [
     "agency",
