@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme-color="violet">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service & Engagement | bit3labs</title>
+  <meta name="description"
+    content="Terms of service, engineering consultation terms, intellectual property ownership assignment conditions, and limitation of liability for bit3labs.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="legal.css">
+  <script>
+    (function () {
+      try {
+        var c = localStorage.getItem('bit3labs_theme_color') || 'violet';
+        document.documentElement.setAttribute('data-theme-color', c);
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body>
+  <div class="blueprint-grid-bg" aria-hidden="true"></div>
+
+  <!-- ==================== HEADER / NAVIGATION ==================== -->
+  <header class="header-container" id="site-header">
+    <nav class="nav-pill" aria-label="Main Navigation">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-symbol">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB" />
+            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </span>
+        <span class="logo-text">bit3<span class="logo-accent">labs</span></span>
+      </a>
+
+      <div class="nav-menu" id="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="process.html" class="nav-link">Our Process</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="about.html" class="nav-link">About Us</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light theme"
+          title="Toggle theme">🌙</button>
+        <a href="contact.html" class="btn btn-primary btn-pill" id="nav-cta-btn">
+          Contact us
+        </a>
+        <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu"
+          aria-expanded="false">
+          <span class="hamburger-line line-top"></span>
+          <span class="hamburger-line line-mid"></span>
+          <span class="hamburger-line line-bot"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="legal-hero">
+      <div class="section-container">
+        <div class="legal-badge">Commercial Framework & Terms</div>
+        <h1 class="legal-title">Terms of Service & Client Engagement</h1>
+        <div class="legal-meta">
+          <span>Effective Date: October 17, 2026</span>
+          <span>&bull;</span>
+          <span>Version 3.1</span>
+          <span>&bull;</span>
+          <span>Governing Jurisdiction: Delaware, USA</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT LAYOUT -->
+    <div class="section-container legal-layout">
+      <!-- SIDEBAR TOC -->
+      <aside class="legal-toc-card" aria-label="Table of contents">
+        <div class="legal-toc-title">Terms Index</div>
+        <ul class="legal-toc-list">
+          <li><a href="#acceptance">1. Acceptance & Scope</a></li>
+          <li><a href="#consultation-scope">2. Preliminary Architecture Sessions</a></li>
+          <li><a href="#ip-assignment">3. Intellectual Property Ownership</a></li>
+          <li><a href="#confidentiality">4. Confidentiality & NDAs</a></li>
+          <li><a href="#sla-disclaimer">5. Performance & SLA Qualifications</a></li>
+          <li><a href="#liability-cap">6. Limitation of Liability</a></li>
+          <li><a href="#warranties">7. Warranty Disclaimers</a></li>
+          <li><a href="#disputes">8. Governing Law & Arbitration</a></li>
+          <li><a href="#contact-legal">9. Legal Notices & Inquiries</a></li>
+        </ul>
+      </aside>
+
+      <!-- MAIN LEGAL CLAUSES -->
+      <article class="legal-content">
+        <!-- 1 -->
+        <section class="legal-section" id="acceptance">
+          <div class="legal-section-num">Section 01</div>
+          <h2>Acceptance of Terms</h2>
+          <p>
+            These Terms of Service ("Terms") constitute a legally binding agreement between you (individually or on
+            behalf of your organization, "Client" or "User") and <strong>bit3labs Inc.</strong> ("bit3labs", "we", "us").
+            By accessing our website, submitting technical project specifications, or participating in an architectural
+            consultation session, you acknowledge and agree to be bound by these Terms.
+          </p>
+        </section>
+
+        <!-- 2 -->
+        <section class="legal-section" id="consultation-scope">
+          <div class="legal-section-num">Section 02</div>
+          <h2>Preliminary Architecture Sessions & Estimates</h2>
+          <p>
+            Any preliminary feasibility reviews, architectural diagram consultations, technical roadmaps, or budgetary
+            estimates provided prior to the formal execution of a bilateral contract are non-binding.
+          </p>
+          <div class="legal-highlight-box">
+            <strong>Binding Commitments Require an Executed MSA:</strong> Commercial engineering deliverables,
+            guaranteed development milestones, and delivery schedules take effect exclusively upon execution of a
+            formal <strong>Master Services Agreement (MSA)</strong> and specific <strong>Statement of Work (SOW)</strong>
+            signed by authorized representatives of both parties.
+          </div>
+        </section>
+
+        <!-- 3 -->
+        <section class="legal-section" id="ip-assignment">
+          <div class="legal-section-num">Section 03</div>
+          <h2>Intellectual Property (IP) Ownership Assignment</h2>
+          <p>
+            Our core commercial philosophy is centered on <strong>permanent, unencumbered client IP ownership</strong>.
+            The mechanics of IP assignment operate as follows:
+          </p>
+          <ul>
+            <li>
+              <strong>Bespoke Client Deliverables:</strong> Upon receipt of full payment for services rendered under
+              the applicable SOW, bit3labs irrevocably assigns and transfers to the Client all right, title, and
+              interest in and to the custom software code, application architectures, database schemas, and assets
+              created specifically for the Client.
+            </li>
+            <li>
+              <strong>Background Tools & Open-Source Libraries:</strong> Client acknowledges that software systems
+              frequently utilize industry-standard open-source libraries (e.g. permissive MIT/Apache licenses) or
+              pre-existing internal utility toolchains ("Pre-existing IP"). bit3labs grants the Client a perpetual,
+              irrevocable, worldwide, royalty-free license to use and modify any incorporated Pre-existing IP.
+            </li>
+            <li>
+              <strong>Website Content:</strong> All branding, designs, copy, diagrams, and trademarks displayed on this
+              marketing website remain the exclusive property of bit3labs Inc.
+            </li>
+          </ul>
+        </section>
+
+        <!-- 4 -->
+        <section class="legal-section" id="confidentiality">
+          <div class="legal-section-num">Section 04</div>
+          <h2>Confidentiality & Non-Disclosure Agreements (NDAs)</h2>
+          <p>
+            We treat all client architectural specifications submitted through our consultation portals as confidential
+            and restrict internal access strictly to lead software engineers under internal non-disclosure obligations.
+          </p>
+          <p>
+            For enterprise clients sharing proprietary source code, internal security blueprints, or confidential trade
+            secrets, bit3labs requires the execution of our standard <strong>Bilateral Mutual Non-Disclosure Agreement
+              (MNDA)</strong> prior to repository access or deep technical discovery sessions.
+          </p>
+        </section>
+
+        <!-- 5 -->
+        <section class="legal-section" id="sla-disclaimer">
+          <div class="legal-section-num">Section 05</div>
+          <h2>Performance Disclaimers & SLA Qualifications</h2>
+          <p>
+            References on this website to technical metrics, operational benchmarks (e.g., <em>"SLA 99.99%"</em> or
+            <em>"Latency: 14ms"</em>), or architectural case study outcomes reflect engineered system designs and
+            historical benchmark deployments.
+          </p>
+          <p>
+            Website metrics do <strong>not</strong> constitute an automated warranty or commercial SLA for external
+            third-party platforms. Contractual Service Level Agreements (including financial credits for downtime) are
+            individually negotiated and established in an executed Enterprise SLA schedule.
+          </p>
+        </section>
+
+        <!-- 6 -->
+        <section class="legal-section" id="liability-cap">
+          <div class="legal-section-num">Section 06</div>
+          <h2>Limitation of Liability</h2>
+          <p>
+            To the maximum extent permitted under applicable law, in no event shall bit3labs, its directors, employees,
+            or contractors be liable for any indirect, consequential, exemplary, incidental, or special damages,
+            including lost profits, loss of data, business interruption, or procurement of substitute services, arising
+            out of or in connection with the use of this website or preliminary architectural consultations.
+          </p>
+          <div class="legal-highlight-box">
+            <strong>Aggregate Liability Cap:</strong> bit3labs' total aggregate liability arising out of or related to
+            your use of this website or initial consultation shall be strictly limited to fifty US Dollars ($50.00 USD),
+            or the actual amounts paid by you to bit3labs during the twelve (12) months preceding the claim.
+          </div>
+        </section>
+
+        <!-- 7 -->
+        <section class="legal-section" id="warranties">
+          <div class="legal-section-num">Section 07</div>
+          <h2>Warranty Disclaimers</h2>
+          <p>
+            Except as explicitly set forth in an executed Master Services Agreement, this website and all preliminary
+            architectural guidance are provided on an <strong>"AS IS"</strong> and <strong>"AS AVAILABLE"</strong> basis
+            without warranties of any kind, whether express, statutory, or implied, including warranties of
+            merchantability, fitness for a particular purpose, or non-infringement.
+          </p>
+        </section>
+
+        <!-- 8 -->
+        <section class="legal-section" id="disputes">
+          <div class="legal-section-num">Section 08</div>
+          <h2>Governing Law & Commercial Dispute Resolution</h2>
+          <p>
+            These Terms and any dispute or controversy arising out of or in connection with them shall be governed by
+            and construed in accordance with the laws of the <strong>State of Delaware</strong>, United States, without
+            giving effect to any principles of conflicts of law.
+          </p>
+          <p>
+            Any unresolved dispute shall be finally settled under the Rules of Commercial Arbitration of the American
+            Arbitration Association (AAA) by a single independent arbitrator appointed in accordance with said Rules.
+            The place of arbitration shall be Wilmington, Delaware, and proceedings shall be conducted in English.
+          </p>
+        </section>
+
+        <!-- 9 -->
+        <section class="legal-section" id="contact-legal">
+          <div class="legal-section-num">Section 09</div>
+          <h2>Legal Notices & Enterprise Contracting</h2>
+          <p>
+            For legal notices, contract redlines, or enterprise vendor compliance packets:
+          </p>
+          <div class="legal-contact-card">
+            <div><strong>bit3labs Inc. — Legal & Contracts Counsel</strong></div>
+            <div><strong>Legal Email:</strong> legal@bit3labs.com</div>
+            <div><strong>Mutual NDA Inquiries:</strong> nda@bit3labs.com</div>
+            <div><strong>Corporate Desk:</strong> hello@bit3labs.com</div>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="section-container footer-container">
+      <div class="footer-brand-col">
+        <div class="brand-logo">
+          <span class="logo-symbol">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB" />
+              <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </span>
+          <span class="logo-text">bit3<span class="logo-accent">labs</span></span>
+        </div>
+        <p class="footer-tagline">
+          Custom web, mobile and ERP systems engineered for enterprise scale and permanent IP ownership.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Capabilities</h4>
+        <ul class="footer-list">
+          <li><a href="services.html">Custom Web Applications</a></li>
+          <li><a href="services.html">Mobile Applications (iOS & Android)</a></li>
+          <li><a href="services.html">Enterprise ERP Systems</a></li>
+          <li><a href="projects.html">Production Case Studies</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Navigation</h4>
+        <ul class="footer-list">
+          <li><a href="index.html">Home Overview</a></li>
+          <li><a href="services.html">Capabilities & Services</a></li>
+          <li><a href="process.html">Engineering Process</a></li>
+          <li><a href="projects.html">Project Showcase</a></li>
+          <li><a href="about.html">About Our Studio</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4 class="footer-heading">Legal & Compliance</h4>
+        <ul class="footer-list">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html" style="color: var(--color-primary); font-weight: 700;">Terms of Service</a></li>
+          <li><a href="contact.html">Request Bilateral NDA</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-container footer-bottom">
+      <p>&copy; 2026 bit3labs Inc. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <span>&bull;</span>
+        <a href="terms.html">Terms of Service</a>
+        <span>&bull;</span>
+        <a href="#site-header">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

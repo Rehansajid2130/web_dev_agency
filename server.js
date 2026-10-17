@@ -19,18 +19,44 @@ const mimeTypes = {
 
 const server = http.createServer((req, res) => {
   let reqPath = req.url.split('?')[0];
-  if (reqPath === '/') reqPath = '/index.html';
-  const filePath = path.join(__dirname, reqPath);
+  try {
+    reqPath = decodeURIComponent(reqPath);
+  } catch (err) {
+    res.writeHead(400, { 
+      'Content-Type': 'text/plain; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff' 
+    });
+    return res.end('Bad Request');
+  }
 
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
-    const ext = path.extname(filePath).toLowerCase();
+  if (reqPath === '/' || !reqPath) reqPath = '/index.html';
+
+  // Prevent directory traversal attacks (GDPR Art. 32 security standard)
+  const safePath = path.resolve(__dirname, '.' + path.normalize('/' + reqPath));
+  if (!safePath.startsWith(__dirname)) {
+    res.writeHead(403, { 
+      'Content-Type': 'text/plain; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff'
+    });
+    return res.end('Access Denied');
+  }
+
+  if (fs.existsSync(safePath) && fs.statSync(safePath).isFile()) {
+    const ext = path.extname(safePath).toLowerCase();
     res.writeHead(200, {
       'Content-Type': mimeTypes[ext] || 'application/octet-stream',
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'SAMEORIGIN',
+      'Referrer-Policy': 'strict-origin-when-cross-origin',
+      'Permissions-Policy': 'geolocation=(), camera=(), microphone=()'
     });
-    fs.createReadStream(filePath).pipe(res);
+    fs.createReadStream(safePath).pipe(res);
   } else {
-    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.writeHead(404, { 
+      'Content-Type': 'text/plain; charset=utf-8',
+      'X-Content-Type-Options': 'nosniff'
+    });
     res.end('Not Found: ' + reqPath);
   }
 });

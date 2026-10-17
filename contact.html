@@ -251,15 +251,15 @@
                     <label for="contactFullName" class="form-label">Full Name <span
                         class="required-star">*</span></label>
                     <input type="text" id="contactFullName" class="form-input" placeholder="e.g. Elena Rostova"
-                      autocomplete="name" required>
-                    <span class="field-error" id="nameError">Please enter your full name.</span>
+                      autocomplete="name" aria-describedby="nameError" aria-required="true" required>
+                    <span class="field-error" id="nameError" role="alert" aria-live="polite">Please enter your full name.</span>
                   </div>
                   <div class="form-group">
                     <label for="contactWorkEmail" class="form-label">Work / Primary Email <span
                         class="required-star">*</span></label>
                     <input type="email" id="contactWorkEmail" class="form-input" placeholder="elena@company.com"
-                      autocomplete="email" required>
-                    <span class="field-error" id="emailError">Please enter a valid work email address.</span>
+                      autocomplete="email" aria-describedby="emailError" aria-required="true" required>
+                    <span class="field-error" id="emailError" role="alert" aria-live="polite">Please enter a valid work email address.</span>
                   </div>
                 </div>
 
@@ -408,8 +408,8 @@
 
                   <textarea id="contactProjectSpecs" class="form-textarea" rows="4"
                     placeholder="Describe the current architecture, bottleneck challenges, user volumes, or specific technical deliverables needed..."
-                    required></textarea>
-                  <span class="field-error" id="specsError">Please provide a brief outline of your system
+                    aria-describedby="specsError" aria-required="true" required></textarea>
+                  <span class="field-error" id="specsError" role="alert" aria-live="polite">Please provide a brief outline of your system
                     requirements.</span>
                 </div>
 
@@ -429,8 +429,10 @@
                     </svg>
                   </button>
                 </div>
-                <p class="form-footnote">Guaranteed strict confidentiality. Direct review by lead software architects
-                  within 24 hours.</p>
+                <div class="form-compliance-notice" style="margin-top: 1.15rem; font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.55; text-align: center;">
+                  By submitting, you agree to our <a href="terms.html" target="_blank" style="color: var(--color-primary); text-decoration: underline;">Terms of Service</a> and acknowledge our <a href="privacy.html" target="_blank" style="color: var(--color-primary); text-decoration: underline;">Privacy Policy</a>.
+                </div>
+                <p class="form-footnote" style="margin-top: 0.6rem;">Confidential architecture review within 24 hours. Formal Bilateral NDA executed upon request.</p>
               </div>
             </form>
 
@@ -499,13 +501,22 @@
       </div>
 
       <div class="footer-links-col">
+        <h4 class="footer-heading">Legal & Compliance</h4>
+        <ul class="footer-list">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="contact.html">Request Bilateral NDA</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
         <h4 class="footer-heading">System Status</h4>
         <div class="footer-status-card">
           <div class="status-indicator">
             <span class="status-live-pulse"></span>
             <span>All Global Systems Nominal</span>
           </div>
-          <span class="status-meta">Latency: 14ms &bull; SLA 99.99%</span>
+          <span class="status-meta">Latency: 14ms &bull; Target SLA 99.99%</span>
         </div>
       </div>
     </div>
@@ -513,6 +524,10 @@
     <div class="section-container footer-bottom">
       <p>&copy; 2026 bit3labs Inc. All rights reserved.</p>
       <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <span>&bull;</span>
+        <a href="terms.html">Terms of Service</a>
+        <span>&bull;</span>
         <a href="#hero">Back to Top &uarr;</a>
       </div>
     </div>
