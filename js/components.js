@@ -544,10 +544,17 @@ let contactMaxStep = 1;
 let contactSelectedScope = 'custom-web';
 let currentProjectBenchmark = '';
 
+// Calendar & Discovery Scheduling State
+let upcomingBusinessDays = [];
+let selectedDayIndex = 0;
+let selectedSlotTime = '';
+let selectedTimezone = 'America/New_York';
+
 const contactStepMeta = {
-  1: { title: 'Contact Details', percent: '0%', pill: 'Step 1 of 3', width: '0%' },
-  2: { title: 'Organization & Scope', percent: '50%', pill: 'Step 2 of 3', width: '50%' },
-  3: { title: 'Architecture Specs', percent: '100%', pill: 'Step 3 of 3', width: '100%' }
+  1: { title: 'Contact Details', percent: '0%', pill: 'Step 1 of 4', width: '0%' },
+  2: { title: 'Organization & Scope', percent: '33%', pill: 'Step 2 of 4', width: '33%' },
+  3: { title: 'Architecture Specs', percent: '66%', pill: 'Step 3 of 4', width: '66%' },
+  4: { title: 'Schedule Discovery Call', percent: '100%', pill: 'Step 4 of 4', width: '100%' }
 };
 
 const contactScopeLabels = {
@@ -709,7 +716,276 @@ export function validateContactStep(step) {
     }
   }
 
+  if (step === 4) {
+    const isAsyncInput = /** @type {HTMLInputElement|null} */ (document.getElementById('contactIsAsyncReview'));
+    const isAsync = isAsyncInput?.value === 'true';
+
+    if (!isAsync) {
+      const slotErr = document.getElementById('slotError');
+      if (!selectedSlotTime) {
+        if (slotErr) slotErr.style.display = 'block';
+        isValid = false;
+      } else if (slotErr) {
+        slotErr.style.display = 'none';
+      }
+    }
+  }
+
   return isValid;
+}
+
+// ==================== CALENDAR & DISCOVERY SCHEDULER ====================
+
+const slotPresets = [
+  '09:30 AM',
+  '11:00 AM',
+  '01:30 PM',
+  '03:00 PM',
+  '04:30 PM'
+];
+
+/**
+ * Calculate the next 5 upcoming business days (skipping Saturday & Sunday).
+ * @returns {Array<{ date: Date, weekday: string, dayNum: string, month: string, fullDate: string }>}
+ */
+export function getUpcomingBusinessDays() {
+  const days = [];
+  const curr = new Date();
+  
+  // Start from tomorrow
+  let check = new Date(curr);
+  check.setDate(check.getDate() + 1);
+
+  while (days.length < 5) {
+    const dayOfWeek = check.getDay();
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+      const weekday = check.toLocaleDateString('en-US', { weekday: 'short' }).toUpperCase();
+      const dayNum = String(check.getDate()).padStart(2, '0');
+      const month = check.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+      const fullDate = check.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
+      days.push({
+        date: new Date(check),
+        weekday,
+        dayNum,
+        month,
+        fullDate
+      });
+    }
+    check.setDate(check.getDate() + 1);
+  }
+  return days;
+}
+
+/**
+ * Render the 5-day calendar strip.
+ * @returns {void}
+ */
+export function renderDiscoveryCalendar() {
+  upcomingBusinessDays = getUpcomingBusinessDays();
+  const dateStrip = document.getElementById('calendarDateStrip');
+  if (!dateStrip) return;
+
+  dateStrip.innerHTML = upcomingBusinessDays.map((d, idx) => `
+    <button type="button" class="cal-date-card ${idx === selectedDayIndex ? 'active' : ''}" 
+      onclick="selectDiscoveryDate(${idx})" role="tab" aria-selected="${idx === selectedDayIndex}">
+      <span class="cal-date-weekday">${d.weekday}</span>
+      <span class="cal-date-daynum">${d.dayNum}</span>
+      <span class="cal-date-month">${d.month}</span>
+    </button>
+  `).join('');
+
+  renderDiscoverySlots();
+}
+
+/**
+ * Render the time slot buttons for the active day.
+ * @returns {void}
+ */
+export function renderDiscoverySlots() {
+  const currentDay = upcomingBusinessDays[selectedDayIndex];
+  if (!currentDay) return;
+
+  const dayLabel = document.getElementById('calSlotsDayLabel');
+  if (dayLabel) {
+    dayLabel.textContent = `Available Slots for ${currentDay.fullDate}`;
+  }
+
+  const grid = document.getElementById('calendarSlotsGrid');
+  if (!grid) return;
+
+  grid.innerHTML = slotPresets.map(time => `
+    <button type="button" class="cal-slot-btn ${time === selectedSlotTime ? 'selected' : ''}"
+      onclick="selectDiscoverySlot('${time}', this)" aria-pressed="${time === selectedSlotTime}">
+      <span class="cal-slot-dot"></span>
+      <span>${time}</span>
+    </button>
+  `).join('');
+
+  updateDiscoveryBriefing();
+}
+
+/**
+ * Handle day selection in the date strip.
+ * @param {number} idx - Index of selected business day.
+ * @returns {void}
+ */
+export function selectDiscoveryDate(idx) {
+  selectedDayIndex = idx;
+  selectedSlotTime = '';
+  const slotErr = document.getElementById('slotError');
+  if (slotErr) slotErr.style.display = 'none';
+
+  document.querySelectorAll('.cal-date-card').forEach((el, i) => {
+    el.classList.toggle('active', i === idx);
+    el.setAttribute('aria-selected', String(i === idx));
+  });
+
+  renderDiscoverySlots();
+}
+
+/**
+ * Handle time slot button selection.
+ * @param {string} time - Time string.
+ * @param {HTMLElement} [btn] - Button element.
+ * @returns {void}
+ */
+export function selectDiscoverySlot(time, btn) {
+  selectedSlotTime = time;
+  const currentDay = upcomingBusinessDays[selectedDayIndex];
+
+  document.querySelectorAll('.cal-slot-btn').forEach(b => {
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed', 'false');
+  });
+  if (btn) {
+    btn.classList.add('selected');
+    btn.setAttribute('aria-pressed', 'true');
+  }
+
+  const slotErr = document.getElementById('slotError');
+  if (slotErr) slotErr.style.display = 'none';
+
+  const hiddenDate = /** @type {HTMLInputElement|null} */ (document.getElementById('contactSelectedDate'));
+  const hiddenTime = /** @type {HTMLInputElement|null} */ (document.getElementById('contactSelectedTime'));
+  const hiddenTz = /** @type {HTMLInputElement|null} */ (document.getElementById('contactSelectedTimezone'));
+
+  if (hiddenDate && currentDay) hiddenDate.value = currentDay.fullDate;
+  if (hiddenTime) hiddenTime.value = time;
+  if (hiddenTz) hiddenTz.value = selectedTimezone;
+
+  updateDiscoveryBriefing();
+}
+
+/**
+ * Handle timezone dropdown change.
+ * @param {string} tz - Timezone string identifier.
+ * @returns {void}
+ */
+export function handleTimezoneChange(tz) {
+  selectedTimezone = tz;
+  const hiddenTz = /** @type {HTMLInputElement|null} */ (document.getElementById('contactSelectedTimezone'));
+  if (hiddenTz) hiddenTz.value = tz;
+  updateDiscoveryBriefing();
+}
+
+/**
+ * Update the briefing card summary for the discovery session.
+ * @returns {void}
+ */
+export function updateDiscoveryBriefing() {
+  const currentDay = upcomingBusinessDays[selectedDayIndex];
+  const timeDisplay = document.getElementById('briefingTimeDisplay');
+  const scopeDisplay = document.getElementById('briefingScopeDisplay');
+
+  if (timeDisplay) {
+    if (currentDay && selectedSlotTime) {
+      const tzSelect = /** @type {HTMLSelectElement|null} */ (document.getElementById('discoveryTimezone'));
+      const tzName = tzSelect ? tzSelect.options[tzSelect.selectedIndex]?.text.split('—')[0].trim() : selectedTimezone;
+      timeDisplay.textContent = `${currentDay.weekday}, ${currentDay.month} ${currentDay.dayNum} at ${selectedSlotTime} (${tzName})`;
+      timeDisplay.style.color = 'var(--color-primary)';
+    } else {
+      timeDisplay.textContent = 'Select an available slot above';
+      timeDisplay.style.color = '';
+    }
+  }
+
+  if (scopeDisplay) {
+    const baseScope = contactScopeLabels[contactSelectedScope] || 'Custom Architecture';
+    scopeDisplay.textContent = currentProjectBenchmark ? `${baseScope} (${currentProjectBenchmark})` : baseScope;
+  }
+}
+
+/**
+ * Generate Google Calendar URL for one-click calendar addition.
+ * @returns {string}
+ */
+export function getGoogleCalendarUrl() {
+  const currentDay = upcomingBusinessDays[selectedDayIndex];
+  if (!currentDay || !selectedSlotTime) return '#';
+
+  const dateObj = currentDay.date;
+  const [timePart, modifier] = selectedSlotTime.split(' ');
+  let [hours, minutes] = timePart.split(':').map(Number);
+  if (modifier === 'PM' && hours < 12) hours += 12;
+  if (modifier === 'AM' && hours === 12) hours = 0;
+
+  const start = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), hours, minutes);
+  const end = new Date(start.getTime() + 30 * 60 * 1000);
+
+  const formatGCal = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+  const title = encodeURIComponent('bit3labs Architecture Discovery Session');
+  const details = encodeURIComponent('30-minute confidential architecture review with Elena Rostova (Principal Systems Architect at bit3labs).\n\nMutual NDA pre-attached.');
+  const location = encodeURIComponent('Google Meet');
+
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatGCal(start)}/${formatGCal(end)}&details=${details}&location=${location}`;
+}
+
+/**
+ * Generate and trigger download of an .ICS calendar file for the booked session.
+ * @returns {void}
+ */
+export function downloadIcsFile() {
+  const currentDay = upcomingBusinessDays[selectedDayIndex];
+  if (!currentDay || !selectedSlotTime) return;
+
+  const dateObj = currentDay.date;
+  const [timePart, modifier] = selectedSlotTime.split(' ');
+  let [hours, minutes] = timePart.split(':').map(Number);
+  if (modifier === 'PM' && hours < 12) hours += 12;
+  if (modifier === 'AM' && hours === 12) hours = 0;
+
+  const start = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate(), hours, minutes);
+  const end = new Date(start.getTime() + 30 * 60 * 1000);
+
+  const formatIcsDate = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+  const icsContent = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//bit3labs//Architecture Discovery//EN',
+    'CALSCALE:GREGORIAN',
+    'METHOD:REQUEST',
+    'BEGIN:VEVENT',
+    `DTSTART:${formatIcsDate(start)}`,
+    `DTEND:${formatIcsDate(end)}`,
+    'SUMMARY:bit3labs Architecture Discovery Session',
+    'DESCRIPTION:30-minute confidential technical architecture review with Elena Rostova (Principal Distributed Systems Architect).\\n\\nAgenda:\\n1. Technical Requirements & Bottlenecks\\n2. Architecture Specifications & Technology Stack\\n3. Fixed-Scope Timeline & Estimation',
+    'LOCATION:Google Meet (Link will be dispatched prior to call)',
+    'STATUS:CONFIRMED',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'bit3labs-architecture-discovery.ics';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 /**
@@ -731,7 +1007,7 @@ export function updateStepperUI(step) {
   if (percent) percent.textContent = meta.percent;
   if (progressFill) progressFill.style.width = meta.width;
 
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 4; i++) {
     const node = document.getElementById(`stepNode${i}`);
     const circle = document.getElementById(`nodeCircle${i}`);
     if (!node || !circle) continue;
@@ -750,10 +1026,12 @@ export function updateStepperUI(step) {
 
   const line1 = document.getElementById('stepLine1');
   const line2 = document.getElementById('stepLine2');
+  const line3 = document.getElementById('stepLine3');
   if (line1) line1.classList.toggle('completed', step >= 2);
   if (line2) line2.classList.toggle('completed', step >= 3);
+  if (line3) line3.classList.toggle('completed', step >= 4);
 
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 4; i++) {
     const stepEl = document.getElementById(`formStep${i}`);
     if (stepEl) {
       stepEl.classList.toggle('active', i === step);
@@ -762,6 +1040,11 @@ export function updateStepperUI(step) {
 
   if (step === 3) {
     updateLiveContactSummary();
+  }
+
+  if (step === 4) {
+    renderDiscoveryCalendar();
+    updateDiscoveryBriefing();
   }
 }
 
@@ -812,11 +1095,18 @@ export function jumpToStep(target) {
  */
 export function handleContactSubmit(e) {
   if (e) e.preventDefault();
-  if (!validateContactStep(3)) return;
+  const isAsyncInput = /** @type {HTMLInputElement|null} */ (document.getElementById('contactIsAsyncReview'));
+  const isAsync = isAsyncInput?.value === 'true';
+
+  if (!isAsync) {
+    if (!validateContactStep(4)) return;
+  } else {
+    if (!validateContactStep(3)) return;
+  }
 
   const btn = /** @type {HTMLButtonElement|null} */ (document.getElementById('contactSubmitBtn'));
   if (btn) {
-    btn.innerHTML = '<span>Scheduling Lead Architect...</span>';
+    btn.innerHTML = '<span>Locking Architecture Session...</span>';
     btn.disabled = true;
   }
 
@@ -825,17 +1115,54 @@ export function handleContactSubmit(e) {
     const stepper = document.querySelector('.form-stepper-wrap');
     const notice = document.getElementById('contactSuccessNotice');
     const refBanner = document.getElementById('projectReferralBanner');
+    const noticeTitle = document.getElementById('successNoticeTitle');
     const noticeBody = document.getElementById('successNoticeBody');
+    const passCard = document.getElementById('confirmedPassCard');
+    const passDateTime = document.getElementById('passDateTimeVal');
+    const passTimezone = document.getElementById('passTimezoneVal');
+    const googleCalBtn = /** @type {HTMLAnchorElement|null} */ (document.getElementById('googleCalBtn'));
 
     if (refBanner) refBanner.style.display = 'none';
     if (form) form.style.display = 'none';
     if (stepper) stepper.style.display = 'none';
     if (notice) notice.style.display = 'block';
 
-    if (noticeBody && currentProjectBenchmark) {
-      noticeBody.textContent = `Our lead software architect has received your specifications for a system modeled on ${currentProjectBenchmark}. We will review your target architecture requirements and send an introductory agenda within 24 hours.`;
+    const currentDay = upcomingBusinessDays[selectedDayIndex];
+    const tzSelect = /** @type {HTMLSelectElement|null} */ (document.getElementById('discoveryTimezone'));
+    const tzName = tzSelect ? tzSelect.options[tzSelect.selectedIndex]?.text.split('—')[0].trim() : selectedTimezone;
+
+    if (!isAsync && currentDay && selectedSlotTime) {
+      if (noticeTitle) noticeTitle.textContent = 'Architecture Discovery Confirmed ✓';
+      if (noticeBody) {
+        const benchmarkNote = currentProjectBenchmark ? ` for an architecture modeled on ${currentProjectBenchmark}` : '';
+        noticeBody.textContent = `Your 30-minute discovery consultation${benchmarkNote} is locked with Principal Architect Elena Rostova. A confirmation email with calendar invitation and Google Meet link has been dispatched to your work email.`;
+      }
+      if (passCard) passCard.style.display = 'block';
+      if (passDateTime) passDateTime.textContent = `${currentDay.weekday}, ${currentDay.month} ${currentDay.dayNum} at ${selectedSlotTime}`;
+      if (passTimezone) passTimezone.textContent = tzName;
+      if (googleCalBtn) googleCalBtn.href = getGoogleCalendarUrl();
+    } else {
+      if (noticeTitle) noticeTitle.textContent = 'Architecture Consultation Logged ✓';
+      if (noticeBody) {
+        const benchmarkNote = currentProjectBenchmark ? ` for a system modeled on ${currentProjectBenchmark}` : '';
+        noticeBody.textContent = `Our lead software architect has received your specifications${benchmarkNote}. We will review the requirements and send an introductory agenda and calendar invitation within 24 hours.`;
+      }
+      if (passCard) passCard.style.display = 'none';
     }
   }, 600);
+}
+
+/**
+ * Handle direct async submission without live scheduling.
+ * @param {Event} e - Click event.
+ * @returns {void}
+ */
+export function submitAsyncWithoutScheduling(e) {
+  if (e) e.preventDefault();
+  if (!validateContactStep(1) || !validateContactStep(2) || !validateContactStep(3)) return;
+  const isAsyncInput = /** @type {HTMLInputElement|null} */ (document.getElementById('contactIsAsyncReview'));
+  if (isAsyncInput) isAsyncInput.value = 'true';
+  handleContactSubmit();
 }
 
 /**
@@ -980,4 +1307,21 @@ export function initContactPage() {
       if (err) err.style.display = 'none';
     });
   }
+
+  // Detect and align user's local timezone
+  try {
+    const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const tzSelect = /** @type {HTMLSelectElement|null} */ (document.getElementById('discoveryTimezone'));
+    if (tzSelect && userTz) {
+      for (let i = 0; i < tzSelect.options.length; i++) {
+        if (tzSelect.options[i].value === userTz) {
+          tzSelect.selectedIndex = i;
+          selectedTimezone = userTz;
+          break;
+        }
+      }
+    }
+  } catch (_) {}
+
+  renderDiscoveryCalendar();
 }

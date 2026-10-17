@@ -235,7 +235,7 @@
             <div class="form-stepper-wrap" aria-label="Intake Form Progress">
               <div class="stepper-meta">
                 <span class="stepper-current-label">
-                  <span class="step-num-pill" id="stepPill">Step 1 of 3</span>
+                  <span class="step-num-pill" id="stepPill">Step 1 of 4</span>
                   <strong id="stepTitleText">Contact Details</strong>
                 </span>
                 <span class="stepper-percentage" id="stepPercent">0%</span>
@@ -260,6 +260,12 @@
                   aria-label="Step 3: Specifications">
                   <span class="node-circle" id="nodeCircle3">3</span>
                   <span class="node-name">Specs</span>
+                </button>
+                <div class="stepper-line" id="stepLine3"></div>
+                <button type="button" class="stepper-node" id="stepNode4" onclick="jumpToStep(4)"
+                  aria-label="Step 4: Schedule Discovery Call">
+                  <span class="node-circle" id="nodeCircle4">4</span>
+                  <span class="node-name">Schedule</span>
                 </button>
               </div>
             </div>
@@ -449,8 +455,112 @@
                     </svg>
                     <span>Back</span>
                   </button>
+                  <button type="button" class="btn btn-primary btn-step-next" onclick="nextStep(3)">
+                    <span>Continue to Discovery Scheduling</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 0.75rem;">
+                  <button type="button" onclick="submitAsyncWithoutScheduling(event)" style="background: none; border: none; font-size: 0.8125rem; color: var(--color-text-muted); cursor: pointer; text-decoration: underline; padding: 0.25rem 0.5rem;">
+                    Prefer asynchronous review? Submit specs directly without scheduling a call
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 4: Interactive Discovery Call Calendar Slot Picker -->
+              <div class="form-step" id="formStep4">
+                <div class="step-header">
+                  <h3 class="step-title">Select Your 30-Minute Architecture Discovery Slot</h3>
+                  <p class="step-desc">Direct technical consultation with a Lead Distributed Systems Architect. Select your timezone, date, and available slot.</p>
+                </div>
+
+                <!-- Timezone Selector Control -->
+                <div class="cal-tz-bar">
+                  <div class="cal-tz-left">
+                    <span class="cal-tz-icon">🌐</span>
+                    <label for="discoveryTimezone" class="cal-tz-label">Session Timezone:</label>
+                  </div>
+                  <select id="discoveryTimezone" class="cal-tz-select" onchange="handleTimezoneChange(this.value)">
+                    <option value="America/New_York">Eastern Time (US / Canada) — UTC-4 / UTC-5</option>
+                    <option value="America/Chicago">Central Time (US / Canada) — UTC-5 / UTC-6</option>
+                    <option value="America/Denver">Mountain Time (US / Canada) — UTC-6 / UTC-7</option>
+                    <option value="America/Los_Angeles">Pacific Time (US / Canada) — UTC-7 / UTC-8</option>
+                    <option value="Europe/London">London (GMT / BST) — UTC+0 / UTC+1</option>
+                    <option value="Europe/Berlin">Berlin / Frankfurt / Paris (CET) — UTC+1 / UTC+2</option>
+                    <option value="Asia/Dubai">Dubai (GST) — UTC+4</option>
+                    <option value="Asia/Karachi">Islamabad / Karachi (PKT) — UTC+5</option>
+                    <option value="Asia/Singapore">Singapore / Hong Kong (SGT / HKT) — UTC+8</option>
+                    <option value="Asia/Tokyo">Tokyo (JST) — UTC+9</option>
+                    <option value="Australia/Sydney">Sydney / Melbourne (AEST) — UTC+10 / UTC+11</option>
+                  </select>
+                </div>
+
+                <!-- 5-Day Interactive Date Strip -->
+                <div class="cal-date-strip" id="calendarDateStrip" role="tablist" aria-label="Available Consultation Dates">
+                  <!-- Generated dynamically in components.js -->
+                </div>
+
+                <!-- Available Time Slots Grid for Selected Day -->
+                <div class="cal-slots-section">
+                  <div class="cal-slots-header">
+                    <span class="cal-slots-title" id="calSlotsDayLabel">Available Slots</span>
+                    <span class="cal-slots-badge">Direct Google Meet / Teams</span>
+                  </div>
+                  <div class="cal-slots-grid" id="calendarSlotsGrid">
+                    <!-- Dynamic interactive slot pill buttons -->
+                  </div>
+                  <span class="field-error" id="slotError" role="alert" style="display:none; margin-top: 0.25rem;">Please select an available time slot to reserve your architecture session.</span>
+                </div>
+
+                <!-- Architecture Discovery Briefing Card -->
+                <div class="discovery-briefing-card" id="discoveryBriefingCard">
+                  <div class="briefing-lead">
+                    <div class="architect-avatar">ER</div>
+                    <div class="architect-info">
+                      <div class="architect-name">Elena Rostova</div>
+                      <div class="architect-role">Principal Distributed Systems Architect</div>
+                    </div>
+                    <div class="nda-pill">
+                      <span class="nda-lock">🔒</span>
+                      <span>Mutual NDA Pre-Attached</span>
+                    </div>
+                  </div>
+                  <div class="briefing-details">
+                    <div class="briefing-detail-item">
+                      <span class="detail-label">Reserved Time</span>
+                      <span class="detail-value" id="briefingTimeDisplay">Select a slot above</span>
+                    </div>
+                    <div class="briefing-detail-item">
+                      <span class="detail-label">Scope Focus</span>
+                      <span class="detail-value" id="briefingScopeDisplay">Custom Enterprise Architecture</span>
+                    </div>
+                    <div class="briefing-detail-item">
+                      <span class="detail-label">Session Format</span>
+                      <span class="detail-value">30-min Video Call + Whiteboard</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Hidden inputs for scheduled appointment -->
+                <input type="hidden" id="contactSelectedDate" name="selectedDate" value="">
+                <input type="hidden" id="contactSelectedTime" name="selectedTime" value="">
+                <input type="hidden" id="contactSelectedTimezone" name="selectedTimezone" value="">
+                <input type="hidden" id="contactIsAsyncReview" name="isAsyncReview" value="false">
+
+                <!-- Step Actions -->
+                <div class="step-actions">
+                  <button type="button" class="btn btn-outline btn-step-back" onclick="prevStep(4)">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M19 12H5M12 19l-7-7 7-7" />
+                    </svg>
+                    <span>Back</span>
+                  </button>
                   <button type="submit" class="btn btn-primary btn-step-submit" id="contactSubmitBtn">
-                    <span>Request Architecture Session</span>
+                    <span>Confirm Consultation & Lock Slot</span>
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                       stroke-width="2.5">
                       <path d="M5 12h14M12 5l7 7-7 7" />
@@ -460,7 +570,7 @@
                 <div class="form-compliance-notice" style="margin-top: 1.15rem; font-size: 0.8125rem; color: var(--color-text-muted); line-height: 1.55; text-align: center;">
                   By submitting, you agree to our <a href="terms.html" target="_blank" style="color: var(--color-primary); text-decoration: underline;">Terms of Service</a> and acknowledge our <a href="privacy.html" target="_blank" style="color: var(--color-primary); text-decoration: underline;">Privacy Policy</a>.
                 </div>
-                <p class="form-footnote" style="margin-top: 0.6rem;">Confidential architecture review within 24 hours. Formal Bilateral NDA executed upon request.</p>
+                <p class="form-footnote" style="margin-top: 0.6rem;">Confidential architecture review. Calendar invitation with secure video link will be sent to your work email immediately.</p>
               </div>
             </form>
 
@@ -469,11 +579,51 @@
               <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;" id="successNoticeTitle">Architecture Consultation Logged
               </h3>
               <p id="successNoticeBody"
-                style="font-size: 0.9375rem; color: var(--color-text-body); max-width: 420px; margin: 0 auto 1.5rem auto;">
+                style="font-size: 0.9375rem; color: var(--color-text-body); max-width: 440px; margin: 0 auto 1.25rem auto;">
                 Our lead software architect has received your specifications. We will send a calendar invitation and
                 introductory agenda within 24 hours.
               </p>
-              <a href="projects.html" class="btn btn-outline">View Project Case Studies</a>
+
+              <!-- Confirmed Session Pass Card -->
+              <div class="confirmed-pass-card" id="confirmedPassCard" style="display:none;">
+                <div class="pass-header">
+                  <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-navy);">Architecture Discovery Pass</span>
+                  <span class="pass-badge">Confirmed ✓</span>
+                </div>
+                <div class="pass-meta-grid">
+                  <div class="pass-item">
+                    <span class="pass-label">Date & Time</span>
+                    <span class="pass-val" id="passDateTimeVal">—</span>
+                  </div>
+                  <div class="pass-item">
+                    <span class="pass-label">Timezone</span>
+                    <span class="pass-val" id="passTimezoneVal">—</span>
+                  </div>
+                  <div class="pass-item">
+                    <span class="pass-label">Host Architect</span>
+                    <span class="pass-val">Elena Rostova</span>
+                  </div>
+                  <div class="pass-item">
+                    <span class="pass-label">Format</span>
+                    <span class="pass-val">Google Meet (Link in Email)</span>
+                  </div>
+                </div>
+                <div class="pass-actions-row">
+                  <a href="#" id="googleCalBtn" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                    <span>Add to Google Calendar</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                  </a>
+                  <button type="button" onclick="downloadIcsFile()" class="btn btn-outline" id="downloadIcsBtn">
+                    <span>Download .ICS</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                <a href="projects.html" class="btn btn-outline">Explore Case Studies</a>
+                <a href="index.html" class="btn btn-ghost">Return to Home</a>
+              </div>
             </div>
 
           </div>

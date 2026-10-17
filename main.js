@@ -17,6 +17,7 @@ import {
   selectProjectType, appendSpecTag, updateLiveContactSummary, validateContactStep,
   updateStepperUI, nextStep, prevStep, jumpToStep, handleContactSubmit, copyEmail, initContactPage,
   clearProjectReferral,
+  selectDiscoveryDate, selectDiscoverySlot, handleTimezoneChange, submitAsyncWithoutScheduling, downloadIcsFile,
   setArchPlatform, setArchScale, toggleArchPrimitive, renderArchBlueprint, exportArchBlueprint
 } from './js/components.js';
 
@@ -25,6 +26,11 @@ import {
 Object.assign(window, {
   toggleCaseStudyCard,
   clearProjectReferral,
+  selectDiscoveryDate,
+  selectDiscoverySlot,
+  handleTimezoneChange,
+  submitAsyncWithoutScheduling,
+  downloadIcsFile,
   // Architecture Configurator
   setArchPlatform,
   setArchScale,
