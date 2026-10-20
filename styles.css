@@ -1069,6 +1069,51 @@ h1, h2, h3, h4 {
   max-width: 940px;
 }
 
+/* ==================== HERO TYPEWRITER ANIMATION ==================== */
+.typewriter-container {
+  display: inline-block;
+  position: relative;
+  vertical-align: bottom;
+  min-height: 1.18em;
+}
+
+.typewriter-text {
+  display: inline;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.88em;
+  margin-left: 5px;
+  vertical-align: -0.04em;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  box-shadow: 0 0 12px var(--color-primary);
+  animation: typewriterCursorBlink 0.85s steps(2, start) infinite;
+  transition: opacity 0.08s ease;
+}
+
+.typewriter-cursor.is-typing {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes typewriterCursorBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter-cursor {
+    display: none;
+  }
+}
+
 .hero-subtitle {
   font-size: clamp(1rem, 1.4vw, 1.1875rem);
   color: var(--color-text-body);

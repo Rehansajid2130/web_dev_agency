@@ -20,6 +20,7 @@ import {
   selectDiscoveryDate, selectDiscoverySlot, handleTimezoneChange, submitAsyncWithoutScheduling, downloadIcsFile,
   setArchPlatform, setArchScale, toggleArchPrimitive, renderArchBlueprint, exportArchBlueprint
 } from './js/components.js';
+import { initTypewriter, stopTypewriter } from './js/typewriter.js';
 
 // ==================== GLOBAL COMPATIBILITY REGISTRATION ====================
 // Expose all public interactive handlers to window for inline HTML onclick attributes
@@ -90,7 +91,9 @@ Object.assign(window, {
   jumpToStep,
   handleContactSubmit,
   copyEmail,
-  initContactPage
+  initContactPage,
+  initTypewriter,
+  stopTypewriter
 });
 
 // ==================== BOOTSTRAP ON DOM READY ====================
@@ -113,6 +116,9 @@ function bootstrapApp() {
   if (document.getElementById('contactPageForm')) {
     initContactPage();
   }
+  if (document.getElementById('typewriterText')) {
+    initTypewriter();
+  }
 }
 
 if (document.readyState === 'loading') {
@@ -128,5 +134,7 @@ export {
   setColorTheme,
   navigateTo,
   openCaseStudy,
-  selectProjectType
+  selectProjectType,
+  initTypewriter,
+  stopTypewriter
 };

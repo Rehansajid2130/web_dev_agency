@@ -9,6 +9,7 @@ import { renderColorThemePicker } from './theme.js';
 import { initNavbarScrollState, initCardGlow } from './cursor.js';
 import { initStatsObserver } from './telemetry.js';
 import { initProcessPage, initProjectsPage, initContactPage } from './components.js';
+import { initTypewriter, stopTypewriter } from './typewriter.js';
 
 /** @type {Map<string, string>} */
 const pageCache = new Map();
@@ -333,5 +334,11 @@ export function reinitPageComponents(url) {
 
   if (document.getElementById('contactPageForm')) {
     initContactPage();
+  }
+
+  if (document.getElementById('typewriterText')) {
+    initTypewriter();
+  } else {
+    stopTypewriter();
   }
 }
