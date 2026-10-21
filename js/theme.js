@@ -1,13 +1,10 @@
 /**
- * @fileoverview Dynamic Theme & Palette Engine for bit3labs
- * Manages Dark/Light mode synchronization and 8-accent runtime color palettes.
+ * @fileoverview Theme Engine for bit3labs
+ * Manages Dark/Light mode synchronization with native system preferences.
  * @module theme
  */
 
-/**
- * Valid theme color palette names.
- * @typedef {'violet'|'black'|'green'|'emerald'|'cyan'|'amber'|'rose'|'blue'} ThemeColor
- */
+// ponytail: removed multi-theme palette engine in favor of the single original blueprint blue theme.
 
 /**
  * Valid mode types.
@@ -23,6 +20,8 @@ export function initTheme() {
     (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   if (saved === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
   }
   updateThemeIcon();
 }
@@ -34,7 +33,11 @@ export function initTheme() {
 export function toggleTheme() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
   const next = isDark ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
+  if (next === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else {
+    document.documentElement.removeAttribute('data-theme');
+  }
   localStorage.setItem('theme', next);
   updateThemeIcon();
   return next;
@@ -52,61 +55,39 @@ export function updateThemeIcon() {
 }
 
 /**
- * Initialize dynamic color theme palette from localStorage or default to 'violet'.
+ * Clean up legacy color theme keys and reset to base blue theme.
  * @returns {void}
  */
 export function initColorTheme() {
-  const savedColor = /** @type {ThemeColor} */ (localStorage.getItem('bit3labs_theme_color') || 'violet');
-  setColorTheme(savedColor, false);
-  renderColorThemePicker();
+  // ponytail: ensure legacy theme-color attribute and storage are purged
+  try {
+    localStorage.removeItem('bit3labs_theme_color');
+    document.documentElement.removeAttribute('data-theme-color');
+    if (document.body) {
+      document.body.removeAttribute('data-theme-color');
+    }
+    const dock = document.getElementById('themePaletteDock');
+    if (dock) dock.remove();
+  } catch (_) {}
 }
 
 /**
- * Set the active accent color palette.
- * @param {string} colorName - The name of the color palette to activate.
- * @param {boolean} [save=true] - Whether to persist the selection to localStorage.
+ * Stub kept for backward compatibility; enforces the standard blue theme.
+ * @param {string} [colorName]
+ * @param {boolean} [save]
  * @returns {void}
  */
-export function setColorTheme(colorName, save = true) {
-  document.documentElement.setAttribute('data-theme-color', colorName);
-  if (document.body) {
-    document.body.setAttribute('data-theme-color', colorName);
-  }
-  if (save) {
-    localStorage.setItem('bit3labs_theme_color', colorName);
-  }
-  document.querySelectorAll('.theme-color-swatch').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-color') === colorName);
-  });
+export function setColorTheme(colorName, save) {
+  // ponytail: no-op since only original blue theme is kept
+  initColorTheme();
 }
 
 /**
- * Render the interactive theme palette dock widget into the DOM if not already present.
+ * Stub kept for backward compatibility; removes any existing picker dock.
  * @returns {void}
  */
 export function renderColorThemePicker() {
-  if (document.getElementById('themePaletteDock')) return;
-
-  const dock = document.createElement('aside');
-  dock.id = 'themePaletteDock';
-  dock.className = 'theme-palette-dock';
-  dock.setAttribute('aria-label', 'Theme Color Palette Switcher');
-
-  const currentColor = localStorage.getItem('bit3labs_theme_color') || 'violet';
-
-  dock.innerHTML = `
-    <span class="theme-palette-label">Theme</span>
-    <div class="theme-palette-swatches">
-      <button class="theme-color-swatch swatch-violet ${currentColor === 'violet' ? 'active' : ''}" data-color="violet" onclick="setColorTheme('violet')" title="Electric Violet (Linear / Raycast)" aria-label="Electric Violet Theme"></button>
-      <button class="theme-color-swatch swatch-black ${currentColor === 'black' ? 'active' : ''}" data-color="black" onclick="setColorTheme('black')" title="Stealth Onyx / Titanium Black (Apple Pro / Monochrome)" aria-label="Stealth Onyx Black Theme"></button>
-      <button class="theme-color-swatch swatch-green ${currentColor === 'green' ? 'active' : ''}" data-color="green" onclick="setColorTheme('green')" title="Nordic Pine / Forest Green (Deep Tech)" aria-label="Nordic Pine Green Theme"></button>
-      <button class="theme-color-swatch swatch-emerald ${currentColor === 'emerald' ? 'active' : ''}" data-color="emerald" onclick="setColorTheme('emerald')" title="Obsidian Emerald (Supabase / Jade)" aria-label="Obsidian Emerald Theme"></button>
-      <button class="theme-color-swatch swatch-cyan ${currentColor === 'cyan' ? 'active' : ''}" data-color="cyan" onclick="setColorTheme('cyan')" title="Quantum Cyan (Deep Cloud Teal)" aria-label="Quantum Cyan Theme"></button>
-      <button class="theme-color-swatch swatch-amber ${currentColor === 'amber' ? 'active' : ''}" data-color="amber" onclick="setColorTheme('amber')" title="Solar Amber (Luxury Bronze)" aria-label="Solar Amber Theme"></button>
-      <button class="theme-color-swatch swatch-rose ${currentColor === 'rose' ? 'active' : ''}" data-color="rose" onclick="setColorTheme('rose')" title="Champagne Ruby (Luxury Hardware)" aria-label="Champagne Ruby Theme"></button>
-      <button class="theme-color-swatch swatch-blue ${currentColor === 'blue' ? 'active' : ''}" data-color="blue" onclick="setColorTheme('blue')" title="Royal Cobalt (Blueprint Classic)" aria-label="Royal Cobalt Theme"></button>
-    </div>
-  `;
-
-  document.body.appendChild(dock);
+  // ponytail: no-op; dock is removed
+  const dock = document.getElementById('themePaletteDock');
+  if (dock) dock.remove();
 }

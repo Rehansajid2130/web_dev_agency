@@ -6,7 +6,7 @@
  */
 
 import { renderColorThemePicker } from './theme.js';
-import { initNavbarScrollState, initCardGlow } from './cursor.js';
+import { initNavbarScrollState, initCardGlow, syncNavSlidingPill } from './cursor.js';
 import { initStatsObserver } from './telemetry.js';
 import { initProcessPage, initProjectsPage, initContactPage } from './components.js';
 import { initTypewriter, stopTypewriter } from './typewriter.js';
@@ -101,6 +101,7 @@ export function initRouter() {
   window.addEventListener('popstate', () => {
     navigateTo(window.location.href, false);
   });
+  syncNavSlidingPill();
 }
 
 /**
@@ -190,10 +191,9 @@ export async function navigateTo(url, push = true) {
 
     if (newDoc.body) {
       document.body.className = newDoc.body.className;
-      const color = localStorage.getItem('bit3labs_theme_color') || 'violet';
-      document.body.setAttribute('data-theme-color', color);
+      // ponytail: single blue theme; ensure no legacy theme-color attribute
+      document.body.removeAttribute('data-theme-color');
     }
-    renderColorThemePicker();
 
     document.title = newDoc.title;
     const newDesc = newDoc.querySelector('meta[name="description"]');

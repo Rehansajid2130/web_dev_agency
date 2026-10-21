@@ -6,7 +6,7 @@
  */
 
 import { initTheme, toggleTheme, updateThemeIcon, initColorTheme, setColorTheme, renderColorThemePicker } from './js/theme.js';
-import { initCustomCursor, initCardGlow, initNavbarScrollState, toggleMobileMenu } from './js/cursor.js';
+import { initCustomCursor, initCardGlow, initNavbarScrollState, toggleMobileMenu, initNavSlidingPill, syncNavSlidingPill } from './js/cursor.js';
 import { initStatsObserver, animateNumber, switchDashboardTab, startApiStreamSimulation, toggleTelemetryDemo } from './js/telemetry.js';
 import { initRouter, navigateTo, prefetchPage, normalizeUrl, reinitPageComponents } from './js/router.js';
 import { 
@@ -51,6 +51,8 @@ Object.assign(window, {
   initCardGlow,
   initNavbarScrollState,
   toggleMobileMenu,
+  initNavSlidingPill,
+  syncNavSlidingPill,
 
   // Telemetry & Stats
   initStatsObserver,
@@ -102,6 +104,7 @@ function bootstrapApp() {
   initColorTheme();
   initStatsObserver();
   initNavbarScrollState();
+  initNavSlidingPill();
   initCardGlow();
   initCustomCursor();
   initRouter();

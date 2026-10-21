@@ -19,8 +19,7 @@
   <script>
     (function () {
       try {
-        var c = localStorage.getItem('bit3labs_theme_color') || 'violet';
-        document.documentElement.setAttribute('data-theme-color', c);
+        // ponytail: single blue theme
         var t = localStorage.getItem('theme');
         if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.setAttribute('data-theme', 'dark');

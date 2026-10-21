@@ -19,8 +19,7 @@
   <script>
     (function () {
       try {
-        var c = localStorage.getItem('bit3labs_theme_color') || 'violet';
-        document.documentElement.setAttribute('data-theme-color', c);
+        // ponytail: single blue theme
         var t = localStorage.getItem('theme');
         if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.setAttribute('data-theme', 'dark');
@@ -293,8 +292,6 @@
           </p>
           <ul>
             <li><code>theme</code>: Preserves user preference for Dark or Light interface modes.</li>
-            <li><code>bit3labs_theme_color</code>: Preserves user selected UI accent palette (e.g. Electric Violet,
-              Titanium Black).</li>
           </ul>
           <p>
             Because these tokens are strictly necessary for client-side rendering preferences and do not transmit

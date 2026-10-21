@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html lang="en" data-theme-color="violet">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects Showcase: Web, Mobile & ERP Systems | bit3labs</title>
-  <meta name="description" content="Portfolio of custom web applications, native mobile applications, and enterprise ERP systems engineered by bit3labs.">
-  
+  <meta name="description"
+    content="Portfolio of custom web applications, native mobile applications, and enterprise ERP systems engineered by bit3labs.">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
   <!-- Base styles.css and scoped extensions -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="projects.css">
   <script>
     (function () {
       try {
-        var c = localStorage.getItem('bit3labs_theme_color') || 'violet';
-        document.documentElement.setAttribute('data-theme-color', c);
+        // ponytail: single blue theme
         var t = localStorage.getItem('theme');
         if (t === 'dark' || (!t && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
-      } catch (e) {}
+      } catch (e) { }
     })();
   </script>
 </head>
+
 <body>
 
   <!-- Background Blueprint Technical Grid Texture -->
@@ -37,9 +41,11 @@
       <a href="index.html" class="brand-logo">
         <span class="logo-symbol">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
-            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB" />
+            <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round" />
           </svg>
         </span>
         <span class="logo-text">bit3<span class="logo-accent">labs</span></span>
@@ -55,11 +61,13 @@
 
       <div class="nav-actions">
         <!-- Theme toggle button -->
-        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button>
+        <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark/light theme"
+          title="Toggle theme">🌙</button>
         <a href="contact.html" class="btn btn-primary btn-pill" id="nav-cta-btn">
           Contact us
         </a>
-        <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+        <button class="mobile-toggle-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu"
+          aria-expanded="false">
           <span class="hamburger-line line-top"></span>
           <span class="hamburger-line line-mid"></span>
           <span class="hamburger-line line-bot"></span>
@@ -72,11 +80,8 @@
     <!-- ==================== HERO SECTION ==================== -->
     <section class="hero-section" id="hero" style="padding-bottom: 2rem;">
       <div class="section-container hero-container">
-        
-        <div class="eyebrow-badge">
-          <span class="badge-dot"></span>
-          <span>Engineered Portfolio &bull; Verified Production Systems</span>
-        </div>
+
+
 
         <h1 class="hero-title">
           Case Studies in<br>
@@ -84,7 +89,8 @@
         </h1>
 
         <p class="hero-subtitle">
-          Real-world bespoke web applications, offline-first mobile apps, and custom enterprise ERP systems deployed for market leaders.
+          Real-world bespoke web applications, offline-first mobile apps, and custom enterprise ERP systems deployed for
+          market leaders.
         </p>
 
       </div>
@@ -92,7 +98,7 @@
       <!-- Hero Bottom Organic Curve Divider -->
       <div class="hero-bottom-curve" aria-hidden="true">
         <svg viewBox="0 0 1440 96" fill="none" preserveAspectRatio="none">
-          <path d="M0,0 C360,96 1080,96 1440,0 L1440,96 L0,96 Z" fill="#fafbfc"/>
+          <path d="M0,0 C360,96 1080,96 1440,0 L1440,96 L0,96 Z" fill="#fafbfc" />
         </svg>
       </div>
     </section>
@@ -100,10 +106,13 @@
     <!-- ==================== PROJECTS SHOWCASE ==================== -->
     <section style="padding: 3rem 0 6rem 0;">
       <div class="section-container">
-        
+
         <!-- Live Keyword Search Bar -->
         <div style="max-width: 520px; margin: 0 auto 1.5rem auto; position: relative;">
-          <input type="search" id="projectSearch" class="form-input" style="width: 100%; border-radius: var(--radius-pill); padding: 0.75rem 1.4rem; border: 1px solid var(--color-border-subtle); background: var(--color-card-bg); color: var(--color-text-main); box-shadow: var(--shadow-subtle);" placeholder="Search projects by keyword or tech stack (e.g. React, Python, K8s)..." oninput="searchProjects(this.value)">
+          <input type="search" id="projectSearch" class="form-input"
+            style="width: 100%; border-radius: var(--radius-pill); padding: 0.75rem 1.4rem; border: 1px solid var(--color-border-subtle); background: var(--color-card-bg); color: var(--color-text-main); box-shadow: var(--shadow-subtle);"
+            placeholder="Search projects by keyword or tech stack (e.g. React, Python, K8s)..."
+            oninput="searchProjects(this.value)">
         </div>
 
         <!-- Filter Tabs -->
@@ -116,16 +125,20 @@
 
         <!-- Projects Grid -->
         <div class="projects-grid" id="projectsContainer">
-          
+
           <!-- Project 1: ERP -->
           <article class="project-card" id="project-card-erp" data-category="erp" aria-expanded="false">
-            <div class="project-card-header" onclick="toggleCaseStudyCard('erp', event)" role="button" tabindex="0" aria-label="Toggle OmniFlow Global ERP case study">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('erp', event)" role="button" tabindex="0"
+              aria-label="Toggle OmniFlow Global ERP case study">
               <div class="project-header-top">
                 <span class="project-category-badge">Custom ERP</span>
                 <div class="project-expand-indicator">
                   <span class="expand-text">Explore Specs</span>
                   <span class="expand-chevron">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
                   </span>
                 </div>
               </div>
@@ -147,14 +160,18 @@
                   <div class="case-col-left">
                     <div class="case-block challenge-block">
                       <span class="case-block-label">Architecture Challenge</span>
-                      <p class="case-block-text">The client was spending $350K/year in legacy commercial ERP seat fees while suffering warehouse stock desynchronization and 4-second query delays across 14 international fulfillment hubs.</p>
+                      <p class="case-block-text">The client was spending $350K/year in legacy commercial ERP seat fees
+                        while suffering warehouse stock desynchronization and 4-second query delays across 14
+                        international fulfillment hubs.</p>
                     </div>
                     <div class="case-block solution-block">
                       <span class="case-block-label">Engineered Solution</span>
-                      <p class="case-block-text">Custom ERP core in Go and React 19, distributed transaction sagas for inventory reservation, automated double-entry general ledger, and multi-currency billing.</p>
+                      <p class="case-block-text">Custom ERP core in Go and React 19, distributed transaction sagas for
+                        inventory reservation, automated double-entry general ledger, and multi-currency billing.</p>
                       <div class="case-pattern-tag">
                         <span style="font-size: 1rem;">📐</span>
-                        <span><strong>Data Architecture:</strong> Distributed transaction sagas with idempotent ledger entries, write-ahead logs, and regional read-replicas.</span>
+                        <span><strong>Data Architecture:</strong> Distributed transaction sagas with idempotent ledger
+                          entries, write-ahead logs, and regional read-replicas.</span>
                       </div>
                     </div>
                   </div>
@@ -162,7 +179,8 @@
                   <div class="case-col-right">
                     <div class="case-block impact-block">
                       <span class="case-block-label">Measured Production Impact</span>
-                      <p class="case-block-text">Reduced order reconciliation from 18 minutes to 4 seconds, eliminated recurring seat fees permanently, and unified 14 international fulfillment hubs.</p>
+                      <p class="case-block-text">Reduced order reconciliation from 18 minutes to 4 seconds, eliminated
+                        recurring seat fees permanently, and unified 14 international fulfillment hubs.</p>
                     </div>
 
                     <div class="expanded-benchmark-strip">
@@ -181,13 +199,21 @@
                     </div>
 
                     <div class="expanded-actions-bar">
-                      <a href="contact.html?project=erp&ref=OmniFlow+Global+ERP&scope=custom-erp" class="btn btn-primary">
+                      <a href="contact.html?project=erp&ref=OmniFlow+Global+ERP&scope=custom-erp"
+                        class="btn btn-primary">
                         <span>Consult on Similar System</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
                       </a>
-                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('erp', event)">
+                      <button type="button" class="btn btn-outline collapse-btn"
+                        onclick="toggleCaseStudyCard('erp', event)">
                         <span>Collapse</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M18 15l-6-6-6 6" />
+                        </svg>
                       </button>
                     </div>
                   </div>
@@ -198,13 +224,17 @@
 
           <!-- Project 2: Mobile -->
           <article class="project-card" id="project-card-mobile" data-category="mobile" aria-expanded="false">
-            <div class="project-card-header" onclick="toggleCaseStudyCard('mobile', event)" role="button" tabindex="0" aria-label="Toggle FieldOps Mobile Suite case study">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('mobile', event)" role="button" tabindex="0"
+              aria-label="Toggle FieldOps Mobile Suite case study">
               <div class="project-header-top">
                 <span class="project-category-badge">Native Mobile</span>
                 <div class="project-expand-indicator">
                   <span class="expand-text">Explore Specs</span>
                   <span class="expand-chevron">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
                   </span>
                 </div>
               </div>
@@ -226,14 +256,18 @@
                   <div class="case-col-left">
                     <div class="case-block challenge-block">
                       <span class="case-block-label">Architecture Challenge</span>
-                      <p class="case-block-text">Over 4,000 field technicians experienced lost work orders and application freezing when servicing equipment in remote subterranean basements without cellular service.</p>
+                      <p class="case-block-text">Over 4,000 field technicians experienced lost work orders and
+                        application freezing when servicing equipment in remote subterranean basements without cellular
+                        service.</p>
                     </div>
                     <div class="case-block solution-block">
                       <span class="case-block-label">Engineered Solution</span>
-                      <p class="case-block-text">React Native with native Swift & Kotlin hardware bridges, local encrypted SQLite databases, CRDT conflict reconciliation, and background sync queues.</p>
+                      <p class="case-block-text">React Native with native Swift & Kotlin hardware bridges, local
+                        encrypted SQLite databases, CRDT conflict reconciliation, and background sync queues.</p>
                       <div class="case-pattern-tag">
                         <span style="font-size: 1rem;">📐</span>
-                        <span><strong>Data Architecture:</strong> Local-first encrypted SQLite database utilizing Conflict-free Replicated Data Types (CRDTs) with deterministic state vector merges.</span>
+                        <span><strong>Data Architecture:</strong> Local-first encrypted SQLite database utilizing
+                          Conflict-free Replicated Data Types (CRDTs) with deterministic state vector merges.</span>
                       </div>
                     </div>
                   </div>
@@ -241,7 +275,8 @@
                   <div class="case-col-right">
                     <div class="case-block impact-block">
                       <span class="case-block-label">Measured Production Impact</span>
-                      <p class="case-block-text">Eliminated 100% of field data loss incidents and decreased service ticket turnaround time by 38% across both iOS and Android fleets.</p>
+                      <p class="case-block-text">Eliminated 100% of field data loss incidents and decreased service
+                        ticket turnaround time by 38% across both iOS and Android fleets.</p>
                     </div>
 
                     <div class="expanded-benchmark-strip">
@@ -260,13 +295,21 @@
                     </div>
 
                     <div class="expanded-actions-bar">
-                      <a href="contact.html?project=mobile&ref=FieldOps+Mobile+Suite&scope=mobile-app" class="btn btn-primary">
+                      <a href="contact.html?project=mobile&ref=FieldOps+Mobile+Suite&scope=mobile-app"
+                        class="btn btn-primary">
                         <span>Consult on Similar System</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
                       </a>
-                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('mobile', event)">
+                      <button type="button" class="btn btn-outline collapse-btn"
+                        onclick="toggleCaseStudyCard('mobile', event)">
                         <span>Collapse</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M18 15l-6-6-6 6" />
+                        </svg>
                       </button>
                     </div>
                   </div>
@@ -277,13 +320,17 @@
 
           <!-- Project 3: Web -->
           <article class="project-card" id="project-card-web" data-category="web" aria-expanded="false">
-            <div class="project-card-header" onclick="toggleCaseStudyCard('web', event)" role="button" tabindex="0" aria-label="Toggle HealthSync Exchange Portal case study">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('web', event)" role="button" tabindex="0"
+              aria-label="Toggle HealthSync Exchange Portal case study">
               <div class="project-header-top">
                 <span class="project-category-badge">Web Application</span>
                 <div class="project-expand-indicator">
                   <span class="expand-text">Explore Specs</span>
                   <span class="expand-chevron">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
                   </span>
                 </div>
               </div>
@@ -305,14 +352,17 @@
                   <div class="case-col-left">
                     <div class="case-block challenge-block">
                       <span class="case-block-label">Architecture Challenge</span>
-                      <p class="case-block-text">The client faced severe latency and security risks synchronizing electronic health records across 40 diagnostic clinical facilities.</p>
+                      <p class="case-block-text">The client faced severe latency and security risks synchronizing
+                        electronic health records across 40 diagnostic clinical facilities.</p>
                     </div>
                     <div class="case-block solution-block">
                       <span class="case-block-label">Engineered Solution</span>
-                      <p class="case-block-text">Next.js 15 App Router with Edge SSR, cryptographic audit trails, OAuth 2.0 / SAML SSO, and partitioned PostgreSQL schemas.</p>
+                      <p class="case-block-text">Next.js 15 App Router with Edge SSR, cryptographic audit trails, OAuth
+                        2.0 / SAML SSO, and partitioned PostgreSQL schemas.</p>
                       <div class="case-pattern-tag">
                         <span style="font-size: 1rem;">📐</span>
-                        <span><strong>Data Architecture:</strong> PostgreSQL Row-Level Security (RLS) with AES-256 GCM encrypted field storage and append-only cryptographic audit logs.</span>
+                        <span><strong>Data Architecture:</strong> PostgreSQL Row-Level Security (RLS) with AES-256 GCM
+                          encrypted field storage and append-only cryptographic audit logs.</span>
                       </div>
                     </div>
                   </div>
@@ -320,7 +370,8 @@
                   <div class="case-col-right">
                     <div class="case-block impact-block">
                       <span class="case-block-label">Measured Production Impact</span>
-                      <p class="case-block-text">Achieved 100% HIPAA compliance audit score and reduced clinical record retrieval latency to under 42ms.</p>
+                      <p class="case-block-text">Achieved 100% HIPAA compliance audit score and reduced clinical record
+                        retrieval latency to under 42ms.</p>
                     </div>
 
                     <div class="expanded-benchmark-strip">
@@ -339,13 +390,21 @@
                     </div>
 
                     <div class="expanded-actions-bar">
-                      <a href="contact.html?project=web&ref=HealthSync+Exchange+Portal&scope=custom-web" class="btn btn-primary">
+                      <a href="contact.html?project=web&ref=HealthSync+Exchange+Portal&scope=custom-web"
+                        class="btn btn-primary">
                         <span>Consult on Similar System</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
                       </a>
-                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('web', event)">
+                      <button type="button" class="btn btn-outline collapse-btn"
+                        onclick="toggleCaseStudyCard('web', event)">
                         <span>Collapse</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M18 15l-6-6-6 6" />
+                        </svg>
                       </button>
                     </div>
                   </div>
@@ -356,13 +415,17 @@
 
           <!-- Project 4: ERP -->
           <article class="project-card" id="project-card-apex" data-category="erp" aria-expanded="false">
-            <div class="project-card-header" onclick="toggleCaseStudyCard('apex', event)" role="button" tabindex="0" aria-label="Toggle ApexLedger Manufacturing ERP case study">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('apex', event)" role="button" tabindex="0"
+              aria-label="Toggle ApexLedger Manufacturing ERP case study">
               <div class="project-header-top">
                 <span class="project-category-badge">Enterprise ERP</span>
                 <div class="project-expand-indicator">
                   <span class="expand-text">Explore Specs</span>
                   <span class="expand-chevron">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
                   </span>
                 </div>
               </div>
@@ -384,14 +447,17 @@
                   <div class="case-col-left">
                     <div class="case-block challenge-block">
                       <span class="case-block-label">Architecture Challenge</span>
-                      <p class="case-block-text">High-cost SAP licenses with 2-minute batch inventory sync delays causing assembly line work stoppages.</p>
+                      <p class="case-block-text">High-cost SAP licenses with 2-minute batch inventory sync delays
+                        causing assembly line work stoppages.</p>
                     </div>
                     <div class="case-block solution-block">
                       <span class="case-block-label">Engineered Solution</span>
-                      <p class="case-block-text">Event-driven Rust microservices, Apache Kafka event streams, and real-time WebSockets telemetry to shop-floor tablets.</p>
+                      <p class="case-block-text">Event-driven Rust microservices, Apache Kafka event streams, and
+                        real-time WebSockets telemetry to shop-floor tablets.</p>
                       <div class="case-pattern-tag">
                         <span style="font-size: 1rem;">📐</span>
-                        <span><strong>Data Architecture:</strong> Event-sourced ledger architecture using Kafka topic partitions with zero-downtime schema evolution.</span>
+                        <span><strong>Data Architecture:</strong> Event-sourced ledger architecture using Kafka topic
+                          partitions with zero-downtime schema evolution.</span>
                       </div>
                     </div>
                   </div>
@@ -399,7 +465,8 @@
                   <div class="case-col-right">
                     <div class="case-block impact-block">
                       <span class="case-block-label">Measured Production Impact</span>
-                      <p class="case-block-text">Eliminated $420,000 in recurring annual SAP seat fees and cut bill-of-materials recalculation from 120s to 1.2s.</p>
+                      <p class="case-block-text">Eliminated $420,000 in recurring annual SAP seat fees and cut
+                        bill-of-materials recalculation from 120s to 1.2s.</p>
                     </div>
 
                     <div class="expanded-benchmark-strip">
@@ -418,13 +485,21 @@
                     </div>
 
                     <div class="expanded-actions-bar">
-                      <a href="contact.html?project=apex&ref=ApexLedger+Manufacturing+ERP&scope=custom-erp" class="btn btn-primary">
+                      <a href="contact.html?project=apex&ref=ApexLedger+Manufacturing+ERP&scope=custom-erp"
+                        class="btn btn-primary">
                         <span>Consult on Similar System</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
                       </a>
-                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('apex', event)">
+                      <button type="button" class="btn btn-outline collapse-btn"
+                        onclick="toggleCaseStudyCard('apex', event)">
                         <span>Collapse</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M18 15l-6-6-6 6" />
+                        </svg>
                       </button>
                     </div>
                   </div>
@@ -435,13 +510,17 @@
 
           <!-- Project 5: Mobile -->
           <article class="project-card" id="project-card-swiftpay" data-category="mobile" aria-expanded="false">
-            <div class="project-card-header" onclick="toggleCaseStudyCard('swiftpay', event)" role="button" tabindex="0" aria-label="Toggle SwiftPay Consumer Wallet case study">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('swiftpay', event)" role="button" tabindex="0"
+              aria-label="Toggle SwiftPay Consumer Wallet case study">
               <div class="project-header-top">
                 <span class="project-category-badge">Native Mobile</span>
                 <div class="project-expand-indicator">
                   <span class="expand-text">Explore Specs</span>
                   <span class="expand-chevron">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
                   </span>
                 </div>
               </div>
@@ -463,14 +542,17 @@
                   <div class="case-col-left">
                     <div class="case-block challenge-block">
                       <span class="case-block-label">Architecture Challenge</span>
-                      <p class="case-block-text">High fraudulent chargeback rates and 2.4-second peer-to-peer transfer lag during peak shopping volumes.</p>
+                      <p class="case-block-text">High fraudulent chargeback rates and 2.4-second peer-to-peer transfer
+                        lag during peak shopping volumes.</p>
                     </div>
                     <div class="case-block solution-block">
                       <span class="case-block-label">Engineered Solution</span>
-                      <p class="case-block-text">Native iOS (Swift) & Android (Kotlin) app with Apple Secure Enclave & Android Keystore hardware biometric signature verification.</p>
+                      <p class="case-block-text">Native iOS (Swift) & Android (Kotlin) app with Apple Secure Enclave &
+                        Android Keystore hardware biometric signature verification.</p>
                       <div class="case-pattern-tag">
                         <span style="font-size: 1rem;">📐</span>
-                        <span><strong>Data Architecture:</strong> Hardware-backed asymmetric key cryptography with mutual TLS (mTLS) token-bound API sessions.</span>
+                        <span><strong>Data Architecture:</strong> Hardware-backed asymmetric key cryptography with
+                          mutual TLS (mTLS) token-bound API sessions.</span>
                       </div>
                     </div>
                   </div>
@@ -478,7 +560,8 @@
                   <div class="case-col-right">
                     <div class="case-block impact-block">
                       <span class="case-block-label">Measured Production Impact</span>
-                      <p class="case-block-text">Achieved sub-0.8s cold app launch, zero credential theft vulnerabilities, and 4.9★ rating across 250,000 active users.</p>
+                      <p class="case-block-text">Achieved sub-0.8s cold app launch, zero credential theft
+                        vulnerabilities, and 4.9★ rating across 250,000 active users.</p>
                     </div>
 
                     <div class="expanded-benchmark-strip">
@@ -497,13 +580,21 @@
                     </div>
 
                     <div class="expanded-actions-bar">
-                      <a href="contact.html?project=swiftpay&ref=SwiftPay+Consumer+Wallet&scope=mobile-app" class="btn btn-primary">
+                      <a href="contact.html?project=swiftpay&ref=SwiftPay+Consumer+Wallet&scope=mobile-app"
+                        class="btn btn-primary">
                         <span>Consult on Similar System</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
                       </a>
-                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('swiftpay', event)">
+                      <button type="button" class="btn btn-outline collapse-btn"
+                        onclick="toggleCaseStudyCard('swiftpay', event)">
                         <span>Collapse</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M18 15l-6-6-6 6" />
+                        </svg>
                       </button>
                     </div>
                   </div>
@@ -514,13 +605,17 @@
 
           <!-- Project 6: Web -->
           <article class="project-card" id="project-card-quantpulse" data-category="web" aria-expanded="false">
-            <div class="project-card-header" onclick="toggleCaseStudyCard('quantpulse', event)" role="button" tabindex="0" aria-label="Toggle QuantPulse Trading Terminal case study">
+            <div class="project-card-header" onclick="toggleCaseStudyCard('quantpulse', event)" role="button"
+              tabindex="0" aria-label="Toggle QuantPulse Trading Terminal case study">
               <div class="project-header-top">
                 <span class="project-category-badge">Web Application</span>
                 <div class="project-expand-indicator">
                   <span class="expand-text">Explore Specs</span>
                   <span class="expand-chevron">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 9l-7 7-7-7"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <path d="M19 9l-7 7-7-7" />
+                    </svg>
                   </span>
                 </div>
               </div>
@@ -542,14 +637,17 @@
                   <div class="case-col-left">
                     <div class="case-block challenge-block">
                       <span class="case-block-label">Architecture Challenge</span>
-                      <p class="case-block-text">Browser tab memory leaks and 300ms WebSocket rendering lag causing missed financial arbitrage opportunities.</p>
+                      <p class="case-block-text">Browser tab memory leaks and 300ms WebSocket rendering lag causing
+                        missed financial arbitrage opportunities.</p>
                     </div>
                     <div class="case-block solution-block">
                       <span class="case-block-label">Engineered Solution</span>
-                      <p class="case-block-text">High-performance Canvas & WebGL rendering pipeline with Rust WebAssembly data decoder and multiplexed binary WebSockets.</p>
+                      <p class="case-block-text">High-performance Canvas & WebGL rendering pipeline with Rust
+                        WebAssembly data decoder and multiplexed binary WebSockets.</p>
                       <div class="case-pattern-tag">
                         <span style="font-size: 1rem;">📐</span>
-                        <span><strong>Data Architecture:</strong> Columnar ClickHouse time-series storage with ring-buffer memory pools and Protobuf binary packet streaming.</span>
+                        <span><strong>Data Architecture:</strong> Columnar ClickHouse time-series storage with
+                          ring-buffer memory pools and Protobuf binary packet streaming.</span>
                       </div>
                     </div>
                   </div>
@@ -557,7 +655,8 @@
                   <div class="case-col-right">
                     <div class="case-block impact-block">
                       <span class="case-block-label">Measured Production Impact</span>
-                      <p class="case-block-text">Reduced order execution and order book depth streaming latency to under 15ms with $850M+ daily transacted volume.</p>
+                      <p class="case-block-text">Reduced order execution and order book depth streaming latency to under
+                        15ms with $850M+ daily transacted volume.</p>
                     </div>
 
                     <div class="expanded-benchmark-strip">
@@ -576,13 +675,21 @@
                     </div>
 
                     <div class="expanded-actions-bar">
-                      <a href="contact.html?project=quantpulse&ref=QuantPulse+Trading+Terminal&scope=custom-web" class="btn btn-primary">
+                      <a href="contact.html?project=quantpulse&ref=QuantPulse+Trading+Terminal&scope=custom-web"
+                        class="btn btn-primary">
                         <span>Consult on Similar System</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
                       </a>
-                      <button type="button" class="btn btn-outline collapse-btn" onclick="toggleCaseStudyCard('quantpulse', event)">
+                      <button type="button" class="btn btn-outline collapse-btn"
+                        onclick="toggleCaseStudyCard('quantpulse', event)">
                         <span>Collapse</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2.5">
+                          <path d="M18 15l-6-6-6 6" />
+                        </svg>
                       </button>
                     </div>
                   </div>
@@ -603,7 +710,8 @@
           <span class="eyebrow-text eyebrow-white">Have a Complex Requirement?</span>
           <h2 class="cta-title">Let's engineer your custom software.</h2>
           <p class="cta-subtitle">
-            Book a direct technical session with our lead architects. We will analyze your specifications and build a fixed-scope roadmap.
+            Book a direct technical session with our lead architects. We will analyze your specifications and build a
+            fixed-scope roadmap.
           </p>
           <div class="cta-btn-group">
             <a href="contact.html" class="btn btn-white">Schedule Discovery Session</a>
@@ -622,9 +730,11 @@
         <div class="brand-logo">
           <span class="logo-symbol">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB"/>
-              <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#2563EB" />
+              <path d="M2 17L12 22L22 17" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M2 12L12 17L22 12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </span>
           <span class="logo-text">bit3<span class="logo-accent">labs</span></span>
@@ -706,20 +816,21 @@
   -->
   <script src="https://unpkg.com/lenis@1.3.1/dist/lenis.min.js"></script>
   <script>
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    function start() {
-      if (!window.Lenis || window.lenis) return;
-      var lenis = new Lenis({
-        duration: 1.6, lerp: 0.1, wheelMultiplier: 0.8,
-        easing: function (t) { return 1 - Math.pow(1 - t, 7); },
-        smoothWheel: true, syncTouch: false, anchors: false
-      });
-      window.lenis = lenis;
-      (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
-    }
-    if (window.Lenis) start(); else window.addEventListener('load', start);
-  })();
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      function start() {
+        if (!window.Lenis || window.lenis) return;
+        var lenis = new Lenis({
+          duration: 1.6, lerp: 0.1, wheelMultiplier: 0.8,
+          easing: function (t) { return 1 - Math.pow(1 - t, 7); },
+          smoothWheel: true, syncTouch: false, anchors: false
+        });
+        window.lenis = lenis;
+        (function raf(time) { lenis.raf(time); requestAnimationFrame(raf); })();
+      }
+      if (window.Lenis) start(); else window.addEventListener('load', start);
+    })();
   </script>
 </body>
+
 </html>

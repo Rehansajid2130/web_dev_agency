@@ -1,6 +1,7 @@
 /**
  * @fileoverview Custom Cursor, Glow Physics, and Navigation Interactions for bit3labs
- * Provides smooth Figma-style pointer interpolation and card spotlight effects.
+ * Provides smooth Figma-style pointer interpolation, card spotlight effects,
+ * and P16 sliding nav tab indicator from transitions.dev.
  * @module cursor
  */
 
@@ -99,4 +100,96 @@ export function toggleMobileMenu() {
       header.classList.toggle('nav-menu-open', isOpen);
     }
   }
+}
+
+/**
+ * P16 Sliding Active Tab Indicator from transitions.dev
+ * Smoothly translates and stretches an elastic pill behind hovered/active nav links.
+ * @returns {void}
+ */
+export function initNavSlidingPill() {
+  const menu = document.getElementById('nav-menu');
+  if (!menu) return;
+
+  let pill = menu.querySelector('.nav-sliding-pill');
+  if (!pill) {
+    pill = document.createElement('div');
+    pill.className = 'nav-sliding-pill';
+    pill.setAttribute('aria-hidden', 'true');
+    menu.prepend(pill);
+  }
+
+  function movePillTo(targetEl, immediate = false) {
+    if (!targetEl || window.innerWidth <= 880) {
+      pill.style.opacity = '0';
+      return;
+    }
+    const menuRect = menu.getBoundingClientRect();
+    const targetRect = targetEl.getBoundingClientRect();
+
+    const left = targetRect.left - menuRect.left;
+    const width = targetRect.width;
+
+    if (width <= 0) return;
+
+    if (immediate) {
+      pill.style.transition = 'none';
+    }
+
+    pill.style.transform = `translateX(${left}px)`;
+    pill.style.width = `${width}px`;
+    pill.style.opacity = '1';
+
+    if (immediate) {
+      requestAnimationFrame(() => {
+        pill.style.transition = '';
+      });
+    }
+  }
+
+  function getActiveLink() {
+    return menu.querySelector('.nav-link.active') || menu.querySelector('.nav-link');
+  }
+
+  requestAnimationFrame(() => {
+    movePillTo(getActiveLink(), true);
+  });
+
+  menu.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('mouseenter', () => {
+      movePillTo(link, false);
+    });
+  });
+
+  menu.addEventListener('mouseleave', () => {
+    movePillTo(getActiveLink(), false);
+  });
+
+  window.addEventListener('resize', () => {
+    movePillTo(getActiveLink(), true);
+  }, { passive: true });
+}
+
+/**
+ * Sync the sliding pill to the currently active link (e.g. after SPA route change).
+ * @returns {void}
+ */
+export function syncNavSlidingPill() {
+  const menu = document.getElementById('nav-menu');
+  if (!menu) return;
+  const pill = menu.querySelector('.nav-sliding-pill');
+  const activeLink = menu.querySelector('.nav-link.active') || menu.querySelector('.nav-link');
+  if (!pill || !activeLink || window.innerWidth <= 880) return;
+
+  requestAnimationFrame(() => {
+    const menuRect = menu.getBoundingClientRect();
+    const targetRect = activeLink.getBoundingClientRect();
+    const left = targetRect.left - menuRect.left;
+    const width = targetRect.width;
+    if (width > 0) {
+      pill.style.transform = `translateX(${left}px)`;
+      pill.style.width = `${width}px`;
+      pill.style.opacity = '1';
+    }
+  });
 }
