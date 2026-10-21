@@ -193,3 +193,60 @@ export function syncNavSlidingPill() {
     }
   });
 }
+
+/**
+ * P19: 3D Micro Perspective Tilt from transitions.dev
+ * Subtly tilts cards in 3D space tracking mouse position on pointermove,
+ * with elastic spring damping reset on pointerleave.
+ * @returns {void}
+ */
+export function initCard3DTilt() {
+  if (typeof window === 'undefined') return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  const selector = '.story-card, .process-card, .capability-highlight-card';
+  const cards = document.querySelectorAll(selector);
+
+  cards.forEach(el => {
+    const card = /** @type {HTMLElement} */ (el);
+    if (card.dataset.tiltInitialized === 'true') return;
+    card.dataset.tiltInitialized = 'true';
+
+    let rafId = null;
+
+    card.addEventListener('pointerenter', () => {
+      card.style.transition = 'transform 0.12s ease-out, box-shadow 0.25s ease';
+      card.style.willChange = 'transform';
+    });
+
+    card.addEventListener('pointermove', (e) => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const rect = card.getBoundingClientRect();
+        if (rect.width <= 0 || rect.height <= 0) return;
+
+        const normX = (e.clientX - rect.left) / rect.width - 0.5;
+        const normY = (e.clientY - rect.top) / rect.height - 0.5;
+
+        // Subtle, elegant ~3.5 deg maximum tilt
+        const rotX = (-normY * 5).toFixed(2);
+        const rotY = (normX * 5).toFixed(2);
+
+        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-2px)`;
+      });
+    });
+
+    card.addEventListener('pointerleave', () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      card.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      setTimeout(() => {
+        if (!card.matches(':hover')) {
+          card.style.willChange = '';
+          card.style.transform = '';
+          card.style.transition = '';
+        }
+      }, 500);
+    });
+  });
+}

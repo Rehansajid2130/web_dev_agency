@@ -598,6 +598,7 @@ h1, h2, h3, h4 {
 }
 
 /* --- 3. BUTTONS & PILLS --- */
+/* P24: Dynamic Arrow Shift & Spring Button Physics from transitions.dev */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -611,7 +612,43 @@ h1, h2, h3, h4 {
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: all var(--transition-smooth);
+  transition: transform 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color var(--transition-smooth),
+              border-color var(--transition-smooth),
+              box-shadow 0.24s cubic-bezier(0.16, 1, 0.3, 1),
+              color var(--transition-smooth);
+  will-change: transform;
+}
+
+/* Arrow SVG & text glyph spring translate */
+.btn svg,
+.btn .btn-arrow {
+  display: inline-block;
+  flex-shrink: 0;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Trailing arrow glides forward on hover */
+.btn:hover:not(.collapse-btn) svg:last-child,
+.btn:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+.btn:active:not(.collapse-btn) svg:last-child,
+.btn:active .btn-arrow {
+  transform: translateX(2px) scale(0.95);
+}
+
+/* Back navigation button: arrow glides backwards on hover */
+.btn.btn-step-back:hover svg,
+.btn.btn-step-back:hover .btn-arrow {
+  transform: translateX(-4px);
+}
+
+.btn.btn-step-back:active svg,
+.btn.btn-step-back:active .btn-arrow {
+  transform: translateX(-2px) scale(0.95);
 }
 
 .btn-pill {
@@ -627,12 +664,13 @@ h1, h2, h3, h4 {
 
 .btn-primary:hover {
   background-color: var(--color-primary-dark);
-  box-shadow: 0 6px 20px var(--color-primary-glow);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 24px var(--color-primary-glow);
+  transform: translateY(-2px);
 }
 
 .btn-primary:active {
-  transform: translateY(0);
+  transform: translateY(0) scale(0.985);
+  box-shadow: 0 3px 10px var(--color-primary-glow);
 }
 
 .btn-ghost {
@@ -646,7 +684,11 @@ h1, h2, h3, h4 {
   border-color: #cbd5e1;
   color: var(--color-primary);
   box-shadow: var(--shadow-subtle);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+}
+
+.btn-ghost:active {
+  transform: translateY(0) scale(0.985);
 }
 
 .btn-outline {
@@ -695,8 +737,9 @@ h1, h2, h3, h4 {
   width: 100%;
 }
 
-/* Eyebrow Pill Badge */
+/* Eyebrow Pill Badge (P15 Shimmer & Pulse from transitions.dev) */
 .eyebrow-badge {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -709,16 +752,74 @@ h1, h2, h3, h4 {
   color: var(--color-primary);
   box-shadow: 0 2px 8px var(--color-primary-glow);
   margin-bottom: 1.5rem;
-  transition: all var(--transition-fast);
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
+}
+
+/* P15: Subtle Luminous Shimmer Sweep */
+.eyebrow-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -140%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  animation: badgeShimmer 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+[data-theme="dark"] .eyebrow-badge::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+}
+
+.eyebrow-badge:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 14px var(--color-primary-glow);
 }
 
 .badge-dot {
   width: 7px;
   height: 7px;
-  background-color: var(--color-accent, var(--color-primary));
+  background-color: var(--color-primary);
   border-radius: 50%;
-  box-shadow: 0 0 0 3px var(--color-accent-glow, var(--color-primary-glow));
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 0 3px var(--color-primary-glow);
+  animation: badgeDotPulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes badgeShimmer {
+  0%, 70% {
+    left: -140%;
+  }
+  100% {
+    left: 220%;
+  }
+}
+
+@keyframes badgeDotPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.14);
+  }
 }
 
 /* --- 4. HEADER / NAVIGATION BAR (PremiumNavbar-Emeth Style) --- */
@@ -2526,3 +2627,16 @@ main.route-transition-in {
 
 
 /* ponytail: removed multi-theme palette overrides; site uses original default blue theme defined in :root */
+
+/* P19 3D Tilt Card from transitions.dev */
+.story-card,
+.process-card,
+.capability-highlight-card {
+  transform-style: preserve-3d;
+}
+
+/* Precision tabular numbers for rollup animation stability */
+.stat-number,
+.track-item-num {
+  font-variant-numeric: tabular-nums;
+}

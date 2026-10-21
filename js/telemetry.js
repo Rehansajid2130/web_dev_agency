@@ -5,62 +5,107 @@
  */
 
 /**
- * Initialize IntersectionObserver to trigger stats count-up animation when visible.
- * @returns {void}
+ * Ease-out exponential deceleration curve for precision metrics.
+ * @param {number} t - Progress between 0 and 1.
+ * @returns {number}
  */
-export function initStatsObserver() {
-  const statsBanner = document.querySelector('.gradient-stats-banner');
-  if (!statsBanner) return;
-
-  let hasAnimated = false;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting && !hasAnimated) {
-        hasAnimated = true;
-        animateNumber('stat-1', 0, 20, '+', 'K');
-        animateNumber('stat-2', 0, 3200, '+', '');
-        animateNumber('stat-3', 0, 100, '+', 'K');
-        animateNumber('stat-4', 0, 10, '+', '');
-      }
-    });
-  }, { threshold: 0.3 });
-
-  observer.observe(statsBanner);
+function easeOutExpo(t) {
+  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
 
 /**
- * Animate a numeric DOM element smoothly from start to end with optional affix strings.
+ * Animate a numeric DOM element smoothly with easing and formatting.
  * @param {string} elementId - Target DOM element ID.
  * @param {number} start - Starting number value.
  * @param {number} end - Target final number value.
  * @param {string} [prefix=''] - Text to precede the number.
  * @param {string} [suffix=''] - Text to append after the number.
- * @param {number} [duration=1400] - Total animation duration in milliseconds.
+ * @param {number} [decimals=0] - Decimal places to display.
+ * @param {number} [duration=1600] - Total animation duration in milliseconds.
  * @returns {void}
  */
-export function animateNumber(elementId, start, end, prefix = '', suffix = '', duration = 1400) {
+export function animateNumber(elementId, start, end, prefix = '', suffix = '', decimals = 0, duration = 1600) {
   const el = document.getElementById(elementId);
   if (!el) return;
 
-  const frameRate = 30;
-  const totalSteps = duration / frameRate;
-  const stepIncrement = (end - start) / totalSteps;
-  let currentVal = start;
+  const startTime = performance.now();
 
-  const timer = setInterval(() => {
-    currentVal += stepIncrement;
-    if (currentVal >= end) {
-      currentVal = end;
-      clearInterval(timer);
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeOutExpo(progress);
+    const currentVal = start + (end - start) * easedProgress;
+
+    let formatted;
+    if (decimals > 0) {
+      formatted = currentVal.toFixed(decimals);
+    } else {
+      formatted = Math.floor(currentVal).toLocaleString();
     }
-    const formatted = end >= 1000 ? Math.floor(currentVal).toLocaleString() : Math.floor(currentVal);
+
     el.textContent = `${prefix}${formatted}${suffix}`;
-  }, frameRate);
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      const finalFormatted = decimals > 0 ? end.toFixed(decimals) : Math.floor(end).toLocaleString();
+      el.textContent = `${prefix}${finalFormatted}${suffix}`;
+    }
+  }
+
+  requestAnimationFrame(update);
 }
 
 /**
- * Switch active tabs in the hero telemetry console.
+ * Initialize IntersectionObserver to trigger stats count-up animation when visible.
+ * @returns {void}
+ */
+export function initStatsObserver() {
+  // 1. Homepage Gradient Stats Banner
+  const statsBanner = document.querySelector('.gradient-stats-banner');
+  if (statsBanner && !statsBanner.dataset.observed) {
+    statsBanner.dataset.observed = 'true';
+    let hasAnimated = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          animateNumber('stat-1', 0, 20, '+', 'K', 0, 1600);
+          animateNumber('stat-2', 0, 3200, '+', '', 0, 1800);
+          animateNumber('stat-3', 0, 100, '+', 'K', 0, 1600);
+          animateNumber('stat-4', 0, 10, '+', '', 0, 1400);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    observer.observe(statsBanner);
+  }
+
+  // 2. About Page Track Record Stats
+  const trackGrid = document.querySelector('.track-record-grid');
+  if (trackGrid && !trackGrid.dataset.observed) {
+    trackGrid.dataset.observed = 'true';
+    let hasAnimated = false;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          animateNumber('track-1', 0, 850, '$', 'M+', 0, 1600);
+          animateNumber('track-2', 0, 100, '', '%', 0, 1400);
+          animateNumber('track-3', 0, 99.99, '', '%', 2, 1800);
+          animateNumber('track-4', 0, 0, '$', '', 0, 1000);
+        }
+      });
+    }, { threshold: 0.25 });
+
+    observer.observe(trackGrid);
+  }
+}
+
+/**
+ * Switch active tabs in the hero telemetry console (if present).
  * @param {string} tabName - Active view tab identifier ('telemetry' | 'api' | 'architecture').
  * @returns {void}
  */

@@ -225,12 +225,21 @@
   min-height: 0;
 }
 
-/* Expanded Two-Column Showcase Layout */
+/* Expanded Two-Column Showcase Layout (P21 Fluid Entrance) */
 .case-study-expanded-content {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 2rem;
   align-items: start;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+}
+
+.project-card.is-expanded .case-study-expanded-content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (max-width: 860px) {
