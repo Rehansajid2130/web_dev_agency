@@ -6,7 +6,7 @@
  */
 
 import { renderColorThemePicker } from './theme.js';
-import { initNavbarScrollState, initCardGlow, syncNavSlidingPill, initCard3DTilt } from './cursor.js';
+import { initNavbarScrollState, initCardGlow, syncNavSlidingPill, initCard3DTilt, initScrollTextReveal } from './cursor.js';
 import { initStatsObserver } from './telemetry.js';
 import { initProcessPage, initProjectsPage, initContactPage } from './components.js';
 import { initTypewriter, stopTypewriter } from './typewriter.js';
@@ -323,6 +323,7 @@ export function reinitPageComponents(url) {
   initNavbarScrollState();
   initCardGlow();
   initCard3DTilt();
+  initScrollTextReveal();
   initStatsObserver();
 
   if (document.querySelector('.framer-tab-btn')) {

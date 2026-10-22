@@ -250,3 +250,67 @@ export function initCard3DTilt() {
     });
   });
 }
+
+/**
+ * Scroll-driven Text Fade-in from transitions.dev
+ * Smoothly reveals section headlines, subtitles, and paragraphs as they scroll into view.
+ * @returns {void}
+ */
+export function initScrollTextReveal() {
+  if (typeof window === 'undefined') return;
+
+  const textSelectors = [
+    '.section-heading',
+    '.section-subtext',
+    '.eyebrow-text',
+    '.partners-title',
+    '.story-card-title',
+    '.story-card-text',
+    '.process-card-title',
+    '.process-card-desc',
+    '.capability-title',
+    '.cta-title',
+    '.cta-subtitle',
+    '.principle-title',
+    '.principle-desc',
+    '.scroll-reveal-text'
+  ].join(', ');
+
+  const elements = document.querySelectorAll(textSelectors);
+  if (!elements.length) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: '0px 0px -40px 0px',
+    threshold: 0.1
+  });
+
+  elements.forEach(el => {
+    const element = /** @type {HTMLElement} */ (el);
+    if (element.classList.contains('is-revealed')) return;
+
+    // Never obscure hero entrance, header, or modals
+    if (element.closest('.hero-section') || element.closest('header') || element.closest('#contactModal')) {
+      element.classList.add('is-revealed');
+      return;
+    }
+
+    element.classList.add('scroll-fade-text');
+
+    // Immediately reveal elements already inside initial viewport
+    const rect = element.getBoundingClientRect();
+    if (prefersReduced || (rect.top < window.innerHeight - 30 && rect.bottom > 0)) {
+      element.classList.add('is-revealed');
+    } else {
+      observer.observe(element);
+    }
+  });
+}
