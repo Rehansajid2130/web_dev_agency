@@ -6,7 +6,11 @@
  */
 
 import { initTheme, toggleTheme, updateThemeIcon, initColorTheme, setColorTheme, renderColorThemePicker } from './js/theme.js';
-import { initCustomCursor, initCardGlow, initNavbarScrollState, toggleMobileMenu, initNavSlidingPill, syncNavSlidingPill, initCard3DTilt, initScrollTextReveal } from './js/cursor.js';
+import { 
+  initCustomCursor, initCardGlow, initNavbarScrollState, toggleMobileMenu, closeMobileMenu,
+  ensureMobileNavBackdrop, initNavSlidingPill, syncNavSlidingPill, initCard3DTilt, initScrollTextReveal,
+  initMagneticButtons, playTapSound, playToggleSound, playDrawerSound, toggleSoundEffect, isSoundEnabled, triggerHaptic 
+} from './js/cursor.js';
 import { initStatsObserver, animateNumber, switchDashboardTab, startApiStreamSimulation, toggleTelemetryDemo } from './js/telemetry.js';
 import { initRouter, navigateTo, prefetchPage, normalizeUrl, reinitPageComponents } from './js/router.js';
 import { 
@@ -46,15 +50,24 @@ Object.assign(window, {
   setColorTheme,
   renderColorThemePicker,
 
-  // Interactions & Cursor
+  // Interactions, Mobile Drawer & Audio Micro-interactions
   initCustomCursor,
   initCardGlow,
   initNavbarScrollState,
   toggleMobileMenu,
+  closeMobileMenu,
+  ensureMobileNavBackdrop,
   initNavSlidingPill,
   syncNavSlidingPill,
   initCard3DTilt,
   initScrollTextReveal,
+  initMagneticButtons,
+  playTapSound,
+  playToggleSound,
+  playDrawerSound,
+  toggleSoundEffect,
+  isSoundEnabled,
+  triggerHaptic,
 
   // Telemetry & Stats
   initStatsObserver,
@@ -110,6 +123,7 @@ function bootstrapApp() {
   initCardGlow();
   initCard3DTilt();
   initScrollTextReveal();
+  initMagneticButtons();
   initCustomCursor();
   initRouter();
 
