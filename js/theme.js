@@ -40,14 +40,6 @@ export function toggleTheme() {
   }
   localStorage.setItem('theme', next);
   updateThemeIcon();
-
-  if (typeof window.playToggleSound === 'function') {
-    window.playToggleSound(next === 'dark');
-  }
-  if (typeof window.triggerHaptic === 'function') {
-    window.triggerHaptic(12);
-  }
-
   return next;
 }
 

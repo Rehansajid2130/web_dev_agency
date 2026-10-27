@@ -1,0 +1,27 @@
+# robots.txt for bit3labs (https://bit3labs.com)
+User-agent: *
+Allow: /
+
+# Explicit AI Agent & Citation Discovery
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Sitemap & AI Context Manifest
+Sitemap: https://bit3labs.com/sitemap.xml
+# AI Engine Optimization
+# LLM Context: https://bit3labs.com/llms.txt

@@ -1,0 +1,27 @@
+# bit3labs
+
+> bit3labs is a specialized systems engineering and software studio designing custom web applications, native mobile apps, and enterprise ERP architectures with zero framework bloat and permanent IP ownership.
+
+## Core Specializations
+
+- [Web Applications](https://bit3labs.com/services.html#web): High-concurrency distributed web platforms, reactive SPAs, real-time dashboards, and secure partner APIs.
+- [Mobile Engineering](https://bit3labs.com/services.html#mobile): Native iOS (Swift) & Android (Kotlin) applications, offline-first local SQLite sync with CRDT conflict resolution, and hardware sensor integration.
+- [Enterprise ERP Systems](https://bit3labs.com/services.html#erp): Bespoke multi-warehouse inventory engines, double-entry automated ledgers, distributed transaction sagas, and real-time supply chain synchronization.
+
+## Engineering Philosophy & Principles
+
+- **Zero-Dependency Architecture**: Pure semantic HTML5, CSS3 design tokens, and modular native JavaScript. No runtime framework lock-in, zero build-step taxation, and 100% client source code ownership.
+- **Measurable P99 Latency**: Sub-100ms API response budgets, write-ahead logs, and cache hierarchies designed for extreme throughput.
+- **Fixed-Scope Architectural Delivery**: 5-stage engineering lifecycle (Discovery, Architecture Blueprint, Agile Sprints, Rigorous Validation, Production Deployment).
+
+## Key Production Case Studies
+
+- [OmniFlow Global ERP](https://bit3labs.com/projects.html): Unified 14 international fulfillment hubs in Go and React 19, reducing order reconciliation from 18 minutes to 4 seconds and saving $350K/year in SaaS seat taxes.
+- [FieldOps Mobile Suite](https://bit3labs.com/projects.html): Offline-first native mobile suite deployed across 4,000 field technicians with zero data loss in disconnected subterranean environments.
+- [PulseCommerce Engine](https://bit3labs.com/projects.html): High-volume headless e-commerce engine handling 12,500 checkout req/s with 0% downtime during peak flash events.
+
+## Contact & Architecture Consultations
+
+- URL: https://bit3labs.com/contact.html
+- Email: hello@bit3labs.com
+- Location: San Francisco, CA & Global Remote

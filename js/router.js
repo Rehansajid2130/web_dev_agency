@@ -6,7 +6,7 @@
  */
 
 import { renderColorThemePicker } from './theme.js';
-import { initNavbarScrollState, initCardGlow, syncNavSlidingPill, initCard3DTilt, initScrollTextReveal, initMagneticButtons, closeMobileMenu, playTapSound } from './cursor.js';
+import { initNavbarScrollState, initCardGlow, syncNavSlidingPill, initCard3DTilt, initScrollTextReveal } from './cursor.js';
 import { initStatsObserver } from './telemetry.js';
 import { initProcessPage, initProjectsPage, initContactPage } from './components.js';
 import { initTypewriter, stopTypewriter } from './typewriter.js';
@@ -81,8 +81,6 @@ export function initRouter() {
     }
 
     e.preventDefault();
-    playTapSound(560);
-    closeMobileMenu();
     navigateTo(targetUrl.href);
   });
 
@@ -322,12 +320,10 @@ function runPageScripts(container) {
  * @returns {void}
  */
 export function reinitPageComponents(url) {
-  closeMobileMenu();
   initNavbarScrollState();
   initCardGlow();
   initCard3DTilt();
   initScrollTextReveal();
-  initMagneticButtons();
   initStatsObserver();
 
   if (document.querySelector('.framer-tab-btn')) {

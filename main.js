@@ -6,11 +6,7 @@
  */
 
 import { initTheme, toggleTheme, updateThemeIcon, initColorTheme, setColorTheme, renderColorThemePicker } from './js/theme.js';
-import { 
-  initCustomCursor, initCardGlow, initNavbarScrollState, toggleMobileMenu, closeMobileMenu,
-  ensureMobileNavBackdrop, initNavSlidingPill, syncNavSlidingPill, initCard3DTilt, initScrollTextReveal,
-  initMagneticButtons, playTapSound, playToggleSound, playDrawerSound, toggleSoundEffect, isSoundEnabled, triggerHaptic 
-} from './js/cursor.js';
+import { initCustomCursor, initCardGlow, initNavbarScrollState, toggleMobileMenu, initNavSlidingPill, syncNavSlidingPill, initCard3DTilt, initScrollTextReveal } from './js/cursor.js';
 import { initStatsObserver, animateNumber, switchDashboardTab, startApiStreamSimulation, toggleTelemetryDemo } from './js/telemetry.js';
 import { initRouter, navigateTo, prefetchPage, normalizeUrl, reinitPageComponents } from './js/router.js';
 import { 
@@ -50,24 +46,15 @@ Object.assign(window, {
   setColorTheme,
   renderColorThemePicker,
 
-  // Interactions, Mobile Drawer & Audio Micro-interactions
+  // Interactions & Cursor
   initCustomCursor,
   initCardGlow,
   initNavbarScrollState,
   toggleMobileMenu,
-  closeMobileMenu,
-  ensureMobileNavBackdrop,
   initNavSlidingPill,
   syncNavSlidingPill,
   initCard3DTilt,
   initScrollTextReveal,
-  initMagneticButtons,
-  playTapSound,
-  playToggleSound,
-  playDrawerSound,
-  toggleSoundEffect,
-  isSoundEnabled,
-  triggerHaptic,
 
   // Telemetry & Stats
   initStatsObserver,
@@ -123,7 +110,6 @@ function bootstrapApp() {
   initCardGlow();
   initCard3DTilt();
   initScrollTextReveal();
-  initMagneticButtons();
   initCustomCursor();
   initRouter();
 
@@ -139,6 +125,36 @@ function bootstrapApp() {
   }
   if (document.getElementById('typewriterText')) {
     initTypewriter();
+  }
+
+  // Register PWA Service Worker for offline reliability
+  registerServiceWorker();
+}
+
+/**
+ * Register Service Worker for offline reliability and background caching.
+ */
+function registerServiceWorker() {
+  if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => {
+          // Check for worker updates
+          reg.onupdatefound = () => {
+            const installing = reg.installing;
+            if (installing) {
+              installing.onstatechange = () => {
+                if (installing.state === 'installed' && navigator.serviceWorker.controller) {
+                  console.log('[PWA] Fresh content available on next reload.');
+                }
+              };
+            }
+          };
+        })
+        .catch((err) => {
+          console.warn('[PWA] ServiceWorker registration skipped:', err.message);
+        });
+    });
   }
 }
 

@@ -1,0 +1,53 @@
+{
+  "name": "bit3labs — Systems Engineering Studio",
+  "short_name": "bit3labs",
+  "description": "Custom web applications, native mobile apps, and enterprise ERP systems engineering.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0d14",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "business",
+    "developer",
+    "productivity"
+  ],
+  "shortcuts": [
+    {
+      "name": "Consultation Intake",
+      "url": "./contact.html",
+      "description": "Schedule direct architecture consultation"
+    },
+    {
+      "name": "Case Studies",
+      "url": "./projects.html",
+      "description": "Explore production engineering case studies"
+    },
+    {
+      "name": "Services",
+      "url": "./services.html",
+      "description": "Explore web, mobile, and ERP capabilities"
+    }
+  ]
+}

@@ -6,3 +6,5 @@ node_modules/
 # gitignore - Ponytail
 mirofish/
 .env
+.env.local
+data/leads.json
