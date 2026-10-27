@@ -62,8 +62,8 @@ Because source images are perspective mockups and screenshots, **never hardcode 
 
 ### 2.2 Typography Scale (Fluid & Rem-based)
 
-* **Primary Font**: `'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif`
-* **Section Eyebrow**: `text-xs md:text-sm` (`0.75rem - 0.875rem`), `font-semibold`, uppercase or title case, tracked (`tracking-wider`), color `#2563EB`.
+* **Display & Heading Font**: `'Syne', var(--font-sans)` (Weights: 500, 600, 700, 800)
+* **Primary Body Font**: `'Plus Jakarta Sans', -apple-system, sans-serif` (Weights: 400, 500, 600, 700)
 * **Main Hero Title**: `text-4xl md:text-5xl lg:text-6xl` (`2.5rem - 3.75rem`), `font-extrabold`, `leading-[1.15]`, letter-spacing `-0.03em`.
 * **Section Headings (`H2`)**: `text-3xl md:text-4xl` (`1.875rem - 2.25rem`), `font-bold`, `leading-tight`, letter-spacing `-0.02em`.
 * **Card Titles (`H3`)**: `text-lg md:text-xl` (`1.125rem - 1.25rem`), `font-bold`, color `#0F172A`.
